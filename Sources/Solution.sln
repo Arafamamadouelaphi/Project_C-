@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldLib", "HelloWorldLib\HelloWorldLib.csproj", "{48BBA997-E63D-48BB-BB2A-538457425F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingLib", "HelloWorldLib\BowlingLib.csproj", "{48BBA997-E63D-48BB-BB2A-538457425F02}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C75DF644-C41F-4A08-8B69-C8554204AC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldApp", "HelloWorldApp\HelloWorldApp.csproj", "{21365B7E-4A1A-4C37-B140-A9D6FC7A7E50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingApp", "HelloWorldApp\BowlingApp.csproj", "{21365B7E-4A1A-4C37-B140-A9D6FC7A7E50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWordLib_UnitTests", "Tests\HelloWordLib_UnitTests\HelloWordLib_UnitTests.csproj", "{F9B12DFD-EF58-429F-9344-70DFC10EC6E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingAppUnitTest", "Tests\HelloWordLib_UnitTests\BowlingAppUnitTest.csproj", "{F9B12DFD-EF58-429F-9344-70DFC10EC6E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4D47853B-D1A3-49A5-84BA-CD2DC65FD105}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F9B12DFD-EF58-429F-9344-70DFC10EC6E5} = {C75DF644-C41F-4A08-8B69-C8554204AC72}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D47853B-D1A3-49A5-84BA-CD2DC65FD105}
 	EndGlobalSection
 EndGlobal
