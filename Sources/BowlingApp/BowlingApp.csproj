@@ -6,6 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HelloWorldLib\BowlingLib.csproj" />
+    <ProjectReference Include="..\BowlingLib\BowlingLib.csproj" />
   </ItemGroup>
 </Project>
