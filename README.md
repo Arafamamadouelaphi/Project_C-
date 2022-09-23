@@ -10,7 +10,7 @@
 [![Security Rating](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=security_rating)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
 [![Technical Debt](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=sqale_index)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
 [![Vulnerabilities](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=vulnerabilities)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)  
-
+ 
  
 # BowlingScoreApp
 
