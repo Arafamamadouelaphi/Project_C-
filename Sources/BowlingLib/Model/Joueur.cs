@@ -16,7 +16,7 @@ namespace BowlingLib.Model
 
             if (pseudo == null || pseudo == "")
             {
-                throw new Exception("Le pseudo ne peut pas être vide");
+                throw new ArgumentException("Le pseudo ne peut pas être vide");
             }
         }
 
