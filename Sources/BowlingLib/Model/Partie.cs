@@ -8,48 +8,40 @@ namespace BowlingLib.Model
 {
     public class Partie
     {
-        private Joueur joueur;
-        private List<Frame> frames;
 
-        public Joueur Joueur
-        {
-            get { return joueur; }
-            set { joueur = value; }
-        }
+        public Joueur Joueur { get; set; }
 
-        public List<Frame> Frames
-        {
-            get { return frames; }
-            set { frames = value; }
-        }
+        public List<Frame> Frames { get; set; }
 
         public Partie(Joueur joueur)
         {
-            this.joueur = joueur;
-            frames = new List<Frame>();
+            this.Joueur = joueur;
+            Frames = new List<Frame>();
         }
 
         public void AddFrame(Frame frame)
         {
-            frames.Add(frame);
+            Frames.Add(frame);
         }
 
-        public int GetScore()
+        public int? GetScore()
         {
-            int score = 0;
-            foreach (Frame frame in frames)
+            int? score = 0;
+            for (int i = 0; i < Frames.Count; i++)
             {
-                score += frame.Score;
-            }
-            return score;
-        }
-
-        public int GetScore(int frameNumber)
-        {
-            int score = 0;
-            for (int i = 0; i < frameNumber; i++)
-            {
-                score += frames[i].Score;
+                score += Frames[i].QuillesTombees;
+                if (Frames[i].IsStrike)
+                {
+                    score += Frames[i + 1].QuillesTombees;
+                    if (Frames[i + 1].IsStrike && i < Frames.Count - 2)
+                    {
+                        score += Frames[i + 2].QuillesTombees;
+                    }
+                }
+                else if (Frames[i].IsSpare)
+                {
+                    score += Frames[i + 1].Lancer1.QuillesTombees;
+                }
             }
             return score;
         }

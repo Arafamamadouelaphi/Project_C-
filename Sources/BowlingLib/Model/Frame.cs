@@ -8,89 +8,37 @@ namespace BowlingLib.Model
 {
     public class Frame
     {
-        private int numero;
-        private int score;
-        private int quillesRestantes;
-        private int quillesTombees;
-        private bool isStrike;
-        private bool isSpare;
-        private bool isFinished;
-        private Lancer lancer1;
-        private Lancer lancer2;
-        private Lancer lancer3;
+        public int Numero { get; set; }
 
-        public int Numero
-        {
-            get { return numero; }
-            set { numero = value; }
-        }
 
-        public int Score
-        {
-            get { return score; }
-            set { score = value; }
-        }
+        public int QuillesRestantes { get; set; }
 
-        public int QuillesRestantes
-        {
-            get { return quillesRestantes; }
-            set { quillesRestantes = value; }
-        }
+        public int QuillesTombees { get; set; }
 
-        public int QuillesTombees
-        {
-            get { return quillesTombees; }
-            set { quillesTombees = value; }
-        }
+        public bool IsStrike { get; set; }
 
-        public bool IsStrike
-        {
-            get { return isStrike; }
-            set { isStrike = value; }
-        }
+        public bool IsSpare { get; set; }
 
-        public bool IsSpare
-        {
-            get { return isSpare; }
-            set { isSpare = value; }
-        }
+        public bool IsFinished { get; set; }
 
-        public bool IsFinished
-        {
-            get { return isFinished; }
-            set { isFinished = value; }
-        }
+        public Lancer Lancer1 { get; set; }
 
-        public Lancer Lancer1
-        {
-            get { return lancer1; }
-            set { lancer1 = value; }
-        }
+        public Lancer Lancer2 { get; set; }
 
-        public Lancer Lancer2
-        {
-            get { return lancer2; }
-            set { lancer2 = value; }
-        }
-
-        public Lancer Lancer3
-        {
-            get { return lancer3; }
-            set { lancer3 = value; }
-        }
+        public Lancer Lancer3 { get; set; }
 
         public Frame(int numero)
         {
-            this.numero = numero;
-            this.quillesRestantes = 10;
-            this.isFinished = false;
-            this.isStrike = false;
-            this.isSpare = false;
+            this.Numero = numero;
+            this.QuillesRestantes = 10;
+            this.IsFinished = false;
+            this.IsStrike = false;
+            this.IsSpare = false;
         }
 
         public void Lancer(int quillesTombees)
         {
-            if (quillesTombees > quillesRestantes)
+            if (quillesTombees > QuillesRestantes)
             {
                 throw new ArgumentException("Le nombre de quilles tombees doit etre inferieur au nombre de quilles restantes");
             }
@@ -99,74 +47,74 @@ namespace BowlingLib.Model
                 throw new ArgumentException("Le nombre de quilles tombees doit et etre positif");
             }
 
-            if (this.numero == 10)
+            if (this.Numero == 10)
             {
-                if (this.lancer1 == null)
+                if (this.Lancer1 == null)
                 {
-                    this.lancer1 = new Lancer(quillesTombees);
-                    this.quillesRestantes -= quillesTombees;
-                    this.quillesTombees += quillesTombees;
+                    this.Lancer1 = new Lancer(quillesTombees);
+                    this.QuillesRestantes -= quillesTombees;
+                    this.QuillesTombees += quillesTombees;
                     if (quillesTombees == 10)
                     {
-                        this.isStrike = true;
+                        this.IsStrike = true;
                     }
                 }
-                else if (this.lancer2 == null)
+                else if (this.Lancer2 == null)
                 {
-                    this.lancer2 = new Lancer(quillesTombees);
-                    this.quillesRestantes -= quillesTombees;
-                    this.quillesTombees += quillesTombees;
-                    if (this.isStrike)
+                    this.Lancer2 = new Lancer(quillesTombees);
+                    this.QuillesRestantes -= quillesTombees;
+                    this.QuillesTombees += quillesTombees;
+                    if (this.IsStrike)
                     {
                         if (quillesTombees == 10)
                         {
-                            this.isStrike = true;
+                            this.IsStrike = true;
                         }
                         else
                         {
-                            this.isStrike = false;
+                            this.IsStrike = false;
                         }
                     }
                     else
                     {
-                        if (quillesTombees + this.lancer1.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer1.QuillesTombees == 10)
                         {
-                            this.isSpare = true;
+                            this.IsSpare = true;
                         }
                     }
                 }
-                else if (this.lancer3 == null)
+                else if (this.Lancer3 == null)
                 {
-                    this.lancer3 = new Lancer(quillesTombees);
-                    this.quillesRestantes -= quillesTombees;
-                    this.quillesTombees += quillesTombees;
-                    if (this.isStrike)
+                    this.Lancer3 = new Lancer(quillesTombees);
+                    this.QuillesRestantes -= quillesTombees;
+                    this.QuillesTombees += quillesTombees;
+                    if (this.IsStrike)
                     {
                         if (quillesTombees == 10)
                         {
-                            this.isStrike = true;
+                            this.IsStrike = true;
                         }
                         else
                         {
-                            this.isStrike = false;
+                            this.IsStrike = false;
                         }
                     }
-                    else if (this.isSpare)
+                    else if (this.IsSpare)
                     {
-                        if (quillesTombees + this.lancer2.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer2.QuillesTombees == 10)
                         {
-                            this.isSpare = true;
+                            this.IsSpare = true;
                         }
                         else
                         {
-                            this.isSpare = false;
+                            this.IsSpare = false;
                         }
                     }
                     else
                     {
-                        if (quillesTombees + this.lancer2.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer2.QuillesTombees == 10)
                         {
-                            this.isSpare = true;
+                            this.IsSpare = true;
                         }
                     }
                 }
@@ -177,32 +125,32 @@ namespace BowlingLib.Model
             }
             else
             {
-                if (this.lancer1 == null)
+                if (this.Lancer1 == null)
                 {
-                    this.lancer1 = new Lancer(quillesTombees);
+                    this.Lancer1 = new Lancer(quillesTombees);
                 }
-                else if (this.lancer2 == null)
+                else if (this.Lancer2 == null)
                 {
-                    this.lancer2 = new Lancer(quillesTombees);
+                    this.Lancer2 = new Lancer(quillesTombees);
                 }
                 else
                 {
                     throw new ArgumentException("Le nombre de lancers est deja atteint");
                 }
-                this.quillesRestantes -= quillesTombees;
-                this.quillesTombees += quillesTombees;
+                this.QuillesRestantes -= quillesTombees;
+                this.QuillesTombees += quillesTombees;
                 if (quillesTombees == 10)
                 {
-                    this.isStrike = true;
+                    this.IsStrike = true;
                 }
-                else if (this.quillesRestantes == 0)
+                else if (this.QuillesRestantes == 0)
                 {
-                    this.isSpare = true;
+                    this.IsSpare = true;
                 }
             }
-            if (this.quillesRestantes == 0 || this.lancer2 != null)
+            if (this.QuillesRestantes == 0 || this.Lancer2 != null)
             {
-                this.isFinished = true;
+                this.IsFinished = true;
             }
         }
     }
