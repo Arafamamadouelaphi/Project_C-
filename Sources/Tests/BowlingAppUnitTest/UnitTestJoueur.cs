@@ -20,5 +20,30 @@ namespace Test.BowlingAppUnitTest
         {
             Assert.Throws<ArgumentException>(() => new Joueur(null));
         }
+
+        [Theory]
+        [InlineData(false,"Augustin","Augustinn")];
+        [InlineData(true,"Amir","Amir")];
+        [InlineData(false,"Amir","")];
+        [InlineData(false,"Amir",null)];
+        [InlineData(false,null,null)];
+        [InlineData(false,null,"")];
+        [InlineData(false,"",null)];
+        [InlineData(false,"","")];
+        [InlineData(false,"f2","f2")];
+
+        public void  TestContructeur(bool isValid, string expectedPseudo, String pseudo )
+        {
+            if (!isValid)
+            {
+                Assert.Throws<ArgumentException>(
+                    () => new Joueur(pseudo)
+                    );
+                return;
+
+                Joueur j = new Joueur(pseudo);
+                Assert.Equal(pseudo, j.Pseudo);
+            }
+        }
     }
 }
