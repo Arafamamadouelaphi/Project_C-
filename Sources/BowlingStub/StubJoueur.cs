@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BowlingLib.Model;
+using System;
 
 public class StubJoueur
 {
@@ -11,8 +12,9 @@ private	List<Joueur> listJoueurs = new List<Joueur>();
     {
 		for (int i = 0; i < n; i++)
         {
-				listJoueurs.Add(new Joueur() { Pseudo = "Joueur "+i+1 });
+				listJoueurs.Add(new Joueur("Joueur " + i + 1));
 		}
+        return listJoueurs;
     }
 
 }

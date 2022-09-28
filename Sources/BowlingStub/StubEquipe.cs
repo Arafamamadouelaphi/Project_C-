@@ -1,3 +1,4 @@
+using BowlingLib.Model;
 using System;
 
 public class StubEquipe
@@ -11,7 +12,7 @@ public class StubEquipe
 	{
 		for (int i = 0; i < n; i++)
 		{
-			listEquipes.Add(new Equipe() { Nom = "Equipe " + i + 1 });
+			listEquipes.Add(new Equipe("Equipe " + i + 1));
 
 			for(int k = 0; k < j; k++)
             {
@@ -19,6 +20,7 @@ public class StubEquipe
 
 			}
 		}
-	}
+        return listEquipes;
+    }
 
 }
