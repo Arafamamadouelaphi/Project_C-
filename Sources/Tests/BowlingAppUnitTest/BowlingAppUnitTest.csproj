@@ -21,5 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BowlingLib\BowlingLib.csproj" />
+    <ProjectReference Include="..\..\BowlingStub\BowlingStub.csproj" />
   </ItemGroup>
 </Project>
