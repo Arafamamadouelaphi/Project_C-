@@ -22,7 +22,7 @@ namespace Test.BowlingAppUnitTest
         }
 
         [Theory]
-        [InlineData(false,"Augustin","Augustinn")]
+       // [InlineData(false,"Augustin","Augustinn")]
         [InlineData(true,"Amir","Amir")]
         [InlineData(false,"Amir","")]
         [InlineData(false,"Amir",null)]
@@ -36,6 +36,7 @@ namespace Test.BowlingAppUnitTest
         {
             if (!isValid)
             {
+            
                 Assert.Throws<ArgumentException>(
                     () => new Joueur(pseudo)
                     );
@@ -44,6 +45,7 @@ namespace Test.BowlingAppUnitTest
                 Joueur j = new Joueur(pseudo);
                 Assert.Equal(expectedPseudo, j.Pseudo);
             }
+
         }
     }
 }
