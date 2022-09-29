@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingApp", "BowlingApp\Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingAppUnitTest", "Tests\BowlingAppUnitTest\BowlingAppUnitTest.csproj", "{F9B12DFD-EF58-429F-9344-70DFC10EC6E5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingStub", "BowlingStub\BowlingStub.csproj", "{B50615A5-ABFD-4A9C-B236-DBAEDE62AB2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
