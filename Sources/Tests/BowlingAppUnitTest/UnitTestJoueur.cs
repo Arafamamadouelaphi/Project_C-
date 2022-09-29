@@ -42,7 +42,7 @@ namespace Test.BowlingAppUnitTest
                 return;
 
                 Joueur j = new Joueur(pseudo);
-                Assert.Equal(pseudo, j.Pseudo);
+                Assert.Equal(expectedPseudo, j.Pseudo);
             }
         }
     }
