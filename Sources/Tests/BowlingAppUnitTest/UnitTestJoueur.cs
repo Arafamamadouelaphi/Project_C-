@@ -11,8 +11,8 @@ namespace Test.BowlingAppUnitTest
         public void TestConstructeur()
         {            
             Assert.NotNull(j);
-            Assert.Equal(j.Pseudo, "Paul");
-            Assert.NotEqual(j.Pseudo, "joel");
+            Assert.Equal( "Paul",j.Pseudo);
+            Assert.NotEqual("joel",j.Pseudo );
         }
 
         [Fact]
