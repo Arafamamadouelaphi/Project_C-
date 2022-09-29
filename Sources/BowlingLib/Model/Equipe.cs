@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+using System;
+>>>>>>> origin/CreationTest
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
