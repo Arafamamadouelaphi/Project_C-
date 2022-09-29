@@ -35,16 +35,15 @@ namespace Test.BowlingAppUnitTest
         public void  TestContructeur(bool isValid, string expectedPseudo, String pseudo )
         {
             if (!isValid)
-            {
-            
+            {            
                 Assert.Throws<ArgumentException>(
                     () => new Joueur(pseudo)
                     );
                 return;
-
+            }
                 Joueur j = new Joueur(pseudo);
                 Assert.Equal(expectedPseudo, j.Pseudo);
-            }
+            
 
         }
     }
