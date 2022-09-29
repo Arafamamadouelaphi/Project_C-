@@ -16,7 +16,7 @@
 
 Welcome on the BowlingScoreApp project!  
 
-  
+
 
 _Generated with a_ **Code#0** _template_  
 <img src="Documentation/doc_images/CodeFirst.png" height=40/>   
