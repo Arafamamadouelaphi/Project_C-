@@ -6,10 +6,10 @@ namespace Test.BowlingAppUnitTest
 {
     public class UnitTestJoueur
     {
+        Joueur j = new Joueur("Paul");
         [Fact]
         public void TestConstructeur()
-        {
-            Joueur j = new Joueur("Paul");
+        {            
             Assert.NotNull(j);
             Assert.Equal(j.Pseudo, "Paul");
             Assert.NotEqual(j.Pseudo, "joel");
