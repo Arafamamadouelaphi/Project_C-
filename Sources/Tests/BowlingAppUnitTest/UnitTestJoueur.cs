@@ -22,19 +22,19 @@ namespace Test.BowlingAppUnitTest
         }
 
         [Theory]
-        [InlineData(false,"Augustin","Augustinn",false)]
+        [InlineData(true,false,"Augustin","Augustinn",false)]
         [InlineData(true,"Amir","Amir",true)]
-        [InlineData(false,"Amir","",false)]
-        [InlineData(false,"Amir",null,false)]
-        [InlineData(false,null,null,true)]
-        [InlineData(false,null,"",false)]
-        [InlineData(false,"",null,false)]
-        [InlineData(false,"","",true)]
-        [InlineData(false,"f2","f2",true)]
+        [InlineData(false,false,"Amir","",false)]
+        [InlineData(false,false,"Amir",null,false)]
+        [InlineData(false,false,null,null,true)]
+        [InlineData(false,false,null,"",false)]
+        [InlineData(false,false,"",null,false)]
+        [InlineData(false,false,"","",true)]
+        [InlineData(false,false,"f2","f2",true)]
 
-        public void  TestContructeur(bool isValid, string expectedPseudo, String pseudo, bool isEqual )
+        public void  TestContructeur(bool isFormated,bool isValid, string expectedPseudo, String pseudo, bool isEqual )
         {
-            if (!isValid)
+            if (!isValid && !isFormated)
             {            
                 Assert.Throws<ArgumentException>(
                     () => new Joueur(pseudo)
