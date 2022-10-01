@@ -30,20 +30,17 @@ namespace BowlingLib.Model
             for (int i = 0; i < Frames.Count; i++)
             {
                 score += Frames[i].QuillesTombees;
-                if (i<Frames.Count-1)
+                if (Frames[i].IsStrike && i < Frames.Count - 1)
                 {
-                    if (Frames[i].IsStrike)
+                    score += Frames[i + 1].QuillesTombees;
+                    if (Frames[i + 1].IsStrike && i < Frames.Count - 2)
                     {
-                        score += Frames[i + 1].QuillesTombees;
-                        if (Frames[i + 1].IsStrike && i < Frames.Count - 2)
-                        {
-                            score += Frames[i + 2].QuillesTombees;
-                        }
+                        score += Frames[i + 2].QuillesTombees;
                     }
-                    else if (Frames[i].IsSpare)
-                    {
-                        score += Frames[i + 1].Lancer1.QuillesTombees;
-                    }
+                }
+                else if (Frames[i].IsSpare && i < Frames.Count - 1)
+                {
+                    score += Frames[i + 1].Lancer1.QuillesTombees;
                 }
             }
             return score;
