@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BowlingLib.Model;
 using Xunit;
 
@@ -22,27 +23,35 @@ namespace Test.BowlingAppUnitTest
         }
 
         [Theory]
-        [InlineData(true,false,"Augustin","Augustinn",false)]
-        [InlineData(true,true,"Amir","Amir",true)]
-        [InlineData(false,false,"Amir","",false)]
-        [InlineData(false,false,"Amir",null,false)]
-        [InlineData(false,false,null,null,true)]
-        [InlineData(false,false,null,"",false)]
-        [InlineData(false,false,"",null,false)]
-        [InlineData(false,false,"","",true)]
-        [InlineData(false,false,"f2","f2",true)]
-
-        public void  TestContructeur(bool isFormated,bool isValid, string expectedPseudo, String pseudo, bool isEqual )
+        [InlineData(true, false, "Augustin", "Augustinn", false)]
+        [InlineData(true, true, "Amir", "Amir", true)]
+        [InlineData(false, false, "Amir", "", false)]
+        [InlineData(false, false, "Amir", null, false)]
+        [InlineData(false, false, null, null, true)]
+        [InlineData(false, false, null, "", false)]
+        [InlineData(false, false, "", null, false)]
+        [InlineData(false, false, "", "", true)]
+        [InlineData(false, false, "f2", "f2", true)]
+        public void TestContructeur(bool isFormated, bool isValid, string expectedPseudo, String pseudo, bool isEqual)
         {
             if (!isValid && !isFormated)
-            {            
+            {
                 Assert.Throws<ArgumentException>(
                     () => new Joueur(pseudo)
                     );
                 return;
             }
 
-                Joueur j = new Joueur(pseudo);
+            Joueur j = new Joueur(pseudo);
+
+
+            if (!isEqual)
+            {
+                Assert.NotEqual(expectedPseudo, j.Pseudo);
+
+            }
+            else
+            {
 
                 
             if(!isEqual){
@@ -52,8 +61,16 @@ namespace Test.BowlingAppUnitTest
                 Assert.Equal(expectedPseudo, j.Pseudo);
 
             }
-            
 
+
+        }
+
+        //Test joueur avec stub
+        [Fact]
+        public void TestJoueurStub()
+        {
+            StubJoueur stub = new StubJoueur();
+            Assert.Equal(10, stub.ListJoueurs(10).Count);
         }
     }
 }
