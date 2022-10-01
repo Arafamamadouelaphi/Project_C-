@@ -52,6 +52,12 @@ namespace Test.BowlingAppUnitTest
             }
             else
             {
+
+                
+            if(!isEqual){
+                Assert.NotEqual(expectedPseudo, j.Pseudo);
+
+            }else{
                 Assert.Equal(expectedPseudo, j.Pseudo);
 
             }
