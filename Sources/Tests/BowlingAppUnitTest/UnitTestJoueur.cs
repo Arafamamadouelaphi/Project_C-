@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BowlingLib.Model;
 using Xunit;
 
@@ -43,8 +44,14 @@ namespace Test.BowlingAppUnitTest
             }
                 Joueur j = new Joueur(pseudo);
                 Assert.Equal(expectedPseudo, j.Pseudo);
-            
+        }
 
+        //Test joueur avec stub
+        [Fact]
+        public void TestJoueurStub()
+        {
+            StubJoueur stub = new StubJoueur();
+            Assert.Equal(10, stub.ListJoueurs(10).Count);
         }
     }
 }
