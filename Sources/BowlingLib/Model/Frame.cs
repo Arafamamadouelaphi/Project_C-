@@ -148,7 +148,7 @@ namespace BowlingLib.Model
                     this.IsSpare = true;
                 }
             }
-            if (this.QuillesRestantes == 0 || this.Lancer2 != null)
+            if (this.QuillesRestantes == 0 || (this.Lancer2 != null && this.Numero != 10))
             {
                 this.IsFinished = true;
             }
