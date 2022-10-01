@@ -23,7 +23,7 @@ namespace Test.BowlingAppUnitTest
 
         [Theory]
         [InlineData(true,false,"Augustin","Augustinn",false)]
-        [InlineData(true,"Amir","Amir",true)]
+        [InlineData(true,true,"Amir","Amir",true)]
         [InlineData(false,false,"Amir","",false)]
         [InlineData(false,false,"Amir",null,false)]
         [InlineData(false,false,null,null,true)]
