@@ -29,7 +29,7 @@ namespace Test.BowlingAppUnitTest
         [InlineData(false,null,null,true)]
         [InlineData(false,null,"",false)]
         [InlineData(false,"",null,false)]
-        [InlineData(false,"","",,true)]
+        [InlineData(false,"","",true)]
         [InlineData(false,"f2","f2",true)]
 
         public void  TestContructeur(bool isValid, string expectedPseudo, String pseudo, bool isEqual )
