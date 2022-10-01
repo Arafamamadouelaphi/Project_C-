@@ -62,7 +62,7 @@ namespace BowlingAppUnitTest
             partie.AddFrame(new Frame(7));
             partie.AddFrame(new Frame(8));
             partie.AddFrame(new Frame(9));
-            partie.AddFrame(new Frame(10));
+            partie.AddFrame(new Frame(10)); 
 
             for (int i = 0; i < partie.Frames.Count; i++)
             {
