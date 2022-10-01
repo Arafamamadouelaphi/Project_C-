@@ -22,27 +22,36 @@ namespace Test.BowlingAppUnitTest
         }
 
         [Theory]
-       // [InlineData(false,"Augustin","Augustinn")]
-        [InlineData(true,"Amir","Amir")]
-        [InlineData(false,"Amir","")]
-        [InlineData(false,"Amir",null)]
-        [InlineData(false,null,null)]
-        [InlineData(false,null,"")]
-        [InlineData(false,"",null)]
-        [InlineData(false,"","")]
-        [InlineData(false,"f2","f2")]
+        [InlineData(true,false,"Augustin","Augustinn",false)]
+        [InlineData(true,true,"Amir","Amir",true)]
+        [InlineData(false,false,"Amir","",false)]
+        [InlineData(false,false,"Amir",null,false)]
+        [InlineData(false,false,null,null,true)]
+        [InlineData(false,false,null,"",false)]
+        [InlineData(false,false,"",null,false)]
+        [InlineData(false,false,"","",true)]
+        [InlineData(false,false,"f2","f2",true)]
 
-        public void  TestContructeur(bool isValid, string expectedPseudo, String pseudo )
+        public void  TestContructeur(bool isFormated,bool isValid, string expectedPseudo, String pseudo, bool isEqual )
         {
-            if (!isValid)
+            if (!isValid && !isFormated)
             {            
                 Assert.Throws<ArgumentException>(
                     () => new Joueur(pseudo)
                     );
                 return;
             }
+
                 Joueur j = new Joueur(pseudo);
+
+                
+            if(!isEqual){
+                Assert.NotEqual(expectedPseudo, j.Pseudo);
+
+            }else{
                 Assert.Equal(expectedPseudo, j.Pseudo);
+
+            }
             
 
         }
