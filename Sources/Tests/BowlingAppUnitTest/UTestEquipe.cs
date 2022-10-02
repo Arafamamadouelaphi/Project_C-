@@ -8,7 +8,7 @@ namespace Test.BowlingAppUnitTest
     public class UnitTestEquipe
     {
 
-        public static IEnumerable<object[]> Data_AddJoueurToEquipe()
+        public static List<object[]> Data_AddJoueurToEquipe()
         {
             yield return new object[]
             {
@@ -52,7 +52,7 @@ namespace Test.BowlingAppUnitTest
         [Theory]
         [MemberData(nameof(Data_AddJoueurToEquipe))]
         public void Test_AddJoueurToEquipe(bool expectedResult,
-                                          IEnumerable<Joueur> expectedJoueurs,
+                                          List<Joueur> expectedJoueurs,
                                           Equipe equipe,
                                           Joueur joueur)
         {
