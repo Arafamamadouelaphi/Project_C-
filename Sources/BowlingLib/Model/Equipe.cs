@@ -65,7 +65,7 @@ namespace BowlingLib.Model
 
         public void SupprimerJoueur(Joueur joueur)
         {
-            joueurs.Remove(joueur);
+            Joueurs.Remove(joueur);
         }
 
         //retourner la liste non modifiable des joueurs de l'équipe
