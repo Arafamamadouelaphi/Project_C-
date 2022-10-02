@@ -13,24 +13,37 @@ namespace BowlingLib.Model
 
         public List<Frame> Frames { get; set; }
 
+        /// <summary>
+        ///  Constructeur
+        /// </summary>
+        /// <param name="joueur"></param>
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
             Frames = new List<Frame>();
         }
 
+        /// <summary>
+        /// Ajoute un frame à la partie
+        /// </summary>
+        /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
             Frames.Add(frame);
         }
 
+
+        /// <summary>
+        /// Calcule le score de la partie
+        /// </summary>
+        /// <returns>le Score d'une partie</returns>
         public int? GetScore()
         {
             int? score = 0;
             for (int i = 0; i < Frames.Count; i++)
             {
                 score += Frames[i].QuillesTombees;
-                if (Frames[i].IsStrike)
+                if (Frames[i].IsStrike && i < Frames.Count - 1)
                 {
                     score += Frames[i + 1].QuillesTombees;
                     if (Frames[i + 1].IsStrike && i < Frames.Count - 2)
@@ -38,7 +51,7 @@ namespace BowlingLib.Model
                         score += Frames[i + 2].QuillesTombees;
                     }
                 }
-                else if (Frames[i].IsSpare)
+                else if (Frames[i].IsSpare && i < Frames.Count - 1)
                 {
                     score += Frames[i + 1].Lancer1.QuillesTombees;
                 }
