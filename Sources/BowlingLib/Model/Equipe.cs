@@ -69,9 +69,9 @@ namespace BowlingLib.Model
         }
 
         //retourner la liste non modifiable des joueurs de l'équipe
-        public ReadOnlyCollection<Artist> GetJoueurs()
+        public ReadOnlyCollection<Joueur> GetJoueurs()
         {
-            return new ReadOnlyCollection<Artist>(this.Joueurs);
+            return new ReadOnlyCollection<Joueur>(this.Joueurs);
         }
 
 
