@@ -24,15 +24,8 @@ namespace BowlingLib.Model
         public Equipe(string nom, params Joueur[] joueurs)
         {
             this.nom = nom;
-
-            if ( joueurs != null && Joueurs.Count > 0)
-            {
-                foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);
-            }
-            else
-            {
-                throw new ArgumentException("La liste est null ");
-            }
+ 
+           foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
             
         }
 
