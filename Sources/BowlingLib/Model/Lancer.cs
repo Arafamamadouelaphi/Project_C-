@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,10 @@ namespace BowlingLib.Model
     {
         private int quillesTombees;
 
-        public int QuillesTombees
+        public  int QuillesTombees
         {
             get { return quillesTombees; }
-            set
+           private set
             {
                 if (value < 0 || value > 10)
                 {

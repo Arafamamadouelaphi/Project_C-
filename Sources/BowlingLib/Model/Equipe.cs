@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace BowlingLib.Model
     public class Equipe
     {
         private string nom;
+        public ReadOnlyCollection<Joueur> Joueurs
+        {
+            get;
+            private set;
+        }
         private List<Joueur> joueurs;
 
         public string Nom
@@ -17,17 +23,12 @@ namespace BowlingLib.Model
             get { return nom; }
             set { nom = value; }
         }
-
-        public List<Joueur> Joueurs
-        {
-            get { return joueurs; }
-            set { joueurs = value; }
-        }
+        private int numero;
 
         public Equipe(string nom)
         {
             this.nom = nom;
-            joueurs = new List<Joueur>();
+            Joueurs = new ReadOnlyCollection<Joueur>(joueurs);
         }
 
         public void AjouterJoueur(Joueur joueur)

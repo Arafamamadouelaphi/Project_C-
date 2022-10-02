@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,29 +9,111 @@ namespace BowlingLib.Model
 {
     public class Frame
     {
-        public int Numero { get; set; }
+        const int MAX_QUILLE = 10;
+        public int Numero {
+            get
+            { return numero; }
+            set
+            {
+                this.numero = value;
+
+            }
+        }
+        private int numero;
 
 
-        public int QuillesRestantes { get; set; }
+        public int QuillesRestantes 
+        { get
+            {
+                return quillesRestantes;
+            }
+            set
+            {
+                this.quillesRestantes = value;
+            }
+        }
+        private int quillesRestantes;
 
-        public int QuillesTombees { get; set; }
+        public int QuillesTombees 
+        {
+            get
+            {
+                return QuillesTombees;
+            } 
+            set
+            {
+                this.QuillesTombees = value;
+            }
+        }
+        private int quillesTombees;
 
-        public bool IsStrike { get; set; }
+        public bool IsStrike { 
+            get {
+                return isStrike;
+            } 
+            set{
+                this.isStrike = value;
+               } 
+        }
+        private bool isStrike;
 
-        public bool IsSpare { get; set; }
+        public bool IsSpare 
+        { 
+            get 
+            {
+                return isPark;
+            } 
+            set
+            {
+                this.isPark = value;
+            } 
+        }
+        private bool isPark;
 
-        public bool IsFinished { get; set; }
+        public bool IsFinished
+        {
+            get
+            { 
+                return isFinished; 
+            } 
+            set 
+            {
+                this.isFinished = value;
+            }
 
-        public Lancer Lancer1 { get; set; }
+        }
+        private bool isFinished;
 
-        public Lancer Lancer2 { get; set; }
+        public Lancer Lancer1 
+        {
+            get
+            { 
+                return lancer1; 
+            }
+            set 
+            { 
+                this.lancer1 = value;
+            }
+        }
+        private Lancer lancer1;
 
-        public Lancer Lancer3 { get; set; }
+        public Lancer Lancer2
+        {
+            get { return lancer2; }
+            set { this.lancer2 = value; }
+        }
+        private Lancer lancer2;
+        public Lancer Lancer3
+        {
+            get { return lancer3; }
+            set { this.lancer3 = value; }
+        }
+        private Lancer lancer3;
 
         public Frame(int numero)
         {
             this.Numero = numero;
-            this.QuillesRestantes = 10;
+            this.QuillesRestantes = MAX_QUILLE;
             this.IsFinished = false;
             this.IsStrike = false;
             this.IsSpare = false;
@@ -59,7 +142,7 @@ namespace BowlingLib.Model
                     this.Lancer1 = new Lancer(quillesTombees);
                     this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
-                    if (quillesTombees == 10)
+                    if (quillesTombees == MAX_QUILLE)
                     {
                         this.IsStrike = true;
                     }
@@ -71,7 +154,7 @@ namespace BowlingLib.Model
                     this.QuillesTombees += quillesTombees;
                     if (this.IsStrike)
                     {
-                        if (quillesTombees == 10)
+                        if (quillesTombees == MAX_QUILLE)
                         {
                             this.IsStrike = true;
                         }
@@ -82,7 +165,7 @@ namespace BowlingLib.Model
                     }
                     else
                     {
-                        if (quillesTombees + this.Lancer1.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer1.QuillesTombees == MAX_QUILLE)
                         {
                             this.IsSpare = true;
                             QuillesRestantes = 10;
@@ -96,7 +179,7 @@ namespace BowlingLib.Model
                     this.QuillesTombees += quillesTombees;
                     if (this.IsStrike)
                     {
-                        if (quillesTombees == 10)
+                        if (quillesTombees == MAX_QUILLE)
                         {
                             this.IsStrike = true;
                         }
@@ -107,7 +190,7 @@ namespace BowlingLib.Model
                     }
                     else if (this.IsSpare)
                     {
-                        if (quillesTombees + this.Lancer2.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer2.QuillesTombees == MAX_QUILLE)
                         {
                             this.IsSpare = true;
                         }
@@ -118,7 +201,7 @@ namespace BowlingLib.Model
                     }
                     else
                     {
-                        if (quillesTombees + this.Lancer2.QuillesTombees == 10)
+                        if (quillesTombees + this.Lancer2.QuillesTombees == MAX_QUILLE)
                         {
                             this.IsSpare = true;
                         }
@@ -145,7 +228,7 @@ namespace BowlingLib.Model
                 }
                 this.QuillesRestantes -= quillesTombees;
                 this.QuillesTombees += quillesTombees;
-                if (quillesTombees == 10)
+                if (quillesTombees == MAX_QUILLE)
                 {
                     this.IsStrike = true;
                 }
