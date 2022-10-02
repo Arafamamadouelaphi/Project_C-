@@ -33,11 +33,7 @@ namespace BowlingLib.Model
             {
                 throw new ArgumentException("La liste est null ");
             }
-
-
-            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
-
-
+            
         }
 
         public Equipe(string nom)
@@ -52,8 +48,6 @@ namespace BowlingLib.Model
             {
                 AjouterJoueur(j);
             }
-
-            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
         }
 
         public bool AjouterJoueur(Joueur joueur)
@@ -77,7 +71,7 @@ namespace BowlingLib.Model
         //retourner la liste non modifiable des joueurs de l'équipe
         public List<Joueur> GetJoueurs()
         {
-            return joueurs.AsReadOnly().ToList();
+            return Joueurs.AsReadOnly().ToList();
         }
 
 
