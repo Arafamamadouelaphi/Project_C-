@@ -54,7 +54,7 @@ namespace BowlingLib.Model
         {
             if(!isExist(joueur))
             {
-                joueurs.Add(joueur);
+                Joueurs.Add(joueur);
                 return true;
             }else
             {
