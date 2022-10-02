@@ -11,8 +11,7 @@ namespace BowlingLib.Model
     public class Equipe
     {
         private string nom;
-        private List<Joueur> joueurs;
-        private List<Joueur> Joueurs { get; private set; }
+        public List<Joueur> Joueurs { get; private set; }
         public string Nom
         {
             get { return nom; }
