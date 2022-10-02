@@ -9,10 +9,10 @@ namespace BowlingLib.Model
 {
     public class Partie
     {
-        public ReadOnlyCollection<Frame> Frames;
+        //public ReadOnlyCollection<Frame> Frames;
         public Joueur Joueur { get; private set; }
 
-        private List<Frame> frames;
+        public List<Frame> Frames;
 
         /// <summary>
         ///  Constructeur
@@ -21,7 +21,7 @@ namespace BowlingLib.Model
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
-            Frames = new ReadOnlyCollection<Frame>(frames);
+            Frames = new List<Frame>();
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace BowlingLib.Model
         /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
-            frames.Add(frame);
+            Frames.Add(frame);
         }
 
 

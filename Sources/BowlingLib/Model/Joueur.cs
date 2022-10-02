@@ -12,7 +12,7 @@ namespace BowlingLib.Model
 
         public Joueur(string pseudo)
         {
-            this.pseudo = pseudo;
+            this.Pseudo = pseudo;
 
             if (pseudo == null || pseudo == "" || pseudo.Length < 3)
             {
