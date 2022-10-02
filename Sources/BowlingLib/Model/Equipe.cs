@@ -11,59 +11,63 @@ namespace BowlingLib.Model
     {
         private string nom;
         private List<Joueur> joueurs;
-
+        public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
+        private List<Joueur> joueurs = new List<Joueur>();
         public string Nom
         {
             get { return nom; }
             set { nom = value; }
         }
 
-        public List<Joueur> Joueurs
-        {
-            get { return this.joueurs.AsReadOnly().ToList(); }
-            set {
-
-                foreach (Joueur nouv in value) AjouterJoueur(nouv);
-            }
-        }
+ 
 
 
-        public Equipe(string nom, List<Joueur> joueurs)
+        public Equipe(string nom, params Joueur[] joueurs)
         {
             this.nom = nom;
 
             if ( joueurs != null && joueurs.Count > 0)
             {
-                 if (!this.joueurs.SequenceEqual(joueurs)) this.joueurs = joueurs; // Verification de doublon avant l'ajout des joueurs dans l'équipe
+                foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);
             }
             else
             {
                 throw new ArgumentException("La liste est null ");
             }
-           
+
+
+            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
+
 
         }
 
         public Equipe(string nom)
         {
             this.nom = nom;
-            joueurs = new List<Joueur>();
         }
 
        
-       
+       public void AjouterJoueurs(params Joueur[] joueurs)
+        {
+            foreach(var j in joueurs)
+            {
+                AjouterJoueur(j);
+            }
 
-        public void AjouterJoueur(Joueur joueur)
+            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
+        }
+
+        public bool AjouterJoueur(Joueur joueur)
         {
             if(!isExist(joueur))
             {
                 joueurs.Add(joueur);
-
+                return true;
             }else
             {
                 throw new ArgumentException("Le joueur existe déjà dans l'équipe");
             }
-            
+                return false;
         }
 
         public void SupprimerJoueur(Joueur joueur)
