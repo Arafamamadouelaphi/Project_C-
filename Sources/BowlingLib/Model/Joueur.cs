@@ -25,6 +25,7 @@ namespace BowlingLib.Model
             get { return pseudo; }
             private set { pseudo = value; }
         }
+       
 
     }
 }

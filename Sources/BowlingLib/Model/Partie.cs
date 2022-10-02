@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,10 @@ namespace BowlingLib.Model
 {
     public class Partie
     {
+        public ReadOnlyCollection<Frame> Frames;
+        public Joueur Joueur { get; private set; }
 
-        public Joueur Joueur { get; set; }
-
-        public List<Frame> Frames { get; set; }
+        private List<Frame> frames;
 
         /// <summary>
         ///  Constructeur
@@ -20,7 +21,7 @@ namespace BowlingLib.Model
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
-            Frames = new List<Frame>();
+            Frames = new ReadOnlyCollection<Frame>(frames);
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace BowlingLib.Model
         /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
-            Frames.Add(frame);
+            frames.Add(frame);
         }
 
 
