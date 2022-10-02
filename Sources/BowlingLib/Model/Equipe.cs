@@ -20,8 +20,28 @@ namespace BowlingLib.Model
 
         public List<Joueur> Joueurs
         {
-            get { return joueurs; }
-            set { joueurs = value; }
+            get { return this.joueurs.AsReadOnly().ToList(); }
+            set {
+
+                foreach (Joueur nouv in value) AjouterJoueur(nouv);
+            }
+        }
+
+
+        public Equipe(string nom, List<Joueur> joueurs)
+        {
+            this.nom = nom;
+
+            if ( joueurs != null && joueurs.Count > 0)
+            {
+                 if (!this.joueurs.SequenceEqual(joueurs)) this.joueurs = joueurs; // Verification de doublon avant l'ajout des joueurs dans l'équipe
+            }
+            else
+            {
+                throw new ArgumentException("La liste est null ");
+            }
+           
+
         }
 
         public Equipe(string nom)
@@ -30,9 +50,20 @@ namespace BowlingLib.Model
             joueurs = new List<Joueur>();
         }
 
+       
+       
+
         public void AjouterJoueur(Joueur joueur)
         {
-            joueurs.Add(joueur);
+            if(!isExist(joueur))
+            {
+                joueurs.Add(joueur);
+
+            }else
+            {
+                throw new ArgumentException("Le joueur existe déjà dans l'équipe");
+            }
+            
         }
 
         public void SupprimerJoueur(Joueur joueur)
@@ -45,5 +76,17 @@ namespace BowlingLib.Model
         {
             return joueurs.AsReadOnly().ToList();
         }
+
+
+        // Fonction permettant de vérifier si un joueur existe déjà dans la liste (l'équipe)
+        public bool isExist(Joueur nouvJoueur)
+        {
+            foreach(Joueur j in Joueurs)
+            {
+                if (nouvJoueur.Equals(j) return true;
+            }
+            return false;
+        }
+
     }
 }
