@@ -36,6 +36,11 @@ namespace BowlingLib.Model
             this.IsSpare = false;
         }
 
+        /// <summary>
+        /// Lance une quille
+        /// </summary>
+        /// <param name="quillesTombees">le nombre de quilles tombés </param>
+        /// <exception cref="ArgumentException"></exception>
         public void Lancer(int quillesTombees)
         {
             if (quillesTombees > QuillesRestantes)
@@ -80,6 +85,7 @@ namespace BowlingLib.Model
                         if (quillesTombees + this.Lancer1.QuillesTombees == 10)
                         {
                             this.IsSpare = true;
+                            QuillesRestantes = 10;
                         }
                     }
                 }

@@ -13,17 +13,30 @@ namespace BowlingLib.Model
 
         public List<Frame> Frames { get; set; }
 
+        /// <summary>
+        ///  Constructeur
+        /// </summary>
+        /// <param name="joueur"></param>
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
             Frames = new List<Frame>();
         }
 
+        /// <summary>
+        /// Ajoute un frame à la partie
+        /// </summary>
+        /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
             Frames.Add(frame);
         }
 
+
+        /// <summary>
+        /// Calcule le score de la partie
+        /// </summary>
+        /// <returns>le Score d'une partie</returns>
         public int? GetScore()
         {
             int? score = 0;
