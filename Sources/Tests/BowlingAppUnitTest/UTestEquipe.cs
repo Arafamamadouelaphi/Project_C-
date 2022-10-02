@@ -52,7 +52,7 @@ namespace Test.BowlingAppUnitTest
         [Theory]
         [MemberData(nameof(Data_AddJoueurToEquipe))]
         public void Test_AddJoueurToEquipe(bool expectedResult,
-                                          List<Joueur> expectedJoueurs,
+                                          IEnumerable<Joueur> expectedJoueurs,
                                           Equipe equipe,
                                           Joueur joueur)
         {
