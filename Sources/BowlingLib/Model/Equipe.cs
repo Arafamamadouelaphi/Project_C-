@@ -12,8 +12,7 @@ namespace BowlingLib.Model
     {
         private string nom;
         private List<Joueur> joueurs;
-        public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
-        private List<Joueur> joueurs = new List<Joueur>();
+        private List<Joueur> Joueurs { get; private set; }
         public string Nom
         {
             get { return nom; }
