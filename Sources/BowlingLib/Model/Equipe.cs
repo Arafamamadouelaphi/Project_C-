@@ -25,7 +25,7 @@ namespace BowlingLib.Model
         {
             this.nom = nom;
 
-            if ( joueurs != null && joueurs.Count > 0)
+            if ( joueurs != null && Joueurs.Count > 0)
             {
                 foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);
             }
