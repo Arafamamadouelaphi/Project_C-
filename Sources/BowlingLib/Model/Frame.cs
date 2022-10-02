@@ -38,11 +38,11 @@ namespace BowlingLib.Model
         {
             get
             {
-                return QuillesTombees;
+                return quillesTombees;
             } 
             set
             {
-                this.QuillesTombees = value;
+                this.quillesTombees = value;
             }
         }
         private int quillesTombees;
