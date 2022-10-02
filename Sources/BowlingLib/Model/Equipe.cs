@@ -83,7 +83,7 @@ namespace BowlingLib.Model
         {
             foreach(Joueur j in Joueurs)
             {
-                if (nouvJoueur.Equals(j) return true;
+                if (nouvJoueur.Equals(j)) return true;
             }
             return false;
         }
