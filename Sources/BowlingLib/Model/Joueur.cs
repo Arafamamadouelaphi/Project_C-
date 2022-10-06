@@ -12,20 +12,29 @@ namespace BowlingLib.Model
 
         public Joueur(string pseudo)
         {
-            this.pseudo = pseudo;
-
-            if (pseudo == null || pseudo == "" || pseudo.Length < 3)
-            {
-                throw new ArgumentException("Le pseudo ne peut pas être vide");
-            }
+            this.Pseudo = pseudo;
         }
 
         public string Pseudo
         {
             get { return pseudo; }
-            private set { pseudo = value; }
-        }
-       
+            set 
+            {
 
+                pseudo = value;
+                if (pseudo == null || pseudo == "" || pseudo.Length < 3)
+                {
+                    throw new ArgumentException("Le pseudo ne peut pas être vide");
+                }
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Joueur joueur &&
+                   pseudo == joueur.pseudo &&
+                   Pseudo == joueur.Pseudo;
+        }
+        public int Id { get; set; }
     }
 }
