@@ -11,6 +11,7 @@ namespace BowlingLib.Model
     public class Equipe
     {
         private string nom;
+
         public List<Joueur> Joueurs { get; private set; }
         public string Nom
         {
@@ -71,12 +72,13 @@ namespace BowlingLib.Model
         // Fonction permettant de vérifier si un joueur existe déjà dans la liste (l'équipe)
         public bool isExist(Joueur nouvJoueur)
         {
-            if(Joueurs.Count > 0 ){
-                foreach(Joueur j in Joueurs)
-            {
-                if (nouvJoueur.Equals(j)) return true;
+            if (Joueurs.Count > 0) {
+
+                {
+                    if (Joueurs.Contains(nouvJoueur)) return true;
+                } 
             }
-            }
+            
             
             return false;
         }
