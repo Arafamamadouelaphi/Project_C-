@@ -71,10 +71,13 @@ namespace BowlingLib.Model
         // Fonction permettant de vérifier si un joueur existe déjà dans la liste (l'équipe)
         public bool isExist(Joueur nouvJoueur)
         {
-            foreach(Joueur j in Joueurs)
+            if(Joueurs.Count > 0 ){
+                foreach(Joueur j in Joueurs)
             {
                 if (nouvJoueur.Equals(j)) return true;
             }
+            }
+            
             return false;
         }
 
