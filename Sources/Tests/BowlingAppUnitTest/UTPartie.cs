@@ -17,8 +17,8 @@ namespace BowlingAppUnitTest
         {
             //Arrange
             StubPartie stubPartie = new StubPartie();
-            List<Partie> listParties = stubPartie.ListParties();
-            Partie partie = listParties[0];
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
             partie.AddFrame(new Frame(1));
             partie.AddFrame(new Frame(2));
             partie.AddFrame(new Frame(3));
@@ -51,8 +51,8 @@ namespace BowlingAppUnitTest
         {
             //Arrange
             StubPartie stubPartie = new StubPartie();
-            List<Partie> listParties = stubPartie.ListParties();
-            Partie partie = listParties[0];
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
             partie.AddFrame(new Frame(1));
             partie.AddFrame(new Frame(2));
             partie.AddFrame(new Frame(3));
@@ -90,8 +90,8 @@ namespace BowlingAppUnitTest
         {
             //Arrange
             StubPartie stubPartie = new StubPartie();
-            List<Partie> listParties = stubPartie.ListParties();
-            Partie partie = listParties[0];
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
             partie.AddFrame(new Frame(1));
             partie.AddFrame(new Frame(2));
             partie.AddFrame(new Frame(3));
@@ -135,8 +135,8 @@ namespace BowlingAppUnitTest
         {
             //Arrange
             StubPartie stubPartie = new StubPartie();
-            List<Partie> listParties = stubPartie.ListParties();
-            Partie partie = listParties[0];
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
             partie.AddFrame(new Frame(1));
             partie.AddFrame(new Frame(2));
             partie.AddFrame(new Frame(3));
