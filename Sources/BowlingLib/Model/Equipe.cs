@@ -54,9 +54,8 @@ namespace BowlingLib.Model
                 return true;
             }else
             {
-                throw new ArgumentException("Le joueur existe déjà dans l'équipe");
-            }
                 return false;
+            }
         }
 
         public void SupprimerJoueur(Joueur joueur)
