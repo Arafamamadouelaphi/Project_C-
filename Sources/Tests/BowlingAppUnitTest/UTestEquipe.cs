@@ -44,11 +44,25 @@ namespace Test.BowlingAppUnitTest
                     new Joueur("Bénita"),
                     new Joueur("Regis"),
                     new Joueur("Mania")),
+
                     new Joueur("Mania")
             };
         }
 
- 
+
+        [Theory]
+        [MemberData(nameof(Data_AddJoueurToEquipe))]
+        public void Test_AddJoueurToEquipe(bool expectedResult,
+                                          IEnumerable<Joueur> expectedJoueurs,
+                                          Equipe equipe,
+                                          Joueur joueur)
+        {
+             
+            bool result = equipe.AjouterJoueur(joueur);
+            Assert.Equal(expectedResult, result);
+          Assert.Equal(expectedJoueurs., equipe.GetJoueurs());
+            Assert.All(expectedJoueurs, j => equipe.Joueurs.Contains(j));
+        }
 
     }
 }
