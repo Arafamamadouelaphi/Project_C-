@@ -29,6 +29,12 @@ namespace BowlingLib.Model
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Joueur joueur &&
+                   pseudo == joueur.pseudo &&
+                   Pseudo == joueur.Pseudo;
+        }
         public int Id { get; set; }
     }
 }
