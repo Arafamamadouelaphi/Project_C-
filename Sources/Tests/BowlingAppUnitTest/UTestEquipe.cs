@@ -48,19 +48,7 @@ namespace Test.BowlingAppUnitTest
             };
         }
 
-
-        [Theory]
-        [MemberData(nameof(Data_AddJoueurToEquipe))]
-        public void Test_AddJoueurToEquipe(bool expectedResult,
-                                          List<Joueur> expectedJoueurs,
-                                          Equipe equipe,
-                                          Joueur joueur)
-        {
-            bool result = equipe.AjouterJoueur(joueur);
-            Assert.Equal(expectedResult, result);
-            Assert.Equal(expectedJoueurs.Count, equipe.GetJoueurs());
-            Assert.All(expectedJoueurs, j => equipe.Joueurs.Contains(j));
-        }
+ 
 
     }
 }

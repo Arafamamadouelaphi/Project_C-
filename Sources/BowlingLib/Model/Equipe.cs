@@ -12,7 +12,9 @@ namespace BowlingLib.Model
     {
         private string nom;
 
-        public List<Joueur> Joueurs { get; private set; }
+        public List<Joueur> Joueurs = new List<Joueur>();
+
+        
         public string Nom
         {
             get { return nom; }
@@ -25,9 +27,9 @@ namespace BowlingLib.Model
         public Equipe(string nom, params Joueur[] joueurs)
         {
             this.nom = nom;
- 
-           foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
-            
+            AjouterJoueurs(joueurs);
+         //  foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
+
         }
 
         public Equipe(string nom)
