@@ -1,5 +1,5 @@
 [![Build Status](https://codefirst.iut.uca.fr/api/badges/victor_perez.ngounou/BowlingScoreApp/status.svg)](https://codefirst.iut.uca.fr/victor_perez.ngounou/BowlingScoreApp)  
-[![Quality Gate Status](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=alert_status)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
+[![Quality Gate Status](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=alert_status&token=squ_8476cf8c9c3d3acdcf6042e2075498afbe697e52)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
 [![Bugs](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=bugs)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
 [![Code Smells](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=code_smells)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
 [![Coverage](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=coverage)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)  

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BowlingLib.Model;
 using Xunit;
 
@@ -75,7 +76,33 @@ namespace Test.BowlingAppUnitTest
         public void TestJoueurStub()
         {
             StubJoueur stub = new StubJoueur();
-            Assert.Equal(10, stub.ListJoueurs(10).Count);
+            Assert.Equal(10, stub.GetAll(10).Count());
         }
+
+
+        //tester la methode remove
+        [Fact]
+        public void TestRemove()
+        {
+            StubJoueur stub = new StubJoueur();
+            stub.Add(j);
+            stub.Delete(j);
+            //Compter le nombre de joueur dans un objet IEnumerable
+            Assert.Equal(0, stub.GetAll().Count());
+        }
+
+        //tester la methode update avec les members Data
+        [Fact]
+        public void TestUpdate()
+        {
+            StubJoueur stub = new StubJoueur();
+            Joueur j = new Joueur("Paul");
+            stub.Add(j);
+            j.Pseudo = "Augustin";
+            stub.Update(j);
+            Assert.Equal("Augustin", stub.GetAll().First().Pseudo);
+        }
+        
+
     }
 }
