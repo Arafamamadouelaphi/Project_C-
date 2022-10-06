@@ -11,6 +11,7 @@ namespace BowlingLib.Model
     {
         //public ReadOnlyCollection<Frame> Frames;
         public Joueur Joueur { get; private set; }
+        public object Id { get; set; }
 
         public List<Frame> Frames;
 

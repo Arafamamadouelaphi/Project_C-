@@ -1,18 +1,28 @@
 ﻿using BowlingLib.Model;
+using BowlingLib.Interface;
 
 namespace BowlingStub
 {
-    public class StubPartie
+    public class StubPartie:IDataManager<Partie> 
     {
-        List<Partie> listParties = new List<Partie>();
-        public StubPartie()
+        private List<Partie> listParties = new List<Partie>();
+       
+        public void Add(Partie data)
         {
-            
-
+            listParties.Add(data);
         }
 
-        //Fonction permettant de créer une partie pour chaque joueur
-        public List<Partie> ListParties(int n = 10)
+        public void Delete(Partie data)
+        {
+            listParties.Remove(data);
+        }
+
+        public IEnumerable<Partie> GetAll()
+        {
+            return listParties;
+        }
+
+        public IEnumerable<Partie> GetAll(int n=10, int j=0)
         {
             for (int i = 0; i < n; i++)
             {
@@ -20,9 +30,12 @@ namespace BowlingStub
             }
             return listParties;
         }
-        
-        
 
+        public void Update(Partie data)
+        {
+            int index = listParties.FindIndex(x => x.Id == data.Id);
+            listParties[index] = data;
+        }
         
     }
 }

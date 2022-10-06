@@ -23,6 +23,9 @@ namespace BowlingLib.Model
             get { return nom; }
             set { nom = value; }
         }
+
+        public object Id { get; set; }
+
         private int numero;
 
         public Equipe(string nom)
