@@ -90,8 +90,8 @@ namespace Test.BowlingAppUnitTest
             //Compter le nombre de joueur dans un objet IEnumerable
             Assert.Equal(0, stub.GetAll().Count());
         }
-
-        //tester la methode update avec les members Data
+        
+        
         [Fact]
         public void TestUpdate()
         {
@@ -102,6 +102,8 @@ namespace Test.BowlingAppUnitTest
             stub.Update(j);
             Assert.Equal("Augustin", stub.GetAll().First().Pseudo);
         }
+
+        
         
 
     }
