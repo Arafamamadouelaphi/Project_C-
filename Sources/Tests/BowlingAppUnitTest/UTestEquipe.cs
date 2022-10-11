@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BowlingLib.Model;
+using BowlingLib.Model; 
 using Xunit;
 
 namespace Test.BowlingAppUnitTest
@@ -62,6 +62,25 @@ namespace Test.BowlingAppUnitTest
             Assert.Equal(expectedJoueurs.Length, equipe.GetJoueurs());
             Assert.All(expectedJoueurs, j => equipe.Joueurs.Contains(j));
         }
+
+
+        [Theory]
+        [MemberData(nameof(TestData.Data_AddJoueurToEquipe), MemberType=typeof(TestData))]
+        public void Test_AddJoueursToEquipe(int expectedResult,
+                                   Joueur[] expectedJoueurs,
+                                   Joueur[] expectedAddedJoueurs,
+                                   Equipe equipe,
+                                   params Joueur[] joueursToAdd)
+        {
+            var addedJoueurs = equipe.AjouterJoueurs(joueursToAdd);
+            Assert.Equal(expectedResult, addedJoueurs.Count);
+
+            Assert.All(expectedAddedJoueurs, a => addedJoueurs.Contains(a));
+
+            Assert.Equal(expectedJoueurs.Length, equipe.Joueurs.Count);
+            Assert.All(expectedJoueurs, a => equipe.Joueurs.Contains(a));
+        }
+
 
     }
 }
