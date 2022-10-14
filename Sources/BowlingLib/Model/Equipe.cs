@@ -42,12 +42,19 @@ namespace BowlingLib.Model
         }
 
        
-       public void AjouterJoueurs(params Joueur[] joueurs)
+       public List<Joueur> AjouterJoueurs(params Joueur[] joueurs)
         {
-            foreach(var j in joueurs)
+            List<Joueur> result = new();
+            foreach (var a in joueurs)
             {
-                AjouterJoueur(j);
+                if (AjouterJoueur(a))
+                {
+                    result.Add(a);
+                }
             }
+            return result;
+
+             
         }
 
         public bool AjouterJoueur(Joueur joueur)
@@ -77,13 +84,9 @@ namespace BowlingLib.Model
         // Fonction permettant de vérifier si un joueur existe déjà dans la liste (l'équipe)
         public bool isExist(Joueur nouvJoueur)
         {
-            if (Joueurs.Count > 0) {
-
-                {
+             
                     if (Joueurs.Contains(nouvJoueur)) return true;
-                } 
-            }
-            
+                
             
             return false;
         }

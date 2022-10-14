@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
-    public class Joueur
+    public class Joueur 
     {
         private string pseudo;
 
