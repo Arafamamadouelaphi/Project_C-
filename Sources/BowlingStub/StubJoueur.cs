@@ -2,40 +2,43 @@
 using BowlingLib.Interface;
 using System;
 
-public class StubJoueur : IDataManager<Joueur>
-
+namespace BowlingStub
 {
-    private List<Joueur> listJoueurs = new List<Joueur>();
-    
+    public class StubJoueur : IDataManager<Joueur>
 
-    public void Add(Joueur data)
     {
-        listJoueurs.Add(data);
-    }
+        private List<Joueur> listJoueurs = new List<Joueur>();
 
-    public void Delete(Joueur data)
-    {
-        listJoueurs.Remove(data);
-    }
 
-    public IEnumerable<Joueur> GetAll()
-    {
-        return listJoueurs;
-    }
-
-    public IEnumerable<Joueur> GetAll(int n=10, int j=0)
-    {
-        for (int i = 0; i < n; i++)
+        public void Add(Joueur data)
         {
-            Add(new Joueur("Joueur " + i + 1));
+            listJoueurs.Add(data);
         }
-        return listJoueurs;
-    }
 
-    public void Update(Joueur data)
-    {
-        int index = listJoueurs.FindIndex(x => x.Id == data.Id);
-        listJoueurs[index] = data;
-    }
+        public void Delete(Joueur data)
+        {
+            listJoueurs.Remove(data);
+        }
 
+        public IEnumerable<Joueur> GetAll()
+        {
+            return listJoueurs;
+        }
+
+        public IEnumerable<Joueur> GetAll(int n = 10, int j = 0)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Add(new Joueur("Joueur " + i + 1));
+            }
+            return listJoueurs;
+        }
+
+        public void Update(Joueur data)
+        {
+            int index = listJoueurs.FindIndex(x => x.Id == data.Id);
+            listJoueurs[index] = data;
+        }
+
+    }
 }
