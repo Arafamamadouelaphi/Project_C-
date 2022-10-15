@@ -12,9 +12,7 @@ namespace Business
         bool Add(Data data);
         bool Delete(Data data);
         bool Update(Data data);
-        Data GetDataWithId(int id);
         Data GetDataWithName(string name);
         IEnumerable<Data> GetAll();
-        IEnumerable<Data> GetAll(int n, int j);
     }
 }

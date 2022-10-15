@@ -20,7 +20,7 @@ namespace BowlingLib.Model
             this.Pseudo = pseudo;
         }
 
-        public Joueur(string pseudo, long id) : this(pseudo)
+        public Joueur(long id,string pseudo) : this(pseudo)
         {
             this.id = id;
         }

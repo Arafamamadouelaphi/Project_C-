@@ -12,6 +12,19 @@ namespace BowlingLib.Model
         public ReadOnlyCollection<Frame> Frames { get; }
         public Joueur Joueur { get; private set; }
         private readonly long id;
+        private DateTime date;
+        public int? Score { 
+            get 
+            {
+                return GetScore();
+            }
+            private set { }
+        }
+        public DateTime Date
+        {
+            get { return date; }
+            private set { date = value; }
+        }
         public long Id => id;
 
         private readonly List<Frame> frames=new();
@@ -23,13 +36,16 @@ namespace BowlingLib.Model
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
+            
             Frames = new ReadOnlyCollection<Frame>(frames);
         }
 
-        public Partie(Joueur joueur, long id, List<Frame> frames) : this(joueur)
+        public Partie(long id, Joueur joueur, List<Frame> frames,DateTime date, int? score) : this(joueur)
         {
             this.id = id;
             this.frames = frames;
+            this.date = date;
+            this.Score = score;
         }
 
         /// <summary>

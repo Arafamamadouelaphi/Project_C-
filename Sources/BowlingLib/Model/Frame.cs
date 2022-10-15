@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,15 +143,14 @@ namespace BowlingLib.Model
         /// <param name="lancer1"></param>
         /// <param name="lancer2"></param>
         /// <param name="lancer3"></param>
-        public Frame(int numero,  long id, bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer? lancer3) : this(numero)
+        public Frame(long id, int numero,   bool isStrike, bool isSpare, int lancer1, int lancer2, [AllowNull] int lancer3) : this(numero)
         {
             this.id = id;
             IsStrike = isStrike;
             IsSpare = isSpare;
-            IsFinished = isFinished;
-            Lancer1 = lancer1;
-            Lancer2 = lancer2;
-            Lancer3 = lancer3;
+            Lancer1 = new Lancer(lancer1);
+            Lancer2 = new Lancer(lancer2);
+            Lancer3 = new Lancer(lancer3);
         }
 
         /// <summary>

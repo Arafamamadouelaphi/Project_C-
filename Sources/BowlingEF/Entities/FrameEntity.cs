@@ -22,6 +22,10 @@ namespace BowlingEF.Entities
         public bool IsStrike { get; set; }
         [Required]
         public bool IsSpare { get; set; }
+
+        [ForeignKey("PartieId")]
+        [Required]
+        public long PartieId { get; set; }
         public PartieEntity Partie { get; set; }
     }
 }

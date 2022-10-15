@@ -7,6 +7,7 @@ namespace BowlingStub
     public class StubEquipe : IDataManager<Equipe>
     {
         private List<Equipe> listEquipes = new List<Equipe>();
+        public int nbrJ = 10,nbrE = 2;
         public StubEquipe()
         {
             //listEquipes.Add(new Equipe("Equipe 1", new Joueur("Joueur 1"), new Joueur("Joueur 2")));
@@ -34,23 +35,24 @@ namespace BowlingStub
             return false;
         }
 
-        public IEnumerable<Equipe> GetAll(int n = 10, int j = 2)
+        public void Load()
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nbrJ; i++)
             {
                 this.Add(new Equipe("Equipe " + i + 1));
 
-                for (int k = 0; k < j; k++)
+                for (int k = 0; k < nbrE; k++)
                 {
                     listEquipes.ElementAt(i).AjouterJoueur(new Joueur("Joueur " + i + 1 + "-" + k + 1));
 
                 }
             }
-            return listEquipes;
         }
+        
 
         public IEnumerable<Equipe> GetAll()
         {
+            Load();
             return listEquipes;
         }
 
@@ -68,13 +70,14 @@ namespace BowlingStub
 
 
         }
+        
 
-        public Equipe GetDataWithId(int id)
+        public Equipe GetDataWithName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Equipe GetDataWithName(string name)
+        public IEnumerable<Equipe> GetAllWithDate(DateTime date)
         {
             throw new NotImplementedException();
         }
