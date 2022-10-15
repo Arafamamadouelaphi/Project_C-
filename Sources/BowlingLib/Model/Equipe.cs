@@ -44,7 +44,7 @@ namespace BowlingLib.Model
             this.nom = nom;
         }
 
-        public Equipe(string nom, long id, List<Joueur> joueurs,  int numero)
+        public Equipe(long id, string nom,  List<Joueur> joueurs)
         {
             this.id = id;
             Joueurs = joueurs;

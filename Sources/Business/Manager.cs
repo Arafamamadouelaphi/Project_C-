@@ -192,23 +192,5 @@ namespace Business
             return equipeDataManager.GetAll();
         }
 
-        //retourne le joueur avec l'id
-        public Joueur GetJoueurWithId(int id)
-        {
-            return JoueurDataManager.GetDataWithId(id);
-        }
-
-        //retourne la partie avec l'id
-        public Partie GetPartieWithId(int id)
-        {
-            return partieDataManager.GetDataWithId(id);
-        }
-
-        //retourne l'équipe avec l'id
-        public Equipe GetEquipeWithId(int id)
-        {
-            return equipeDataManager.GetDataWithId(id);
-        }
-
     }
 }
