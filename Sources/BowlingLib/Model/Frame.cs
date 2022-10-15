@@ -21,6 +21,12 @@ namespace BowlingLib.Model
         }
         private int numero;
 
+        private long id;
+        public long Id
+        {
+            get { return id; }
+        }
+
 
         public int QuillesRestantes 
         { get

@@ -1,5 +1,5 @@
 using BowlingLib.Model;
-using BowlingLib.Interface;
+using Business;
 using System;
 
 namespace BowlingStub
@@ -9,16 +9,29 @@ namespace BowlingStub
         private List<Equipe> listEquipes = new List<Equipe>();
         public StubEquipe()
         {
+            //listEquipes.Add(new Equipe("Equipe 1", new Joueur("Joueur 1"), new Joueur("Joueur 2")));
+            //listEquipes.Add(new Equipe("Equipe 2", new Joueur("Joueur 3"), new Joueur("Joueur 4")));
+            //listEquipes.Add(new Equipe("Equipe 3", new Joueur("Joueur 5"), new Joueur("Joueur 6")));
         }
 
-        public void Add(Equipe data)
+        public bool Add(Equipe data)
         {
-            listEquipes.Add(data);
+            if (data != null)
+            {
+                listEquipes.Add(data);
+                return true;
+            }
+            return false;
         }
 
-        public void Delete(Equipe data)
+        public bool Delete(Equipe data)
         {
-            listEquipes.Remove(data);
+            if (data != null)
+            {
+                listEquipes.Remove(data);
+                return true;
+            }
+            return false;
         }
 
         public IEnumerable<Equipe> GetAll(int n = 10, int j = 2)
@@ -41,12 +54,29 @@ namespace BowlingStub
             return listEquipes;
         }
 
+
         //mise à jour d'une équipe
-        public void Update(Equipe data)
+        public bool Update(Equipe data)
         {
-            int index = listEquipes.FindIndex(x => x.Id == data.Id);
-            listEquipes[index] = data;
+            if (data != null)
+            {
+                int index = listEquipes.FindIndex(x => x.Id == data.Id);
+                listEquipes[index] = data;
+                return true;
+            }
+            return false;
+
+
         }
 
+        public Equipe GetDataWithId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Equipe GetDataWithName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

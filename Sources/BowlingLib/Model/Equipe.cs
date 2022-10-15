@@ -5,13 +5,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks; 
-using System.Collections.ObjectModel;
 
 namespace BowlingLib.Model
 {
     public class Equipe
     {
         private string nom;
+        private readonly long id;
 
         public List<Joueur> Joueurs = new List<Joueur>();
 
@@ -32,7 +32,10 @@ namespace BowlingLib.Model
          //  foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
 
         }
-        public object Id { get; set; }
+        public long Id 
+        {
+            get { return id; }
+        }
 
         private int numero;
 
