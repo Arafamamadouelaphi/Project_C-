@@ -12,6 +12,7 @@ namespace BowlingLib.Model
     {
         private string nom;
         private readonly long id;
+        
 
         public List<Joueur> Joueurs = new List<Joueur>();
 

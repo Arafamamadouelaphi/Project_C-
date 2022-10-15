@@ -21,7 +21,7 @@ namespace BowlingLib.Model
         }
         private int numero;
 
-        private long id;
+        private readonly long id;
         public long Id
         {
             get { return id; }
@@ -126,7 +126,7 @@ namespace BowlingLib.Model
             this.QuillesTombees = 0;
         }
 
-        public Frame(int numero,  long id, int quillesRestantes,  int quillesTombees,  bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer lancer3) : this(numero)
+        public Frame(int numero,  long id, int quillesRestantes,  int quillesTombees,  bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer? lancer3) : this(numero)
         {
             this.id = id;
             QuillesRestantes = quillesRestantes;
