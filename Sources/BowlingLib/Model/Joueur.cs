@@ -9,6 +9,11 @@ namespace BowlingLib.Model
     public class Joueur 
     {
         private string pseudo;
+        private readonly long id;
+        public long Id
+        {
+            get { return id; }
+        }
 
         public Joueur(string pseudo)
         {
@@ -35,6 +40,10 @@ namespace BowlingLib.Model
                    pseudo == joueur.pseudo &&
                    Pseudo == joueur.Pseudo;
         }
-        public int Id { get; set; }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(pseudo, id, Id, Pseudo);
+        }
     }
 }

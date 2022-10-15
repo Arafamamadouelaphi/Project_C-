@@ -1,5 +1,5 @@
 ﻿using BowlingLib.Model;
-using BowlingLib.Interface;
+using Business;
 using System;
 
 namespace BowlingStub
@@ -10,14 +10,24 @@ namespace BowlingStub
         private List<Joueur> listJoueurs = new List<Joueur>();
 
 
-        public void Add(Joueur data)
+        public bool Add(Joueur data)
         {
-            listJoueurs.Add(data);
+            if (data != null)
+            {
+                listJoueurs.Add(data);
+                return true;
+            }
+            return false;
         }
 
-        public void Delete(Joueur data)
+        public bool Delete(Joueur data)
         {
-            listJoueurs.Remove(data);
+            if (data != null)
+            {
+                listJoueurs.Remove(data);
+                return true;
+            }
+            return false;
         }
 
         public IEnumerable<Joueur> GetAll()
@@ -34,10 +44,26 @@ namespace BowlingStub
             return listJoueurs;
         }
 
-        public void Update(Joueur data)
+        public Joueur GetDataWithId(int id)
         {
-            int index = listJoueurs.FindIndex(x => x.Id == data.Id);
-            listJoueurs[index] = data;
+            throw new NotImplementedException();
+        }
+
+        public Joueur GetDataWithName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(Joueur data)
+        {
+            if (data != null)
+            {
+
+                int index = listJoueurs.FindIndex(x => x.Id == data.Id);
+                listJoueurs[index] = data;
+                return true;
+            }
+            return false;
         }
 
     }

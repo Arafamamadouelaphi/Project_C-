@@ -1,5 +1,6 @@
 ﻿using BowlingLib.Model;
 using BowlingStub;
+using Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace BowlingAppUnitTest
             manager.AddJoueur(joueur);
 
             //Assert
-            Assert.Single(manager.joueurManager.GetAll());
+            Assert.Single(manager.JoueurDataManager.GetAll());
         }
 
         //Test de la méthode AddPartie
@@ -38,7 +39,7 @@ namespace BowlingAppUnitTest
             manager.AddPartie(partie);
 
             //Assert
-            Assert.Single(manager.partieManager.GetAll());
+            Assert.Single(manager.PartieDataManager.GetAll());
         }
 
         //Test de la méthode AddEquipe

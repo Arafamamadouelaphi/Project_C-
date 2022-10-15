@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BowlingLib\BowlingLib.csproj" />
-    <ProjectReference Include="..\Business\Business.csproj" />
-  </ItemGroup>
-
 </Project>
