@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace BowlingEF.Entities
 {
-    //classe EquipeEntity représentant la table Equipe de la base de données
+    /// <summary>
+    /// Classe de gestion des equipes
+    /// </summary>
     public class EquipeEntity
     {
         public long Id { get; set; }
         public string Nom { get; set; }
-        public List<JoueurEntity> Joueurs { get; set; }
+        public ICollection<JoueurEntity> Joueurs { get; set; }
         public EquipeEntity()
         {
             Joueurs = new List<JoueurEntity>();

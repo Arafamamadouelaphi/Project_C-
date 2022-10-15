@@ -426,3 +426,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+/Sources/BowlingApp/bowling.db-shm
+/Sources/BowlingApp/bowling.db-wal
