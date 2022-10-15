@@ -116,6 +116,10 @@ namespace BowlingLib.Model
         }
         private Lancer lancer3;
 
+        /// <summary>
+        /// Constructeur destiné à Initialisé un Frame
+        /// </summary>
+        /// <param name="numero"></param>
         public Frame(int numero)
         {
             this.Numero = numero;
@@ -126,25 +130,27 @@ namespace BowlingLib.Model
             this.QuillesTombees = 0;
         }
 
-        public Frame(int numero,  long id, int quillesRestantes,  int quillesTombees,  bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer? lancer3) : this(numero)
+        /// <summary>
+        /// Constructeur destiné à la récupération des données en base
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <param name="id"></param>
+        /// <param name="isStrike"></param>
+        /// <param name="isSpare"></param>
+        /// <param name="isPark"></param>
+        /// <param name="isFinished"></param>
+        /// <param name="lancer1"></param>
+        /// <param name="lancer2"></param>
+        /// <param name="lancer3"></param>
+        public Frame(int numero,  long id, bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer? lancer3) : this(numero)
         {
             this.id = id;
-            QuillesRestantes = quillesRestantes;
-            this.quillesRestantes = quillesRestantes;
-            QuillesTombees = quillesTombees;
-            this.quillesTombees = quillesTombees;
             IsStrike = isStrike;
-            this.isStrike = isStrike;
             IsSpare = isSpare;
-            this.isPark = isPark;
             IsFinished = isFinished;
-            this.isFinished = isFinished;
             Lancer1 = lancer1;
-            this.lancer1 = lancer1;
             Lancer2 = lancer2;
-            this.lancer2 = lancer2;
             Lancer3 = lancer3;
-            this.lancer3 = lancer3;
         }
 
         /// <summary>
