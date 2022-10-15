@@ -37,15 +37,20 @@ namespace BowlingLib.Model
             get { return id; }
         }
 
-        private int numero;
 
         public Equipe(string nom)
         {
             this.nom = nom;
         }
 
-       
-       public List<Joueur> AjouterJoueurs(params Joueur[] joueurs)
+        public Equipe(string nom, long id, List<Joueur> joueurs,  int numero)
+        {
+            this.id = id;
+            Joueurs = joueurs;
+            Nom = nom;
+        }
+
+        public List<Joueur> AjouterJoueurs(params Joueur[] joueurs)
         {
             List<Joueur> result = new();
             foreach (var a in joueurs)
