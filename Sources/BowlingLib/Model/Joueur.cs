@@ -48,7 +48,7 @@ namespace BowlingLib.Model
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(pseudo, id, Id, Pseudo);
+            return HashCode.Combine(id, Id, Pseudo);
         }
     }
 }
