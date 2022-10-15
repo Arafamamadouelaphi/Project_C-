@@ -9,12 +9,12 @@ namespace BowlingLib.Model
 {
     public class Partie
     {
-        //public ReadOnlyCollection<Frame> Frames;
+        public ReadOnlyCollection<Frame> Frames { get; }
         public Joueur Joueur { get; private set; }
         private readonly long id;
         public long Id => id;
 
-        public List<Frame> Frames;
+        private readonly List<Frame> frames=new();
 
         /// <summary>
         ///  Constructeur
@@ -23,7 +23,13 @@ namespace BowlingLib.Model
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
-            Frames = new List<Frame>();
+            Frames = new ReadOnlyCollection<Frame>(frames);
+        }
+
+        public Partie(Joueur joueur, long id, List<Frame> frames) : this(joueur)
+        {
+            this.id = id;
+            this.frames = frames;
         }
 
         /// <summary>
@@ -32,7 +38,7 @@ namespace BowlingLib.Model
         /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
-            Frames.Add(frame);
+            frames.Add(frame);
         }
 
 

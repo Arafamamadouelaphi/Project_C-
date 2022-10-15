@@ -123,6 +123,28 @@ namespace BowlingLib.Model
             this.IsFinished = false;
             this.IsStrike = false;
             this.IsSpare = false;
+            this.QuillesTombees = 0;
+        }
+
+        public Frame(int numero,  long id, int quillesRestantes,  int quillesTombees,  bool isStrike, bool isSpare, bool isPark, bool isFinished,  Lancer lancer1, Lancer lancer2, Lancer lancer3) : this(numero)
+        {
+            this.id = id;
+            QuillesRestantes = quillesRestantes;
+            this.quillesRestantes = quillesRestantes;
+            QuillesTombees = quillesTombees;
+            this.quillesTombees = quillesTombees;
+            IsStrike = isStrike;
+            this.isStrike = isStrike;
+            IsSpare = isSpare;
+            this.isPark = isPark;
+            IsFinished = isFinished;
+            this.isFinished = isFinished;
+            Lancer1 = lancer1;
+            this.lancer1 = lancer1;
+            Lancer2 = lancer2;
+            this.lancer2 = lancer2;
+            Lancer3 = lancer3;
+            this.lancer3 = lancer3;
         }
 
         /// <summary>
