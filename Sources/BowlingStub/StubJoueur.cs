@@ -34,8 +34,8 @@ namespace BowlingStub
         {
             return listJoueurs;
         }
-
-        public IEnumerable<Joueur> GetAll(int n = 10, int j = 0)
+        //n represente le nbr de joueurs a creer dans la liste
+        public IEnumerable<Joueur> GetAll(int n = 10)
         {
             for (int i = 0; i < n; i++)
             {
@@ -43,7 +43,7 @@ namespace BowlingStub
             }
             return listJoueurs;
         }
-
+        ///ged 
         public Joueur GetDataWithId(int id)
         {
             throw new NotImplementedException();
@@ -52,7 +52,7 @@ namespace BowlingStub
         public Joueur GetDataWithName(string name)
         {
             throw new NotImplementedException();
-        }
+        }//
 
         public bool Update(Joueur data)
         {

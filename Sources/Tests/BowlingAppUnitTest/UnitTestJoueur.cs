@@ -38,7 +38,8 @@ namespace Test.BowlingAppUnitTest
         {
             if (!isValid && !isFormated)
             {
-                Assert.Throws<ArgumentException>(
+                Assert.Throws<ArgumentException>
+                    (
                     () => new Joueur(pseudo)
                     );
                 return;

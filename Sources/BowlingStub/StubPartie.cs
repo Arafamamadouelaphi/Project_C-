@@ -40,6 +40,7 @@ namespace BowlingStub
             }
             return listParties;
         }
+        //GDW?
 
         public Partie GetDataWithId(int id)
         {
