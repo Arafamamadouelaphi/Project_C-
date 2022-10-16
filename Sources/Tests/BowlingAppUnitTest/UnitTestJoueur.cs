@@ -17,13 +17,14 @@ namespace Test.BowlingAppUnitTest
             Assert.Equal("Paul", j.Pseudo);
             Assert.NotEqual("joel", j.Pseudo);
         }
+        //si l text n est
 
         [Fact]
         public void TestInvalidJoueur()
         {
             Assert.Throws<ArgumentException>(() => new Joueur(null));
         }
-        
+        //
         [Theory]
         [InlineData(true, false, "Augustin", "Augustinn", false)]
         [InlineData(true, true, "Amir", "Amir", true)]
@@ -35,7 +36,7 @@ namespace Test.BowlingAppUnitTest
         [InlineData(false, false, "", "", true)]
         [InlineData(false, false, "f2", "f2", true)]
         public void TestContructeur(bool isFormated, bool isValid, string expectedPseudo, String pseudo, bool isEqual)
-        {
+        {// formated:
             if (!isValid && !isFormated)
             {
                 Assert.Throws<ArgumentException>
@@ -53,16 +54,16 @@ namespace Test.BowlingAppUnitTest
                 Assert.NotEqual(expectedPseudo, j.Pseudo);
 
             }
-            else
-            {
+           // else
+           // {
 
 
-                if (!isEqual)
-                {
-                    Assert.NotEqual(expectedPseudo, j.Pseudo);
+               // if (!isEqual)
+               // {
+                 //   Assert.NotEqual(expectedPseudo, j.Pseudo);
 
-                }
-                else
+              //  }
+               if(isEqual) 
                 {
                     Assert.Equal(expectedPseudo, j.Pseudo);
 
@@ -73,7 +74,7 @@ namespace Test.BowlingAppUnitTest
 
         }
 
-        //Test joueur avec stub
+        //Test joueur avec stub 
         [Fact]
         public void TestJoueurStub()
         {
