@@ -73,11 +73,11 @@ namespace Test.BowlingAppUnitTest
                                    params Joueur[] joueursToAdd)
         {
             var addedJoueurs = equipe.AjouterJoueurs(joueursToAdd);
-            Assert.Equal(expectedResult, addedJoueurs..Count());
+            Assert.Equal(expectedResult, addedJoueurs.Count());
 
             Assert.All(expectedAddedJoueurs, a => addedJoueurs.Contains(a));
 
-            Assert.Equal(expectedJoueurs..Count(), equipe.Joueurs..Count());
+            Assert.Equal(expectedJoueurs.Count(), equipe.Joueurs.Count());
             Assert.All(expectedJoueurs, a => equipe.Joueurs.Contains(a));
         }
 
