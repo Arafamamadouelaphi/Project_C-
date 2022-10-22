@@ -9,7 +9,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Joueur
     /// </summary>
-    public class Joueur 
+    public class Joueur IEquatable<Joueur>
     {
         private string pseudo;
         private readonly long id;
@@ -35,7 +35,7 @@ namespace BowlingLib.Model
             {
 
                 pseudo = value;
-                if (pseudo == null || pseudo == "" || pseudo.Length < 3)
+                if (string.IsNullOrWhiteSpace(pseudo) || pseudo.Length < 3)
                 {
                     throw new ArgumentException("Le pseudo ne peut pas être vide");
                 }
@@ -44,9 +44,10 @@ namespace BowlingLib.Model
 
         public override bool Equals(object obj)
         {
-            return obj is Joueur joueur &&
-                   pseudo == joueur.pseudo &&
-                   Pseudo == joueur.Pseudo;
+            if(ReferenceEquals(obj, null)) return false;
+            if(ReferenceEquals(obj, this)) return true;
+            if(GetType() != obj.GetType()) return false;
+            return Equals(obj as Joueur);
         }
 
         public override int GetHashCode()
