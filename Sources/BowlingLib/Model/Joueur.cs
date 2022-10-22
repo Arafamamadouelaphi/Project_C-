@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
-    public class Joueur
-        //IEquatable<Joueur>
+    /// <summary>
+    /// Classe Model Joueur
+    /// </summary>
+    public class Joueur 
     {
         private string pseudo;
         private readonly long id;
