@@ -59,7 +59,7 @@ namespace BowlingLib.Model
         /// </summary>
         /// <param name="joueurs"></param>
         /// <returns></returns>
-        public List<Joueur> AjouterJoueurs(params Joueur[] joueurs)
+        public IEnumerable<Joueur> AjouterJoueurs(params Joueur[] joueurs)
         {
             List<Joueur> result = new();
             foreach (var a in joueurs)
