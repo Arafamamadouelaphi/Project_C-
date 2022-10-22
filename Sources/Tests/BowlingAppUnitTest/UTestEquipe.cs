@@ -59,8 +59,11 @@ namespace Test.BowlingAppUnitTest
              
             bool result = equipe.AjouterJoueur(joueur);
             Assert.Equal(expectedResult, result);
-            Assert.Equal(expectedJoueurs.Count(), equipe.GetJoueurs().Count);
+            
+            Assert.Equal(expectedJoueurs.Count(), equipe.Joueurs.Count());
             Assert.All(expectedJoueurs, j => equipe.Joueurs.Contains(j));
+
+           
         }
 
 
