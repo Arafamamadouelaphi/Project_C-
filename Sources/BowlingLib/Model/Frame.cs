@@ -37,7 +37,11 @@ namespace BowlingLib.Model
         {
             get
             {
-                return  MAX_QUILLE - quillesTombees;
+                return quillesRestantes;
+            }
+            private set
+            {
+                this.quillesRestantes = value;
             }
         }
         
@@ -129,7 +133,7 @@ namespace BowlingLib.Model
         public Frame(int numero)
         {
             this.Numero = numero;
-           // this.QuillesRestantes = MAX_QUILLE;
+            this.QuillesRestantes = MAX_QUILLE;
             this.IsFinished = false;
             this.IsStrike = false;
             this.IsSpare = false;
@@ -173,7 +177,7 @@ namespace BowlingLib.Model
                 if (this.Lancer1 == null)
                 {
                     this.Lancer1 = new Lancer(quillesTombees);
-                  //  this.QuillesRestantes -= quillesTombees;
+                    this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
                     if (quillesTombees == MAX_QUILLE)
                     {
@@ -184,7 +188,7 @@ namespace BowlingLib.Model
                 else if (this.Lancer2 == null)
                 {
                     this.Lancer2 = new Lancer(quillesTombees);
-                   // this.QuillesRestantes -= quillesTombees;
+                    this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
                     //lorsque le premier lancer est un strike
                     if (this.IsStrike)
@@ -213,7 +217,7 @@ namespace BowlingLib.Model
                 else if (this.Lancer3 == null)
                 {
                     this.Lancer3 = new Lancer(quillesTombees);
-                   // this.QuillesRestantes -= quillesTombees;
+                    this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
                     if (this.IsStrike)//si le deuxième lancer etait un strike
                     {
@@ -264,7 +268,7 @@ namespace BowlingLib.Model
                 {
                     throw new ArgumentException("Le nombre de lancers est deja atteint");
                 }
-             //   this.QuillesRestantes -= quillesTombees;
+                this.QuillesRestantes -= quillesTombees;
                 this.QuillesTombees += quillesTombees;
                 if (quillesTombees == MAX_QUILLE)
                 {
