@@ -28,7 +28,7 @@ namespace BowlingLib.Model
         public string Pseudo
         {
             get { return pseudo; }
-            set 
+           private set 
             {
 
                 pseudo = value;
