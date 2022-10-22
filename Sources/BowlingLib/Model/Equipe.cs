@@ -14,7 +14,7 @@ namespace BowlingLib.Model
         private readonly long id;
         
 
-        public List<Joueur> Joueurs = new List<Joueur>();
+        private readonly List<Joueur> Joueurs = new List<Joueur>();
 
         
         public string Nom
@@ -44,10 +44,12 @@ namespace BowlingLib.Model
             this.nom = nom;
         }
 
-        public Equipe(long id, string nom,  List<Joueur> joueurs)
+        public Equipe(long id, string nom,  IEnumerable<Joueur> joueurs)
+            //liste implemente dautre methode a l indxeur
+            
         {
             this.id = id;
-            Joueurs = joueurs;
+            Joueurs.AddRange( joueurs);
             Nom = nom;
         }
 
@@ -72,7 +74,8 @@ namespace BowlingLib.Model
             {
                 Joueurs.Add(joueur);
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -84,7 +87,7 @@ namespace BowlingLib.Model
         }
 
         //retourner la liste non modifiable des joueurs de l'équipe
-        public List<Joueur> GetJoueurs()
+        public IEnumerable<Joueur> GetJoueurs()
         {
             return Joueurs;
         }

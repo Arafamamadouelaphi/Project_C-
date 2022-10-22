@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
-    public class Joueur 
+    public class Joueur
+        //IEquatable<Joueur>
     {
         private string pseudo;
         private readonly long id;
@@ -40,14 +41,17 @@ namespace BowlingLib.Model
         }
 
         public override bool Equals(object obj)
-        {
+        { 
+        if (ReferenceEquals(obj, null)) return false;
+        if(ReferenceEquals(obj,this)) return true;
+
             return obj is Joueur joueur &&
                    pseudo == joueur.pseudo &&
                    Pseudo == joueur.Pseudo;
         }
 
         public override int GetHashCode()
-        {
+        {//getHashcode utiliser par le set retur un codehch video sur dictionnaire
             return HashCode.Combine(id, Id, Pseudo);
         }
     }
