@@ -10,9 +10,7 @@ namespace BowlingStub
         public int nbrJ = 10,nbrE = 2;
         public StubEquipe()
         {
-            //listEquipes.Add(new Equipe("Equipe 1", new Joueur("Joueur 1"), new Joueur("Joueur 2")));
-            //listEquipes.Add(new Equipe("Equipe 2", new Joueur("Joueur 3"), new Joueur("Joueur 4")));
-            //listEquipes.Add(new Equipe("Equipe 3", new Joueur("Joueur 5"), new Joueur("Joueur 6")));
+            
         }
 
         public bool Add(Equipe data)

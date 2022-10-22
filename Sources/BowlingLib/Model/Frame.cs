@@ -39,11 +39,12 @@ namespace BowlingLib.Model
             {
                 return quillesRestantes;
             }
-            set
+            private set
             {
                 this.quillesRestantes = value;
             }
         }
+        
         private int quillesRestantes;
 
         public int QuillesTombees
@@ -171,8 +172,7 @@ namespace BowlingLib.Model
                 throw new ArgumentException("Le nombre de quilles tombees doit et etre positif");
             }
 
-            //Situation lor du dernier frame
-            if (this.Numero == 10)
+            if (this.Numero == MAX_QUILLE)
             {
                 if (this.Lancer1 == null)
                 {
@@ -279,7 +279,7 @@ namespace BowlingLib.Model
                     this.IsSpare = true;
                 }
             }
-            if (this.QuillesRestantes == 0 || (this.Lancer2 != null && this.Numero != 10) || (!IsStrike && !IsSpare && Numero == 10))
+            if (this.QuillesRestantes == 0 || (this.Lancer2 != null && this.Numero != MAX_QUILLE))
             {
                 this.IsFinished = true;
             }
