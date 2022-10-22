@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
+    /// <summary>
+    /// Classe Model Frame
+    /// </summary>
     public class Frame
     {
         const int MAX_QUILLE = 10;
-        public int Numero {
+        public int Numero
+        {
             get
             { return numero; }
             set
@@ -29,8 +33,9 @@ namespace BowlingLib.Model
         }
 
 
-        public int QuillesRestantes 
-        { get
+        public int QuillesRestantes
+        {
+            get
             {
                 return quillesRestantes;
             }
@@ -41,12 +46,12 @@ namespace BowlingLib.Model
         }
         private int quillesRestantes;
 
-        public int QuillesTombees 
+        public int QuillesTombees
         {
             get
             {
                 return quillesTombees;
-            } 
+            }
             set
             {
                 this.quillesTombees = value;
@@ -54,36 +59,39 @@ namespace BowlingLib.Model
         }
         private int quillesTombees;
 
-        public bool IsStrike { 
-            get {
+        public bool IsStrike
+        {
+            get
+            {
                 return isStrike;
-            } 
-            set{
+            }
+            set
+            {
                 this.isStrike = value;
-               } 
+            }
         }
         private bool isStrike;
 
-        public bool IsSpare 
-        { 
-            get 
+        public bool IsSpare
+        {
+            get
             {
                 return isPark;
-            } 
+            }
             set
             {
                 this.isPark = value;
-            } 
+            }
         }
         private bool isPark;
 
         public bool IsFinished
         {
             get
-            { 
-                return isFinished; 
-            } 
-            set 
+            {
+                return isFinished;
+            }
+            set
             {
                 this.isFinished = value;
             }
@@ -91,14 +99,14 @@ namespace BowlingLib.Model
         }
         private bool isFinished;
 
-        public Lancer Lancer1 
+        public Lancer Lancer1
         {
             get
-            { 
-                return lancer1; 
+            {
+                return lancer1;
             }
-            set 
-            { 
+            set
+            {
                 this.lancer1 = value;
             }
         }
@@ -136,18 +144,12 @@ namespace BowlingLib.Model
         /// </summary>
         /// <param name="numero"></param>
         /// <param name="id"></param>
-        /// <param name="isStrike"></param>
-        /// <param name="isSpare"></param>
-        /// <param name="isPark"></param>
-        /// <param name="isFinished"></param>
         /// <param name="lancer1"></param>
         /// <param name="lancer2"></param>
         /// <param name="lancer3"></param>
-        public Frame(long id, int numero,   bool isStrike, bool isSpare, int lancer1, int lancer2, [AllowNull] int lancer3) : this(numero)
+        public Frame(long id, int numero, int lancer1, int lancer2, [AllowNull] int lancer3) : this(numero)
         {
             this.id = id;
-            IsStrike = isStrike;
-            IsSpare = isSpare;
             Lancer1 = new Lancer(lancer1);
             Lancer2 = new Lancer(lancer2);
             Lancer3 = new Lancer(lancer3);
@@ -169,6 +171,7 @@ namespace BowlingLib.Model
                 throw new ArgumentException("Le nombre de quilles tombees doit et etre positif");
             }
 
+            //Situation lor du dernier frame
             if (this.Numero == 10)
             {
                 if (this.Lancer1 == null)
@@ -179,6 +182,7 @@ namespace BowlingLib.Model
                     if (quillesTombees == MAX_QUILLE)
                     {
                         this.IsStrike = true;
+                        QuillesRestantes = MAX_QUILLE;
                     }
                 }
                 else if (this.Lancer2 == null)
@@ -186,11 +190,14 @@ namespace BowlingLib.Model
                     this.Lancer2 = new Lancer(quillesTombees);
                     this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
+                    //lorsque le premier lancer est un strike
                     if (this.IsStrike)
                     {
                         if (quillesTombees == MAX_QUILLE)
                         {
+                            //lorsque le lancer actuel est un strike
                             this.IsStrike = true;
+                            QuillesRestantes = MAX_QUILLE;//Remetre le nombre de quilles restantes à 10 pour le lancer 2
                         }
                         else
                         {
@@ -201,8 +208,9 @@ namespace BowlingLib.Model
                     {
                         if (quillesTombees + this.Lancer1.QuillesTombees == MAX_QUILLE)
                         {
+                            //lorsque le lancer actuel est un spare
                             this.IsSpare = true;
-                            QuillesRestantes = 10;
+                            QuillesRestantes = MAX_QUILLE;//Remetre le nombre de quilles restantes à 10 pour le lancer 3
                         }
                     }
                 }
@@ -211,22 +219,22 @@ namespace BowlingLib.Model
                     this.Lancer3 = new Lancer(quillesTombees);
                     this.QuillesRestantes -= quillesTombees;
                     this.QuillesTombees += quillesTombees;
-                    if (this.IsStrike)
+                    if (this.IsStrike)//si le deuxième lancer etait un strike
                     {
                         if (quillesTombees == MAX_QUILLE)
                         {
-                            this.IsStrike = true;
+                            this.IsStrike = true;//cas ou il effectue un 3eme strike
                         }
                         else
                         {
                             this.IsStrike = false;
                         }
                     }
-                    else if (this.IsSpare)
+                    else if (this.IsSpare)//si le deuxième lancer etait un spare
                     {
                         if (quillesTombees + this.Lancer2.QuillesTombees == MAX_QUILLE)
                         {
-                            this.IsSpare = true;
+                            this.IsSpare = true;//cas ou il effectue un 3eme spare
                         }
                         else
                         {
@@ -271,7 +279,7 @@ namespace BowlingLib.Model
                     this.IsSpare = true;
                 }
             }
-            if (this.QuillesRestantes == 0 || (this.Lancer2 != null && this.Numero != 10))
+            if (this.QuillesRestantes == 0 || (this.Lancer2 != null && this.Numero != 10) || (!IsStrike && !IsSpare && Numero == 10))
             {
                 this.IsFinished = true;
             }

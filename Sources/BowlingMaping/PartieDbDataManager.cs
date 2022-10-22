@@ -83,18 +83,18 @@ namespace BowlingMaping
             using (var context = new BowlingContext())
             {
                 PartieEntity entity = context.Parties.Find(name);
-                Joueur joueur = new Joueur(entity.Joueur.Id,entity.Joueur.Pseudo);
+                Joueur joueur = new Joueur(entity.Joueur.Id, entity.Joueur.Pseudo);
                 List<Frame> frames = new List<Frame>();
                 foreach (FrameEntity frameEntity in entity.Frames)
                 {
-                    Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.IsStrike, frameEntity.IsSpare,frameEntity.Lancer1,frameEntity.Lancer2,frameEntity.Lancer3);
+                    Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.Lancer1, frameEntity.Lancer2, frameEntity.Lancer3);
                     frames.Add(frame);
                 }
-                result = new Partie(entity.Id, joueur,frames, entity.Date, entity.Score);
+                result = new Partie(entity.Id, joueur, frames, entity.Date, entity.Score);
             }
             return result;
         }
-        
+
         /// <summary>
         /// Retourne Toutes les parties en base de donné
         /// </summary>
@@ -104,13 +104,13 @@ namespace BowlingMaping
             List<Partie> result = new List<Partie>();
             using (var context = new BowlingContext())
             {
-                foreach (PartieEntity entity in context.Parties.OrderBy(item=>item.Date))
+                foreach (PartieEntity entity in context.Parties.OrderBy(item => item.Date))
                 {
                     Joueur joueur = new Joueur(entity.Joueur.Id, entity.Joueur.Pseudo);
                     List<Frame> frames = new List<Frame>();
                     foreach (FrameEntity frameEntity in entity.Frames)
                     {
-                        Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.IsStrike, frameEntity.IsSpare, frameEntity.Lancer1, frameEntity.Lancer2, frameEntity.Lancer3);
+                        Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.Lancer1, frameEntity.Lancer2, frameEntity.Lancer3);
                         frames.Add(frame);
                     }
                     result.Add(new Partie(entity.Id, joueur, frames, entity.Date, entity.Score));
@@ -118,14 +118,14 @@ namespace BowlingMaping
             }
             return result;
         }
-        
+
 
         public IEnumerable<Partie> GetAllWithDate(DateTime date)
         {
             List<Partie> result = new List<Partie>();
             using (var context = new BowlingContext())
             {
-                foreach (PartieEntity entity in context.Parties.OrderBy(item=>item.Date))
+                foreach (PartieEntity entity in context.Parties.OrderBy(item => item.Date))
                 {
                     if (entity.Date == date)
                     {
@@ -133,7 +133,7 @@ namespace BowlingMaping
                         List<Frame> frames = new List<Frame>();
                         foreach (FrameEntity frameEntity in entity.Frames)
                         {
-                            Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.IsStrike, frameEntity.IsSpare, frameEntity.Lancer1, frameEntity.Lancer2, frameEntity.Lancer3);
+                            Frame frame = new Frame(frameEntity.Id, frameEntity.Numero, frameEntity.Lancer1, frameEntity.Lancer2, frameEntity.Lancer3);
                             frames.Add(frame);
                         }
                         result.Add(new Partie(entity.Id, joueur, frames, entity.Date, entity.Score));

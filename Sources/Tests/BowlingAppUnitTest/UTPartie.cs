@@ -160,5 +160,127 @@ namespace BowlingAppUnitTest
             //Assert
             Assert.Equal(90, score);
         }
+
+        //le cas ou le joueur fait un strike au dernier lancer
+
+        [Fact]
+
+        public void TestGetScore5()
+        {
+            //Arrange
+            StubPartie stubPartie = new StubPartie();
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
+            partie.AddFrame(new Frame(1));
+            partie.AddFrame(new Frame(2));
+            partie.AddFrame(new Frame(3));
+            partie.AddFrame(new Frame(4));
+            partie.AddFrame(new Frame(5));
+            partie.AddFrame(new Frame(6));
+            partie.AddFrame(new Frame(7));
+            partie.AddFrame(new Frame(8));
+            partie.AddFrame(new Frame(9));
+            partie.AddFrame(new Frame(10));
+
+            for (int i = 0; i < partie.Frames.Count; i++)
+            {
+                if (i < 9)
+                {
+                    partie.Frames[i].Lancer(5);
+                    partie.Frames[i].Lancer(4);
+                    continue;
+                }
+                partie.Frames[i].Lancer(10);
+                if (partie.Frames[i].IsStrike)
+                {
+                    partie.Frames[i].Lancer(5);
+                    partie.Frames[i].Lancer(4);
+                }
+            }
+
+            //Act
+            int? score = partie.GetScore();
+
+            //Assert
+            Assert.Equal(100, score);
+        }
+
+        //le cas ou le joueur fait un spare au deuxieme lancer du dernier frame
+
+        [Fact]
+
+        public void TestGetScore6()
+        {
+            //Arrange
+            StubPartie stubPartie = new StubPartie();
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
+            partie.AddFrame(new Frame(1));
+            partie.AddFrame(new Frame(2));
+            partie.AddFrame(new Frame(3));
+            partie.AddFrame(new Frame(4));
+            partie.AddFrame(new Frame(5));
+            partie.AddFrame(new Frame(6));
+            partie.AddFrame(new Frame(7));
+            partie.AddFrame(new Frame(8));
+            partie.AddFrame(new Frame(9));
+            partie.AddFrame(new Frame(10));
+
+            for (int i = 0; i < partie.Frames.Count; i++)
+            {
+                if (i < 9)
+                {
+                    partie.Frames[i].Lancer(5);
+                    partie.Frames[i].Lancer(4);
+                    continue;
+                }
+                partie.Frames[i].Lancer(5);
+                partie.Frames[i].Lancer(5);
+                if (partie.Frames[i].IsSpare)
+                {
+                    partie.Frames[i].Lancer(5);
+                }
+            }
+
+            //Act
+            int? score = partie.GetScore();
+
+            //Assert
+            Assert.Equal(96, score);
+        }
+
+        //le cas ou le nombre de lancer est atteind 2 eme frames
+
+        [Fact]
+
+        public void TestGetScore7()
+        {
+            //Arrange
+            StubPartie stubPartie = new StubPartie();
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
+            partie.AddFrame(new Frame(1));
+            
+            partie.Frames[0].Lancer(5);
+            partie.Frames[0].Lancer(5);
+            Assert.Throws<ArgumentException>
+                (() => partie.Frames[0].Lancer(5));
+        }
+
+        //le cas ou les lancer sont finis
+
+        [Fact]
+
+        public void TestGetScore8()
+        {
+            //Arrange
+            StubPartie stubPartie = new StubPartie();
+            IEnumerable<Partie> listParties = stubPartie.GetAll(1);
+            Partie partie = listParties.ElementAt(0);
+            partie.AddFrame(new Frame(1));
+            partie.Frames[0].Lancer(5);
+            partie.Frames[0].Lancer(5);
+            Assert.True(partie.Frames[0].IsFinished);
+        }
     }
 }
