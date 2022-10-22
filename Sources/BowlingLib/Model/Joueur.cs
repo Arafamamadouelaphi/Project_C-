@@ -9,7 +9,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Joueur
     /// </summary>
-    public class Joueur IEquatable<Joueur>
+    public class Joueur : IEquatable<Joueur>
     {
         private string pseudo;
         private readonly long id;
