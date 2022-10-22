@@ -8,7 +8,7 @@ namespace Test.BowlingAppUnitTest
     public class UnitTestEquipe
     {
 
-        public static IEnumerable<object[]> Data_AddJoueurToEquipe()
+        public static IEnumerable<object[]>  Data_AddJoueurToEquipe()
         {
             yield return new object[]
             {
