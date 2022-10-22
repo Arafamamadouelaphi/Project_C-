@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
+    /// <summary>
+    /// Classe Model Partie
+    /// </summary>
     public class Partie
     {
         public ReadOnlyCollection<Frame> Frames { get; }

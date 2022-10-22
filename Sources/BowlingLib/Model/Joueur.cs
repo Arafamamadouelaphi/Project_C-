@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BowlingLib.Model
 {
+    /// <summary>
+    /// Classe Model Joueur
+    /// </summary>
     public class Joueur 
     {
         private string pseudo;

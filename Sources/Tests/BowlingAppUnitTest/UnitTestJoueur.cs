@@ -54,23 +54,21 @@ namespace Test.BowlingAppUnitTest
                 Assert.NotEqual(expectedPseudo, j.Pseudo);
 
             }
-           // else
-           // {
+            // else
+            // {
 
 
-               // if (!isEqual)
-               // {
-                 //   Assert.NotEqual(expectedPseudo, j.Pseudo);
+            // if (!isEqual)
+            // {
+            //   Assert.NotEqual(expectedPseudo, j.Pseudo);
 
-              //  }
-               if(isEqual) 
-                {
-                    Assert.Equal(expectedPseudo, j.Pseudo);
-
-                }
-
+            //  }
+            if (isEqual)
+            {
+                Assert.Equal(expectedPseudo, j.Pseudo);
 
             }
+
 
         }
 
@@ -93,8 +91,8 @@ namespace Test.BowlingAppUnitTest
             //Compter le nombre de joueur dans un objet IEnumerable
             Assert.Equal(0, stub.GetAll().Count());
         }
-        
-        
+
+
         [Fact]
         public void TestUpdate()
         {
@@ -106,8 +104,9 @@ namespace Test.BowlingAppUnitTest
             Assert.Equal("Augustin", stub.GetAll().First().Pseudo);
         }
 
-        
-        
+
+
 
     }
 }
+
