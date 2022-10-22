@@ -43,6 +43,12 @@ namespace BowlingLib.Model
             }
         }
 
+       public bool Equals(Joueur other)
+        {
+            return Pseudo.Equals(other.Pseudo);
+        }
+ 
+
         public override bool Equals(object obj)
         {
             if(ReferenceEquals(obj, null)) return false;
