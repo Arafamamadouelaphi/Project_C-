@@ -13,53 +13,56 @@ namespace BowlingLib.Model
     /// </summary>
     public class Equipe
     {
-        private string nom;
-        private readonly long id;
-        
-        public  List<Joueur> Joueurs = new List<Joueur>();
+        public string Nom { get; private set; }
+        public  long Id { get; private set; }
+
+         public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
+
+        private List<Joueur> joueurs = new List<Joueur>();
 
 
-        public string Nom
+      /*  public string Nom
         {
             get { return nom; }
             set { nom = value; }
         }
+*/
 
 
 
-
-        public Equipe(string nom, params Joueur[] joueurs)
+   /*     public Equipe(string nom, params Joueur[] joueurs)
         {
-            this.nom = nom;
-            AjouterJoueurs(joueurs);         
+            this.Nom = nom;
+            AjouterJoueurs(joueurs);
+            //  foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
 
-        }
-        public long Id
-        {
-            get { return id; }
-        }
+        }*/
+     
 
 
         public Equipe(string nom)
         {
-            this.nom = nom;
-        }
-
-        public Equipe(long id, string nom,  IEnumerable<Joueur> joueurs)
-            //liste implemente dautre methode a l indxeur
-            
-        {
-            this.id = id;
-            Joueurs.AddRange( joueurs);
             Nom = nom;
         }
+
+        public Equipe(long id, string nom, params Joueur[] joueurs)
+        {
+            Id = id;
+          //  Joueurs = joueurs;
+            Nom = nom;
+             Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
+            AjouterJoueurs(joueurs);
+        }
+
+        public Equipe(string nom, params Joueur[] joueurs)
+            : this(0, nom, joueurs) {}
 
         /// <summary>
         /// Ajoute une liste de joueur à l'équipe
         /// </summary>
         /// <param name="joueurs"></param>
         /// <returns></returns>
-        public List<Joueur> AjouterJoueurs(params Joueur[] joueurs)
+        public IEnumerable<Joueur> AjouterJoueurs(params Joueur[] joueurs)
         {
             List<Joueur> result = new();
             foreach (var a in joueurs)
@@ -84,7 +87,7 @@ namespace BowlingLib.Model
         {
             if (!isExist(joueur))
             {
-                Joueurs.Add(joueur);
+                joueurs.Add(joueur);
                 return true;
             }
             else
@@ -100,17 +103,17 @@ namespace BowlingLib.Model
 
         public void SupprimerJoueur(Joueur joueur)
         {
-            Joueurs.Remove(joueur);
+            joueurs.Remove(joueur);
         }
 
         /// <summary>
         /// retourner la liste non modifiable des joueurs de l'équipe
         /// </summary>
         /// <returns></returns>
-        public List<Joueur> GetJoueurs()
+      /*  public List<Joueur> GetJoueurs()
         {
             return Joueurs;
-        }
+        }*/
 
 
         /// <summary>
@@ -120,7 +123,7 @@ namespace BowlingLib.Model
         /// <returns></returns>
         public bool isExist(Joueur nouvJoueur)
         {
-            if (Joueurs.Contains(nouvJoueur))
+            if (joueurs.Contains(nouvJoueur))
                 return true;
             return false;
         }

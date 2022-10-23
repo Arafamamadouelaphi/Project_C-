@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BowlingLib.Model; 
 using Xunit;
 
@@ -8,7 +9,7 @@ namespace Test.BowlingAppUnitTest
     public class UnitTestEquipe
     {
 
-        public static IEnumerable<object[]> Data_AddJoueurToEquipe()
+        public static IEnumerable<object[]>  Data_AddJoueurToEquipe()
         {
             yield return new object[]
             {
@@ -52,32 +53,35 @@ namespace Test.BowlingAppUnitTest
         [Theory]
         [MemberData(nameof(Data_AddJoueurToEquipe))]
         public void Test_AddJoueurToEquipe(bool expectedResult,
-                                          Joueur[] expectedJoueurs,
+                                          IEnumerable<Joueur> expectedJoueurs,
                                           Equipe equipe,
                                           Joueur joueur)
         {
              
             bool result = equipe.AjouterJoueur(joueur);
             Assert.Equal(expectedResult, result);
-            Assert.Equal(expectedJoueurs.Length, equipe.GetJoueurs().Count);
+            
+            Assert.Equal(expectedJoueurs.Count(), equipe.Joueurs.Count());
             Assert.All(expectedJoueurs, j => equipe.Joueurs.Contains(j));
+
+           
         }
 
 
         [Theory]
         [MemberData(nameof(TestData.Data_AddJoueurToEquipe), MemberType=typeof(TestData))]
         public void Test_AddJoueursToEquipe(int expectedResult,
-                                   Joueur[] expectedJoueurs,
-                                   Joueur[] expectedAddedJoueurs,
+                                   IEnumerable<Joueur> expectedJoueurs,
+                                   IEnumerable<Joueur> expectedAddedJoueurs,
                                    Equipe equipe,
                                    params Joueur[] joueursToAdd)
         {
             var addedJoueurs = equipe.AjouterJoueurs(joueursToAdd);
-            Assert.Equal(expectedResult, addedJoueurs.Count);
+            Assert.Equal(expectedResult, addedJoueurs.Count());
 
             Assert.All(expectedAddedJoueurs, a => addedJoueurs.Contains(a));
 
-            Assert.Equal(expectedJoueurs.Length, equipe.Joueurs.Count);
+            Assert.Equal(expectedJoueurs.Count(), equipe.Joueurs.Count());
             Assert.All(expectedJoueurs, a => equipe.Joueurs.Contains(a));
         }
 

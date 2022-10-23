@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BowlingLib.Model
 {
     /// <summary>
     /// Classe Model Joueur
     /// </summary>
-    public class Joueur 
+    public class Joueur : IEquatable<Joueur>
     {
         private string pseudo;
         private readonly long id;
@@ -31,30 +31,42 @@ namespace BowlingLib.Model
         public string Pseudo
         {
             get { return pseudo; }
-            set 
+           private set 
             {
 
                 pseudo = value;
-                if (pseudo == null || pseudo == "" || pseudo.Length < 3)
+                if (string.IsNullOrWhiteSpace(pseudo) || pseudo.Length < 3)
                 {
                     throw new ArgumentException("Le pseudo ne peut pas être vide");
                 }
             }
         }
 
-        public override bool Equals(object obj)
-        { 
-        if (ReferenceEquals(obj, null)) return false;
-        if(ReferenceEquals(obj,this)) return true;
+       public bool Equals(Joueur other)
+       {
+            return Pseudo.Equals(other.Pseudo);
+        }
+ 
+        public void setNom(string nom)
+        {
+            Pseudo = nom;
+        }
 
-            return obj is Joueur joueur &&
-                   pseudo == joueur.pseudo &&
-                   Pseudo == joueur.Pseudo;
+        public override bool Equals(object obj)
+        {
+            if(ReferenceEquals(obj, null)) return false;
+            if(ReferenceEquals(obj, this)) return true;
+            if(GetType() != obj.GetType()) return false;
+            return Equals(obj as Joueur);
         }
 
         public override int GetHashCode()
-        {//getHashcode utiliser par le set retur un codehch video sur dictionnaire
-            return HashCode.Combine(id, Id, Pseudo);
+        {
+            return Pseudo.GetHashCode();
         }
+       /* public override int GetHashCode()
+        {
+            return HashCode.Combine(id, Id, Pseudo);
+        }*/
     }
 }
