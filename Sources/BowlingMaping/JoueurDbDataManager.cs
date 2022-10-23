@@ -91,8 +91,11 @@ namespace BowlingMaping
             using (var context = new BowlingContext())
             {
                 JoueurEntity entity = context.Joueurs?.Find(_joueur.Id);
-                entity.Pseudo = _joueur.Pseudo;
-                result = context.SaveChanges() == 1;
+                if (entity!=null)
+                {
+                    entity.Pseudo = _joueur.Pseudo;
+                    result = context.SaveChanges() == 1;
+                }
             }
             return result;
         }

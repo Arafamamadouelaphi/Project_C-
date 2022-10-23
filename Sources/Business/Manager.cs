@@ -45,6 +45,16 @@ namespace Business
             Equipes = new ReadOnlyCollection<Equipe>(equipes);
         }
 
+        public Manager(IDataManager<Equipe> equipeDataManager, IDataManager<Partie> partieDataManager, IDataManager<Joueur> joueurManager)
+        {
+            this.equipeDataManager = equipeDataManager;
+            Equipes = new ReadOnlyCollection<Equipe>(equipes);
+            this.partieDataManager = partieDataManager;
+            Parties = new ReadOnlyCollection<Partie>(parties);
+            this.joueurDataManager = joueurManager;
+            Joueurs = new ReadOnlyCollection<Joueur>(joueurs);
+        }
+
         /// <summary>
         /// Ajoute un joueur à la liste des joueurs
         /// </summary>

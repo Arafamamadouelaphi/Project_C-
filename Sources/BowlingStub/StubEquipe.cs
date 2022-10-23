@@ -35,11 +35,11 @@ namespace BowlingStub
 
         public void Load()
         {
-            for (int i = 0; i < nbrJ; i++)
+            for (int i = 0; i < nbrE; i++)
             {
                 this.Add(new Equipe("Equipe " + i + 1));
 
-                for (int k = 0; k < nbrE; k++)
+                for (int k = 0; k < nbrJ; k++)
                 {
                     listEquipes.ElementAt(i).AjouterJoueur(new Joueur("Joueur " + i + 1 + "-" + k + 1));
 
