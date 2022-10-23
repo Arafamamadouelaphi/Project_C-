@@ -53,7 +53,7 @@ namespace BowlingMaping
                 (
                     e.Id,
                     e.Nom,
-                    e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToList()
+                    e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToArray()
                 )).ToList();
             }
         }
@@ -66,7 +66,7 @@ namespace BowlingMaping
                 (
                     e.Id,
                     e.Nom,
-                    e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToList()
+                    e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToArray()
                 )).FirstOrDefault();
             }
         }
