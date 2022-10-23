@@ -93,13 +93,17 @@ namespace Test.BowlingAppUnitTest
         }
 
 
+        /*
+         * TEST AVEC LE STUB
+         */
+
         [Fact]
         public void TestUpdate()
         {
             StubJoueur stub = new StubJoueur();
             Joueur j = new Joueur("Paul");
             stub.Add(j);
-            j.Pseudo = "Augustin";
+            j.setNom("Augustin");
             stub.Update(j);
             Assert.Equal("Augustin", stub.GetAll().First().Pseudo);
         }

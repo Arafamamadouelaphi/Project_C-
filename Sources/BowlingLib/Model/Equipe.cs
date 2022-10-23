@@ -13,8 +13,8 @@ namespace BowlingLib.Model
     /// </summary>
     public class Equipe
     {
-        public string Nom { get; private set; };
-        public  long Id { get; private set; };
+        public string Nom { get; private set; }
+        public  long Id { get; private set; }
 
          public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
 
@@ -30,17 +30,14 @@ namespace BowlingLib.Model
 
 
 
-        public Equipe(string nom, params Joueur[] joueurs)
+   /*     public Equipe(string nom, params Joueur[] joueurs)
         {
-            this.nom = nom;
+            this.Nom = nom;
             AjouterJoueurs(joueurs);
             //  foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
 
-        }
-        public long Id
-        {
-            get { return id; }
-        }
+        }*/
+     
 
 
         public Equipe(string nom)
@@ -54,10 +51,10 @@ namespace BowlingLib.Model
           //  Joueurs = joueurs;
             Nom = nom;
              Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
-            AjouterJoueurs(artists);
+            AjouterJoueurs(joueurs);
         }
 
-        public Equipe(long id, string nom, params Joueur[] joueurs)
+        public Equipe(string nom, params Joueur[] joueurs)
             : this(0, nom, joueurs) {}
 
         /// <summary>

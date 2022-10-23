@@ -43,10 +43,14 @@ namespace BowlingLib.Model
         }
 
        public bool Equals(Joueur other)
-        {
+       {
             return Pseudo.Equals(other.Pseudo);
         }
  
+        public void setNom(string nom)
+        {
+            Pseudo = nom;
+        }
 
         public override bool Equals(object obj)
         {
