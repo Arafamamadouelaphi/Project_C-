@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BowlingApp
 {
+    /// <summary>
+    /// This class is used to create a match
+    /// </summary>
     public static class Match
     {
         #region Méthodes
@@ -48,7 +51,6 @@ namespace BowlingApp
                     Partie partie = new Partie(joueur);
                     Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
                     manager.AddJoueur(joueur);
-                    equipes.ForEach(item => manager.AddEquipe(item));
                     Lancer(partie, saissiseur);
                     manager.AddPartie(partie);
                 }
