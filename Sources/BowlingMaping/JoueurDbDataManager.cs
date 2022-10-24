@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace BowlingMaping
 {
+    /// <summary>
+    /// Classe de gestion des données des joueurs
+    /// </summary>
     public class JoueurDbDataManager : IDataManager<Joueur>
     {
+        #region Méthodes
         /// <summary>
         /// Ajoute un joueur à la liste des joueurs
         /// </summary>
@@ -105,6 +109,7 @@ namespace BowlingMaping
             }
             return result;
         }
-        
+        #endregion
+
     }
 }

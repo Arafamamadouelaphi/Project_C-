@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace BowlingApp
 {
+    /// <summary>
+    /// Classe pour gerer l'affichage en console
+    /// </summary>
     public class Afficheur
-    {   
-        public void AfficherMenu()
+    {
+        #region Méthodes
+        
+        /// <summary>
+        /// Afficher le menu de l'application
+        /// </summary>
+        public static void AfficherMenu()
         {
             System.Console.WriteLine("Choisissez le mode de jeux :");
             System.Console.WriteLine("1 - Solo ? ");
@@ -16,29 +24,39 @@ namespace BowlingApp
             System.Console.WriteLine("3- Equipe?");
 
         }
+
+        /// <summary>
+        /// Afficher les erreur de saisie
+        /// </summary>
+        /// <param name="message"></param>
         public static void AfficherErreur(String message)
         {
             Console.WriteLine($"erreur {message}");
         }
 
-        public void AfficheNumFrame(int i)
+        /// <summary>
+        /// Affiche le numéro de frame
+        /// </summary>
+        /// <param name="i"></param>
+        public static void AfficheNumFrame(int i)
         {
             Console.WriteLine($"Frame {i}");
         }
 
-        public void InviteNom(string type)
+        public static void InviteNom(string type)
         {
             Console.WriteLine($"veillez entrez le nom {type} ");
         }
 
-        public void InviteNrb(string type)
+        public static void InviteNrb(string type)
         {
             Console.WriteLine($"veillez entrez le nombre de {type}");
         }
 
-        public void InviteQuilleTombe(int i)
+        public static void InviteQuilleTombe(int i)
         {
             Console.WriteLine($"Entrez le nombre de quilles tombés du lancer {i}");
         }
+        #endregion
     }
 }

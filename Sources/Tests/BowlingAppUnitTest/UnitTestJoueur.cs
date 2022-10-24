@@ -77,7 +77,7 @@ namespace Test.BowlingAppUnitTest
         public void TestJoueurStub()
         {
             StubJoueur stub = new StubJoueur();
-            Assert.Equal(10, stub.GetAll(10).Count());
+            Assert.Equal(10, stub.GetAllJoueur(10).Count());
         }
 
 

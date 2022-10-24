@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Business
 {
+    /// <summary>
+    /// Classe pour gerer le jeux
+    /// </summary>
     public class Manager
     {
+        #region propriétés
         public ReadOnlyCollection<Partie> Parties { get; private set; }
         private readonly List<Partie> parties = new();
         public ReadOnlyCollection<Equipe> Equipes { get; private set; }
@@ -24,6 +28,9 @@ namespace Business
         private readonly IDataManager<Partie> partieDataManager;
         public IDataManager<Equipe> EquipeDataManager => equipeDataManager;
         private readonly IDataManager<Equipe> equipeDataManager;
+        #endregion
+
+        #region Constructeurs
 
         public Manager(IDataManager<Joueur> joueurManager)
         {
@@ -54,6 +61,9 @@ namespace Business
             this.joueurDataManager = joueurManager;
             Joueurs = new ReadOnlyCollection<Joueur>(joueurs);
         }
+        #endregion
+
+        #region Methodes
 
         /// <summary>
         /// Ajoute un joueur à la liste des joueurs
@@ -201,6 +211,7 @@ namespace Business
         {
             return equipeDataManager.GetAll();
         }
+        #endregion
 
     }
 }

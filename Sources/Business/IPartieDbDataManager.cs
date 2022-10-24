@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business
 {
+    /// <summary>
+    /// Classe d'abstraction pour les données de la partie
+    /// </summary>
     public interface IPartieDbDataManager : IDataManager<Partie>
     {
         IEnumerable<Partie> GetAllWithDate(DateTime date);

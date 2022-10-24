@@ -35,7 +35,7 @@ namespace BowlingStub
             return listJoueurs;
         }
         //n represente le nbr de joueurs a creer dans la liste
-        public IEnumerable<Joueur> GetAll(int n = 10)
+        public IEnumerable<Joueur> GetAllJoueur(int n = 10)
         {
             for (int i = 0; i < n; i++)
             {

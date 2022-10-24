@@ -13,6 +13,7 @@ namespace BowlingEF.Entities
     /// </summary>
     public class PartieEntity
     {
+        #region Properties
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
@@ -26,10 +27,13 @@ namespace BowlingEF.Entities
         public ICollection<FrameEntity> Frames { get; set; }
         [Required]
         public int? Score { get; set; }
-        
+        #endregion
+
+        #region Constructors
         public PartieEntity()
         {
             Frames = new List<FrameEntity>();
         }
+        #endregion
     }
 }

@@ -13,32 +13,16 @@ namespace BowlingLib.Model
     /// </summary>
     public class Equipe
     {
+        #region Propiéters
         public string Nom { get; private set; }
         public  long Id { get; private set; }
 
-         public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
+        public ReadOnlyCollection<Joueur> Joueurs { get; private set; }
 
-        private List<Joueur> joueurs = new List<Joueur>();
+        private readonly List<Joueur> joueurs = new List<Joueur>();
+        #endregion
 
-
-      /*  public string Nom
-        {
-            get { return nom; }
-            set { nom = value; }
-        }
-*/
-
-
-
-   /*     public Equipe(string nom, params Joueur[] joueurs)
-        {
-            this.Nom = nom;
-            AjouterJoueurs(joueurs);
-            //  foreach (Joueur nouv in joueurs) AjouterJoueur(nouv);           
-
-        }*/
-     
-
+        #region Construteurs
 
         public Equipe(string nom)
         {
@@ -48,14 +32,17 @@ namespace BowlingLib.Model
         public Equipe(long id, string nom, params Joueur[] joueurs)
         {
             Id = id;
-          //  Joueurs = joueurs;
             Nom = nom;
-             Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
+            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
             AjouterJoueurs(joueurs);
         }
 
         public Equipe(string nom, params Joueur[] joueurs)
             : this(0, nom, joueurs) {}
+
+        #endregion
+
+        #region Méthodes
 
         /// <summary>
         /// Ajoute une liste de joueur à l'équipe
@@ -85,7 +72,7 @@ namespace BowlingLib.Model
 
         public bool AjouterJoueur(Joueur joueur)
         {
-            if (!isExist(joueur))
+            if (!IsExist(joueur))
             {
                 joueurs.Add(joueur);
                 return true;
@@ -110,10 +97,6 @@ namespace BowlingLib.Model
         /// retourner la liste non modifiable des joueurs de l'équipe
         /// </summary>
         /// <returns></returns>
-      /*  public List<Joueur> GetJoueurs()
-        {
-            return Joueurs;
-        }*/
 
 
         /// <summary>
@@ -121,12 +104,13 @@ namespace BowlingLib.Model
         /// </summary>
         /// <param name="nouvJoueur"></param>
         /// <returns></returns>
-        public bool isExist(Joueur nouvJoueur)
+        public bool IsExist(Joueur nouvJoueur)
         {
             if (joueurs.Contains(nouvJoueur))
                 return true;
             return false;
         }
+        #endregion
 
     }
 }
