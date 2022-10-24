@@ -65,7 +65,7 @@ namespace BowlingMaping
         /// recupère tous les joueurs de la Base de données
         /// </summary>
         /// <returns></returns>
-        public  async Task< IEnumerable<Joueur> >GetAll()
+        public  async Task<IEnumerable<Joueur>> GetAll()
         {
             using (var context = new BowlingContext())
             {

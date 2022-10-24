@@ -10,7 +10,7 @@ namespace BowlingStub
         private List<Joueur> listJoueurs = new List<Joueur>();
 
 
-        public bool Add(Joueur data)
+        public async Task<bool> Add(Joueur data)
         {
             if (data != null)
             {
@@ -20,22 +20,22 @@ namespace BowlingStub
             return false;
         }
 
-        public bool Delete(Joueur data)
+        public async Task<bool> Delete(Joueur data)
         {
             if (data != null)
             {
                 listJoueurs.Remove(data);
-                return true;
+                return  true;
             }
             return false;
         }
 
-        public IEnumerable<Joueur> GetAll()
+        public async Task<IEnumerable<Joueur>> GetAll()
         {
             return listJoueurs;
         }
         //n represente le nbr de joueurs a creer dans la liste
-        public IEnumerable<Joueur> GetAllJoueur(int n = 10)
+        public async Task<IEnumerable<Joueur> >GetAllJoueur(int n = 10)
         {
             for (int i = 0; i < n; i++)
             {
@@ -44,17 +44,17 @@ namespace BowlingStub
             return listJoueurs;
         }
         ///ged 
-        public Joueur GetDataWithId(int id)
+        public async Task<Joueur >GetDataWithId (int id)
         {
             throw new NotImplementedException();
         }
 
-        public Joueur GetDataWithName(string name)
+        public async Task<Joueur> GetDataWithName(string name)
         {
             throw new NotImplementedException();
         }//
 
-        public bool Update(Joueur data)
+        public async Task<bool> Update(Joueur data)
         {
             if (data != null)
             {

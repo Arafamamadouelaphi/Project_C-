@@ -133,6 +133,7 @@ namespace BowlingMaping
             List<Partie> result = new List<Partie>();
             using (var context = new BowlingContext())
             {
+                var query =  context.Parties.Where(item => item.Date == date);
                 foreach (PartieEntity entity in await context.Parties.ToListAsync())
                 {
                     if (entity.Date.Date == date.Date)
