@@ -41,13 +41,23 @@ namespace BowlingMaping
         public bool Delete(Joueur _joueur)
         {
             bool result = false;
-            using (var context = new BowlingContext())
+           
+           
+           try{
+                using (var context = new BowlingContext())
+                {
+                    JoueurEntity entity = context.Joueurs.Find(_joueur.Id);
+                    context.Joueurs.Remove(entity);
+                    result = context.SaveChanges() == 1;
+                }
+                return result;
+
+           }catch (SqlException)
             {
-                JoueurEntity entity = context.Joueurs.Find(_joueur.Id);
-                context.Joueurs.Remove(entity);
-                result = context.SaveChanges() == 1;
+                WriteLine("Votre base de données n'existe pas.");
             }
-            return result;
+           
+            
         }
 
         /// <summary>
