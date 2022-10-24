@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Busine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingEF", "BowlingEF\BowlingEF.csproj", "{1E42224B-45E4-433C-9D20-0A61023790ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingMaping", "BowlingMaping\BowlingMaping.csproj", "{874DDEF3-1FDA-4ECE-826F-F67143823544}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingMaping", "BowlingMaping\BowlingMaping.csproj", "{874DDEF3-1FDA-4ECE-826F-F67143823544}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

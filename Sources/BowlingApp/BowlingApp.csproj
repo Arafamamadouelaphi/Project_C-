@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -15,5 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BowlingEF\BowlingEF.csproj" />
     <ProjectReference Include="..\BowlingLib\BowlingLib.csproj" />
+    <ProjectReference Include="..\BowlingMaping\BowlingMaping.csproj" />
+    <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 </Project>
