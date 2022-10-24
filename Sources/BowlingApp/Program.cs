@@ -6,27 +6,30 @@ using System;
 
 namespace HelloWorldApp
 {
-    class Program
+    static class Program
     {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             int choix=0;
             while (choix <= 3)
             {
-                Afficheur afficheur = new Afficheur();
                 Saissiseur saissiseur = new Saissiseur();
-                afficheur.AfficherMenu();
+                Afficheur.AfficherMenu();
                 choix = saissiseur.CollecterReponseMenu();
                 switch (choix)
                 {
                     case 1:
-                        Match.JeuSolo(saissiseur, afficheur);
+                        Match.JeuSolo(saissiseur);
                         break;
                     case 2:
-                        Match.JeuIndividuel(saissiseur, afficheur);
+                        Match.JeuIndividuel(saissiseur);
                         break;
                     case 3:
-                        Match.JeuxEnEquipe(saissiseur, afficheur);
+                        Match.JeuxEnEquipe(saissiseur);
                         break;
                 }
             }

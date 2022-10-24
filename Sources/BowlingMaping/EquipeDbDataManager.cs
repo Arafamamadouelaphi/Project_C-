@@ -13,6 +13,7 @@ namespace BowlingMaping
 {
     public class EquipeDbDataManager : IDataManager<Equipe>
     {
+        #region Méthodes
         public bool Add(Equipe _equipe)
         {
             bool result = false;
@@ -88,5 +89,6 @@ namespace BowlingMaping
             }
             return result;
         }
+        #endregion
     }
 }

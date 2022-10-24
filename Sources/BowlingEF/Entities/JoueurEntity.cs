@@ -8,11 +8,13 @@ namespace BowlingEF.Entities
     /// </summary>
     public class JoueurEntity
     {
+        #region Properties
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         [Required]
         public string Pseudo { get; set; }
+        #endregion
     }
 }

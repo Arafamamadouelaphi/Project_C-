@@ -8,6 +8,7 @@ namespace BowlingEF.Entities
     /// </summary>
     public class FrameEntity
     {
+        #region Properties
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
@@ -27,5 +28,6 @@ namespace BowlingEF.Entities
         [Required]
         public long PartieId { get; set; }
         public PartieEntity Partie { get; set; }
+        #endregion
     }
 }

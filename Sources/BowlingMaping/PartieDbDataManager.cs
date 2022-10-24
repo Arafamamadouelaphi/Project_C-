@@ -10,9 +10,12 @@ using System.Threading.Tasks;
 
 namespace BowlingMaping
 {
+    /// <summary>
+    /// Classe de gestion des données des parties
+    /// </summary>
     public class PartieDbDataManager : IPartieDbDataManager
     {
-
+        #region Méthodes
         /// <summary>
         /// Ajoute une partie Dans la base de données
         /// </summary>
@@ -119,7 +122,11 @@ namespace BowlingMaping
             return result;
         }
 
-
+        /// <summary>
+        /// Retourne les parties à une date donnée
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public IEnumerable<Partie> GetAllWithDate(DateTime date)
         {
             List<Partie> result = new List<Partie>();
@@ -142,6 +149,7 @@ namespace BowlingMaping
             }
             return result;
         }
+        #endregion
 
     }
 }

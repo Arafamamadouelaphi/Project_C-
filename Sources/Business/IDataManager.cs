@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business
 {
+    /// <summary>
+    /// Interface d'abstraction pour les donné
+    /// </summary>
+    /// <typeparam name="Data"></typeparam>
     public interface IDataManager<Data>
     {
         bool Add(Data data);

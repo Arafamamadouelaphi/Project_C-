@@ -11,22 +11,30 @@ namespace BowlingLib.Model
     /// </summary>
     public class Joueur : IEquatable<Joueur>
     {
+        #region Propriétés
         private string pseudo;
         private readonly long id;
-        public long Id
-        {
-            get { return id; }
-        }
+        #endregion
 
+        #region Constructeurs
         public Joueur(string pseudo)
         {
             this.Pseudo = pseudo;
         }
 
-        public Joueur(long id,string pseudo) : this(pseudo)
+        public Joueur(long id, string pseudo) : this(pseudo)
         {
             this.id = id;
         }
+        #endregion
+
+        #region Accesseurs
+        public long Id
+        {
+            get { return id; }
+        }
+
+        
 
         public string Pseudo
         {
@@ -41,12 +49,15 @@ namespace BowlingLib.Model
                 }
             }
         }
+        #endregion
 
-       public bool Equals(Joueur other)
-       {
+        #region Méthodes
+
+        public bool Equals(Joueur other)
+        {
             return Pseudo.Equals(other.Pseudo);
         }
- 
+
         public void setNom(string nom)
         {
             Pseudo = nom;
@@ -64,9 +75,7 @@ namespace BowlingLib.Model
         {
             return Pseudo.GetHashCode();
         }
-       /* public override int GetHashCode()
-        {
-            return HashCode.Combine(id, Id, Pseudo);
-        }*/
+
+        #endregion
     }
 }

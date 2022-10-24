@@ -32,7 +32,7 @@ namespace BowlingStub
             return listParties;
         }
 
-        public IEnumerable<Partie> GetAll(int n=10, int j=0)
+        public IEnumerable<Partie> GetAllPartie(int n=10, int j=0)
         {
             for (int i = 0; i < n; i++)
             {

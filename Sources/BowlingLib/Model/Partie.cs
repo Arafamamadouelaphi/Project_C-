@@ -12,16 +12,22 @@ namespace BowlingLib.Model
     /// </summary>
     public class Partie
     {
+        #region Propriétés
         public ReadOnlyCollection<Frame> Frames { get; }
         public Joueur Joueur { get; private set; }
         private readonly long id;
         private DateTime date;
+        private int? score = 0;
+        private readonly List<Frame> frames = new();
+        #endregion
+
+        #region Encapsulation
         public int? Score { 
             get 
             {
                 return GetScore();
             }
-            private set { }
+            private set { score = value; }
         }
         public DateTime Date
         {
@@ -29,8 +35,9 @@ namespace BowlingLib.Model
             private set { date = value; }
         }
         public long Id => id;
+        #endregion
 
-        private readonly List<Frame> frames=new();
+        #region Constructeurs
 
         /// <summary>
         ///  Constructeur
@@ -50,7 +57,10 @@ namespace BowlingLib.Model
             this.date = date;
             this.Score = score;
         }
+        #endregion
 
+
+        #region Méthodes
         /// <summary>
         /// Ajoute un frame à la partie
         /// </summary>
@@ -67,7 +77,6 @@ namespace BowlingLib.Model
         /// <returns>le Score d'une partie</returns>
         public int? GetScore()
         {
-            int? score = 0;
             for (int i = 0; i < Frames.Count; i++)
             {
                 score += Frames[i].QuillesTombees;
@@ -86,5 +95,6 @@ namespace BowlingLib.Model
             }
             return score;
         }
+        #endregion
     }
 }
