@@ -95,10 +95,10 @@ namespace BowlingApp
             for(int j = 0; j<10; j++) // pour chaque frame
             {
                 Frame frame = new Frame(j);
-                for (int i = 0; i < manager.GetAllPartie().Count(); i++) // on lance les parties à tour de rôle
+                for (int i = 0; i < manager.GetAllPartie().Result.Count(); i++) // on lance les parties à tour de rôle
                 {
-                    LancerFrame(manager.GetAllPartie().ElementAt(i), saissiseur, frame);
-                    manager.AddPartie(manager.GetAllPartie().ElementAt(i));
+                    LancerFrame(manager.GetAllPartie().Result.ElementAt(i), saissiseur, frame);
+                    manager.AddPartie(manager.GetAllPartie().Result.ElementAt(i));
                 }
 
             }

@@ -87,7 +87,7 @@ namespace BowlingMaping
             {
                 Joueur _joueur = null;
 
-                var query = await context.Joueurs.FirstOrDefaultAsync(n => n.Pseudo == n.Pseudo);
+                var query = await context.Joueurs.FirstOrDefaultAsync(n => n.Pseudo == name);
                 _joueur = new Joueur(query.Id, query.Pseudo);
                 return _joueur;
             }
