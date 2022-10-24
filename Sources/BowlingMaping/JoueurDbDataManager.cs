@@ -43,7 +43,7 @@ namespace BowlingMaping
             bool result = false;
            
            
-           try{
+          
                 using (var context = new BowlingContext())
                 {
                     JoueurEntity entity = context.Joueurs.Find(_joueur.Id);
@@ -51,11 +51,7 @@ namespace BowlingMaping
                     result = context.SaveChanges() == 1;
                 }
                 return result;
-
-           }catch (SqlException)
-            {
-                WriteLine("Votre base de données n'existe pas.");
-            }
+ 
            
             
         }
