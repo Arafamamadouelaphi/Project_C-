@@ -12,6 +12,6 @@ namespace Business
     /// </summary>
     public interface IPartieDbDataManager : IDataManager<Partie>
     {
-        IEnumerable<Partie> GetAllWithDate(DateTime date);
+        Task<IEnumerable<Partie>> GetAllWithDate(DateTime date);
     }
 }

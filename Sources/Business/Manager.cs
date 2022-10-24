@@ -70,13 +70,15 @@ namespace Business
         /// </summary>
         /// <param name="joueur"></param>
         /// <returns></returns>
-        public bool AddJoueur(Joueur joueur)
+        public Task<bool> AddJoueur(Joueur joueur)
         {
             if (joueurDataManager == null)
             {
-                return false;
+                return Task.FromResult(false);
             }
-            return joueurDataManager.Add(joueur);
+                return joueurDataManager.Add(joueur);
+            
+
         }
 
         /// <summary>
@@ -84,11 +86,11 @@ namespace Business
         /// </summary>
         /// <param name="partie"></param>
         /// <returns></returns>
-        public bool AddPartie(Partie partie)
+        public Task<bool> AddPartie(Partie partie)
         {
             if (partieDataManager == null)
             {
-                return false;
+                return Task.FromResult( false);
             }
             return partieDataManager.Add(partie);
         }
@@ -98,118 +100,118 @@ namespace Business
         /// </summary>
         /// <param name="equipe"></param>
         /// <returns></returns>
-        public bool AddEquipe(Equipe equipe)
+        public async Task<bool> AddEquipe(Equipe equipe)
         {
             if (equipeDataManager == null)
             {
                 return false;
             }
-            return equipeDataManager.Add(equipe);
+            return await equipeDataManager.Add(equipe);
         }
 
         /// <summary>
         /// Retourne la liste des joueurs
         /// </summary>
         /// <param name="joueur"></param>
-        public bool DeleteJoueur(Joueur joueur)
+        public async Task<bool> DeleteJoueur(Joueur joueur)
         {
             if (joueurDataManager == null)
             {
                 return false;
             }
-            return JoueurDataManager.Delete(joueur);
+            return await JoueurDataManager.Delete(joueur);
         }
 
         /// <summary>
         /// Supprime une partie
         /// </summary>
         /// <param name="partie"></param>
-        public bool DeletePartie(Partie partie)
+        public async Task<bool> DeletePartie(Partie partie)
         {
             if (partieDataManager == null)
             {
                 return false;
             }
-            return partieDataManager.Delete(partie);
+            return await partieDataManager.Delete(partie);
         }
 
         /// <summary>
         /// Supprime une équipe
         /// </summary>
         /// <param name="equipe"></param>
-        public bool DeleteEquipe(Equipe equipe)
+        public async Task<bool> DeleteEquipe(Equipe equipe)
         {
             if (equipeDataManager == null)
             {
                 return false;
             }
-            return equipeDataManager.Delete(equipe);
+            return await equipeDataManager.Delete(equipe);
         }
 
         /// <summary>
         /// Retourne la liste des joueurs
         /// </summary>
         /// <param name="joueur"></param>
-        public bool UpdateJoueur(Joueur joueur)
+        public async Task<bool> UpdateJoueur(Joueur joueur)
         {
             if (joueurDataManager == null)
             {
                 return false;
             }
-            return JoueurDataManager.Update(joueur);
+            return await  JoueurDataManager.Update(joueur);
         }
 
         /// <summary>
         /// Met à jour une partie
         /// </summary>
         /// <param name="partie"></param>
-        public bool UpdatePartie(Partie partie)
+        public async Task<bool> UpdatePartie(Partie partie)
         {
             if (partieDataManager == null)
             {
                 return false;
             }
-            return partieDataManager.Update(partie);
+            return await partieDataManager.Update(partie);
         }
 
         /// <summary>
         /// Met à jour une équipe
         /// </summary>
         /// <param name="equipe"></param>
-        public bool UpdateEquipe(Equipe equipe)
+        public async Task<bool> UpdateEquipe(Equipe equipe)
         {
             if (equipeDataManager == null)
             {
                 return false;
             }
-            return equipeDataManager.Update(equipe);
+            return await equipeDataManager.Update(equipe);
         }
 
         /// <summary>
         /// Retourne la liste des joueurs
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Joueur> GetAllJoueur()
+        public async Task<IEnumerable<Joueur>> GetAllJoueur()
         {
-            return JoueurDataManager.GetAll();
+            return await JoueurDataManager.GetAll();
         }
 
         /// <summary>
         /// Retourne les dernières parties du joueur
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Partie> GetAllPartie()
+        public async Task<IEnumerable<Partie>> GetAllPartie()
         {
-            return partieDataManager.GetAll();
+            return await partieDataManager.GetAll();
         }
 
         /// <summary>
         /// Retourne les Equipe en fonction d'une partie
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Equipe> GetAllEquipe()
+        public async Task<IEnumerable<Equipe>> GetAllEquipe()
         {
-            return equipeDataManager.GetAll();
+            return await equipeDataManager.GetAll();
         }
         #endregion
 

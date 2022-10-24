@@ -13,7 +13,7 @@ namespace BowlingStub
             
         }
 
-        public bool Add(Equipe data)
+        public async Task<bool> Add(Equipe data)
         {
             if (data != null)
             {
@@ -23,7 +23,7 @@ namespace BowlingStub
             return false;
         }
 
-        public bool Delete(Equipe data)
+        public async Task<bool> Delete(Equipe data)
         {
             if (data != null)
             {
@@ -48,7 +48,7 @@ namespace BowlingStub
         }
         
 
-        public IEnumerable<Equipe> GetAll()
+        public async Task<IEnumerable<Equipe>>  GetAll()
         {
             Load();
             return listEquipes;
@@ -56,7 +56,7 @@ namespace BowlingStub
 
 
         //mise à jour d'une équipe
-        public bool Update(Equipe data)
+        public async Task<bool> Update(Equipe data)
         {
             if (data != null)
             {
@@ -70,12 +70,12 @@ namespace BowlingStub
         }
         
 
-        public Equipe GetDataWithName(string name)
+        public async Task<Equipe>  GetDataWithName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Equipe> GetAllWithDate(DateTime date)
+        public async Task<IEnumerable<Equipe>> GetAllWithDate(DateTime date)
         {
             throw new NotImplementedException();
         }

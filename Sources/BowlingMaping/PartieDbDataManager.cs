@@ -2,6 +2,7 @@
 using BowlingEF.Entities;
 using BowlingLib.Model;
 using Business;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace BowlingMaping
         /// </summary>
         /// <param name="_partie"></param>
         /// <returns></returns>
-        public bool Add(Partie _partie)
+        public async Task<bool> Add(Partie _partie)
         {
             bool result = false;
             using (var context = new BowlingContext())
@@ -34,7 +35,7 @@ namespace BowlingMaping
                     Score = _partie.Score
                 };
                 context.Parties.Add(entity);
-                result = context.SaveChanges() == 1;
+                result = await context.SaveChangesAsync() == 1;
             }
             return result;
         }
@@ -44,14 +45,14 @@ namespace BowlingMaping
         /// </summary>
         /// <param name="_partie"></param>
         /// <returns></returns>
-        public bool Delete(Partie _partie)
+        public async Task<bool> Delete(Partie _partie)
         {
             bool result = false;
             using (var context = new BowlingContext())
             {
                 PartieEntity entity = context.Parties.Find(_partie.Id);
                 context.Parties.Remove(entity);
-                result = context.SaveChanges() == 1;
+                result = await context.SaveChangesAsync() == 1;
             }
             return result;
         }
@@ -61,7 +62,7 @@ namespace BowlingMaping
         /// </summary>
         /// <param name="_partie"></param>
         /// <returns></returns>
-        public bool Update(Partie _partie)
+        public async Task<bool> Update(Partie _partie)
         {
             bool result = false;
             using (var context = new BowlingContext())
@@ -70,7 +71,7 @@ namespace BowlingMaping
                 entity.Date = _partie.Date;
                 entity.JoueurId = _partie.Joueur.Id;
                 entity.Score = _partie.Score;
-                result = context.SaveChanges() == 1;
+                result =await context.SaveChangesAsync() == 1;
             }
             return result;
         }
@@ -80,12 +81,12 @@ namespace BowlingMaping
         /// </summary>
         /// <param name="_partie"></param>
         /// <returns></returns>
-        public Partie GetDataWithName(string name)
+        public async Task<Partie> GetDataWithName(string name)
         {
             Partie result = null;
             using (var context = new BowlingContext())
             {
-                PartieEntity entity = context.Parties.Find(name);
+                PartieEntity entity = await context.Parties.FindAsync(name);
                 Joueur joueur = new Joueur(entity.Joueur.Id, entity.Joueur.Pseudo);
                 List<Frame> frames = new List<Frame>();
                 foreach (FrameEntity frameEntity in entity.Frames)
@@ -102,12 +103,12 @@ namespace BowlingMaping
         /// Retourne Toutes les parties en base de donné
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Partie> GetAll()
+        public async Task<IEnumerable<Partie>> GetAll()
         {
             List<Partie> result = new List<Partie>();
             using (var context = new BowlingContext())
             {
-                foreach (PartieEntity entity in context.Parties.OrderBy(item => item.Date))
+                foreach (PartieEntity entity in await context.Parties.ToListAsync())
                 {
                     Joueur joueur = new Joueur(entity.Joueur.Id, entity.Joueur.Pseudo);
                     List<Frame> frames = new List<Frame>();
@@ -119,7 +120,7 @@ namespace BowlingMaping
                     result.Add(new Partie(entity.Id, joueur, frames, entity.Date, entity.Score));
                 }
             }
-            return result;
+            return result.OrderBy(item => item.Date);
         }
 
         /// <summary>
@@ -127,14 +128,15 @@ namespace BowlingMaping
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public IEnumerable<Partie> GetAllWithDate(DateTime date)
+        public async Task<IEnumerable<Partie>> GetAllWithDate(DateTime date)
         {
             List<Partie> result = new List<Partie>();
             using (var context = new BowlingContext())
             {
-                foreach (PartieEntity entity in context.Parties.OrderBy(item => item.Date))
+                var query =  context.Parties.Where(item => item.Date == date);
+                foreach (PartieEntity entity in await context.Parties.ToListAsync())
                 {
-                    if (entity.Date == date)
+                    if (entity.Date.Date == date.Date)
                     {
                         Joueur joueur = new Joueur(entity.Joueur.Id, entity.Joueur.Pseudo);
                         List<Frame> frames = new List<Frame>();
@@ -147,7 +149,7 @@ namespace BowlingMaping
                     }
                 }
             }
-            return result;
+            return result.OrderBy(item => item.Date);
         }
         #endregion
 

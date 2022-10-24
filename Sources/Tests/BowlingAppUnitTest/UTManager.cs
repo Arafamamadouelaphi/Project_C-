@@ -24,7 +24,7 @@ namespace BowlingAppUnitTest
             manager.AddJoueur(joueur);
 
             //Assert
-            Assert.Single(manager.JoueurDataManager.GetAll());
+            Assert.Single(manager.JoueurDataManager.GetAll().Result);
         }
 
         //Test de la méthode AddPartie
@@ -39,24 +39,8 @@ namespace BowlingAppUnitTest
             manager.AddPartie(partie);
 
             //Assert
-            Assert.Single(manager.PartieDataManager.GetAll());
+            Assert.Single(manager.PartieDataManager.GetAll().Result);
         }
-
-        //Test de la méthode AddEquipe
-        //[Fact]
-
-        //public void TestAddEquipe() //Test de la méthode AddEquipe
-        //{
-        //    //Arrange
-        //    Equipe equipe = new Equipe("Equipe 1");
-        //    Manager manager = new Manager(new StubEquipe());
-
-        //    //Act
-        //    manager.AddEquipe(equipe);
-
-        //    //Assert
-        //    Assert.Single(manager.equipeManager.GetAll());
-        //}
 
 
     }

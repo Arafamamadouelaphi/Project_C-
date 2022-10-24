@@ -7,7 +7,7 @@ namespace BowlingStub
     {
         private List<Partie> listParties = new List<Partie>();
        
-        public bool Add(Partie data)
+        public async Task<bool> Add(Partie data)
         {
             if (data != null)
             {
@@ -17,7 +17,7 @@ namespace BowlingStub
             return false;
         }
 
-        public bool Delete(Partie data)
+        public async Task<bool> Delete(Partie data)
         {
             if (data != null)
             {
@@ -27,7 +27,7 @@ namespace BowlingStub
             return false;
         }
 
-        public IEnumerable<Partie> GetAll()
+        public async Task<IEnumerable<Partie>> GetAll()
         {
             return listParties;
         }
@@ -42,22 +42,22 @@ namespace BowlingStub
         }
         //GDW?
 
-        public Partie GetDataWithId(int id)
+        public async Task<Partie> GetDataWithId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Partie GetDataWithName(string name)
+        public async Task<Partie> GetDataWithName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Partie data)
+        public async Task<bool> Update(Partie data)
         {
             if (data != null)
             {
 
-                int index = listParties.FindIndex(x => x.Id == data.Id);
+                int index = listParties. FindIndex(x => x.Id == data.Id);
                 listParties[index] = data;
             }
             return false;

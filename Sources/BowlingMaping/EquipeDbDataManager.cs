@@ -3,6 +3,7 @@ using BowlingEF.Context;
 using BowlingEF.Entities;
 using BowlingLib.Model;
 using Business;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace BowlingMaping
     public class EquipeDbDataManager : IDataManager<Equipe>
     {
         #region Méthodes
-        public bool Add(Equipe _equipe)
+        public async Task<bool> Add(Equipe _equipe)
         {
             bool result = false;
             using (var context = new BowlingContext())
@@ -30,62 +31,62 @@ namespace BowlingMaping
                     }).ToList()
                 };
                 context.Equipes.Add(entity);
-                result = context.SaveChanges() == 1;
+                result = await context.SaveChangesAsync() == 1;
             }
             return result;
         }
 
-        public bool Delete(Equipe _equipe)
+        public async Task<bool> Delete(Equipe _equipe)
         {
             bool result = false;
             using (var context = new BowlingContext())
             {
                 EquipeEntity entity = context.Equipes.Find(_equipe.Id);
                 context.Equipes.Remove(entity);
-                result = context.SaveChanges() == 1;
+                result =await context.SaveChangesAsync() == 1;
             }
             return result;
         }
 
-        public IEnumerable<Equipe> GetAll()
+        public async Task<IEnumerable<Equipe>> GetAll()
         {
             using (var context = new BowlingContext())
             {
-                return context.Equipes.Select(e => new Equipe
+                return await  context.Equipes.Select(e => new Equipe 
                 (
                     e.Id,
                     e.Nom,
                     e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToArray()
-                )).ToList();
+                )).ToListAsync();
             }
         }
 
-        public Equipe GetDataWithName(string name)
+        public async Task<Equipe> GetDataWithName(string name)
         {
             using (var context = new BowlingContext())
             {
-                return context.Equipes.Where(e => e.Nom == name).Select(e => new Equipe
+                return await context.Equipes.Where(e => e.Nom == name).Select(e => new Equipe
                 (
                     e.Id,
                     e.Nom,
                     e.Joueurs.Select(j => new Joueur(j.Id, j.Pseudo)).ToArray()
-                )).FirstOrDefault();
+                )).FirstOrDefaultAsync();
             }
         }
 
-        public bool Update(Equipe data)
+        public async Task< bool> Update(Equipe data)
         {
             bool result = false;
             using (var context = new BowlingContext())
             {
-                EquipeEntity entity = context.Equipes.Find(data.Id);
+                EquipeEntity entity =  context.Equipes.Find(data.Id);
                 entity.Nom = data.Nom;
                 entity.Joueurs = data.Joueurs.Select(j => new JoueurEntity
                 {
                     Id = j.Id,
                     Pseudo = j.Pseudo
                 }).ToList();
-                result = context.SaveChanges() == 1;
+                result = await context.SaveChangesAsync() == 1;
             }
             return result;
         }
