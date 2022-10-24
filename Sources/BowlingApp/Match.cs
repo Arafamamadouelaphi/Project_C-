@@ -85,23 +85,23 @@ namespace BowlingApp
             {
                 Partie partie = new Partie(joueurs[i]);
                 manager.AddJoueur(joueurs[i]);
-                joueurs.ForEach(item => manager.AddJoueur(item));
                 Lancer(partie, saissiseur);
                 manager.AddPartie(partie);
             }
 
 
             // Lancement pour chaque partie avce  des frame
-            for(int j = 0; j<10; j++) // pour chaque frame
-            {
-                Frame frame = new Frame(j);
-                for (int i = 0; i < manager.GetAllPartie().Result.Count(); i++) // on lance les parties à tour de rôle
-                {
-                    LancerFrame(manager.GetAllPartie().Result.ElementAt(i), saissiseur, frame);
-                    manager.AddPartie(manager.GetAllPartie().Result.ElementAt(i));
-                }
+            //for(int j = 0; j<10; j++) // pour chaque frame
+            //{
+            //    Frame frame = new Frame(j);
 
-            }
+            //    for (int i = 0; i < manager.GetAllPartie().Result.Count(); i++) // on lance les parties à tour de rôle
+            //    {
+            //        LancerFrame(manager.GetAllPartie().Result.ElementAt(i), saissiseur, frame);
+            //        manager.AddPartie(manager.GetAllPartie().Result.ElementAt(i));
+            //    }
+
+            //}
             
 
 
