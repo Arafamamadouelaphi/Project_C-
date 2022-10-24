@@ -77,7 +77,7 @@ namespace Test.BowlingAppUnitTest
         public void TestJoueurStub()
         {
             StubJoueur stub = new StubJoueur();
-            Assert.Equal(10, stub.GetAllJoueur(10).Count());
+            Assert.Equal(10, stub.GetAllJoueur(10).Result.Count());
         }
 
 
@@ -89,7 +89,7 @@ namespace Test.BowlingAppUnitTest
             stub.Add(j);
             stub.Delete(j);
             //Compter le nombre de joueur dans un objet IEnumerable
-            Assert.Equal(0, stub.GetAll().Count());
+            Assert.Equal(0, stub.GetAll().Result.Count());
         }
 
 
@@ -105,7 +105,7 @@ namespace Test.BowlingAppUnitTest
             stub.Add(j);
             j.setNom("Augustin");
             stub.Update(j);
-            Assert.Equal("Augustin", stub.GetAll().First().Pseudo);
+            Assert.Equal("Augustin", stub.GetAll().Result.First().Pseudo);
         }
 
 
