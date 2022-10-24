@@ -63,9 +63,12 @@ namespace BowlingApp
         /// <param name="saissiseur"></param>
         public static void JeuIndividuel(Saissiseur saissiseur)
         {
+
             Afficheur.InviteNrb("Joueur");
             int nbrj = saissiseur.CollecteNbr();
             List<Joueur> joueurs = new List<Joueur>();
+
+            // Création des joueurs
             for (int j = 0; j < nbrj; j++)
             {
                 Afficheur.InviteNom($"Joueur {j + 1}"); 
@@ -73,19 +76,33 @@ namespace BowlingApp
                 Joueur joueur = new Joueur(nomJoueur);
                 joueurs.Add(joueur);
             }
+
+
+            // Création des parties pour chaque joueur
+            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
+
             for (int i = 0; i < joueurs.Count; i++)
             {
-                Joueur joueur = joueurs[i];
-                Partie partie = new Partie(joueur);
-                Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-                manager.AddJoueur(joueur);
+                Partie partie = new Partie(joueurs[i]);
+                manager.AddJoueur(joueurs[i]);
                 joueurs.ForEach(item => manager.AddJoueur(item));
                 Lancer(partie, saissiseur);
                 manager.AddPartie(partie);
-
-
             }
 
+
+            // Lancement pour chaque partie avce  des frame
+            for(int j = 0; j<10; j++) // pour chaque frame
+            {
+                Frame frame = new Frame(j);
+                for (int i = 0; i < manager.GetAllPartie().Count(); i++) // on lance les parties à tour de rôle
+                {
+                    LancerFrame(manager.GetAllPartie().ElementAt(i), saissiseur, frame);
+                    manager.AddPartie(manager.GetAllPartie().ElementAt(i));
+                }
+
+            }
+            
 
 
 
@@ -127,5 +144,19 @@ namespace BowlingApp
         }
         #endregion
 
+        /// <summary>
+        /// Faire des lancers avec des frames spécifiques
+        /// </summary>
+        /// <param name="partie"></param>
+        /// <param name="saissiseur"></param>
+        /// <param name="frame"></param>
+        private static void LancerFrame(Partie partie, Saissiseur saissiseur,Frame frame)
+        { 
+                frame.Lancer1 = new Lancer(saissiseur.CollectQuilleTomber());
+                Afficheur.InviteQuilleTombe(2);
+                frame.Lancer2 = new Lancer(saissiseur.CollectQuilleTomber());
+                partie.AddFrame(frame);
+          
+        }
     }
 }

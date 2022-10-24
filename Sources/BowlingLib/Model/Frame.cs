@@ -98,6 +98,7 @@ namespace BowlingLib.Model
             }
 
         }
+
         private bool isFinished;
 
         public Lancer Lancer1
