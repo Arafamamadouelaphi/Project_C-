@@ -31,12 +31,21 @@ namespace BowlingMaping
                 {
                     Id = _partie.Id,
                     Date = _partie.Date,
-                    JoueurId = _partie.Joueur.Id,
                     Score = _partie.Score
                 };
                 context.Parties.Add(entity);
-                result = await context.SaveChangesAsync() == 1;
+                try
+                {
+                    var data = await context.SaveChangesAsync();
+                    result = data == 1;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    throw;
+                }
             }
+
             return result;
         }
 
@@ -69,7 +78,7 @@ namespace BowlingMaping
             {
                 PartieEntity entity = context.Parties.Find(_partie.Id);
                 entity.Date = _partie.Date;
-                entity.JoueurId = _partie.Joueur.Id;
+                //entity.JoueurId = _partie.Joueur.Id;
                 entity.Score = _partie.Score;
                 result =await context.SaveChangesAsync() == 1;
             }

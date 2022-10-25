@@ -46,7 +46,7 @@ namespace BowlingLib.Model
         public Partie(Joueur joueur)
         {
             this.Joueur = joueur;
-            
+            Date = DateTime.Now;
             Frames = new ReadOnlyCollection<Frame>(frames);
         }
 
@@ -77,6 +77,7 @@ namespace BowlingLib.Model
         /// <returns>le Score d'une partie</returns>
         public int? GetScore()
         {
+            score = 0;
             for (int i = 0; i < Frames.Count; i++)
             {
                 score += Frames[i].QuillesTombees;

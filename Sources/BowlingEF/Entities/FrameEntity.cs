@@ -19,14 +19,7 @@ namespace BowlingEF.Entities
         [Required]
         public int Lancer2 { get; set; }
         public int Lancer3 { get; set; }
-        [Required]
-        public bool IsStrike { get; set; }
-        [Required]
-        public bool IsSpare { get; set; }
 
-        [ForeignKey("PartieId")]
-        [Required]
-        public long PartieId { get; set; }
         public PartieEntity Partie { get; set; }
         #endregion
     }
