@@ -44,7 +44,7 @@ l'application vas permettre de:
 
 ### Clone
 
-Clone this repo to your local machine using `https://codefirst.iut.uca.fr/victor_perez.ngounou/BowlingScoreApp.git`
+Clone this repo to your local machine using `https://codefirst.iut.uca.fr/git/victor_perez.ngounou/BowlingScoreApp.git`
 
 * [Git](https://git-scm.com) - Download and Install Git.
 * [Visual Studio](https://visualstudio.microsoft.com/fr/) - Download and Install Visual Studio.
