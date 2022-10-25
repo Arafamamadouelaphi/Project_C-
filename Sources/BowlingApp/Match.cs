@@ -63,16 +63,14 @@ namespace BowlingApp
         /// <param name="saissiseur"></param>
         public static void JeuIndividuel(Saissiseur saissiseur)
         {
+
             // Création des parties pour chaque joueur
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            List<Joueur> j2 = (List<Joueur>)manager.GetAllJoueur().Result;
-            j2.ForEach(joueur =>
-            {
-                Console.WriteLine(joueur.Pseudo);
-            });
+          
             Afficheur.InviteNrb("Joueur");
             int nbrj = saissiseur.CollecteNbr();
             List<Joueur> joueurs = new List<Joueur>();
+
 
             // Création des joueurs
             for (int j = 0; j < nbrj; j++)
@@ -83,8 +81,8 @@ namespace BowlingApp
                 joueurs.Add(joueur);
             }
 
+         
 
-            
 
             for (int i = 0; i < joueurs.Count; i++)
             {
@@ -128,6 +126,20 @@ namespace BowlingApp
             joueur.AddPartie(partie);
             //manager.AddPartie(partie);
             manager.AddJoueur(joueur);
+        }
+
+
+        private static void CreerPatier()
+        {
+           /* Afficheur.InviteNom("Joueur");
+            string Nom = saissiseur.CollecteNom();
+            Joueur joueur = new Joueur(Nom);
+            Partie partie = new Partie(joueur);
+            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
+            Lancer(partie, saissiseur);
+            joueur.AddPartie(partie);
+            //manager.AddPartie(partie);
+            manager.AddJoueur(joueur);*/
         }
 
         /// <summary>

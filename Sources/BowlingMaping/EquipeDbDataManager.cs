@@ -24,12 +24,22 @@ namespace BowlingMaping
                 {
                     Id = _equipe.Id,
                     Nom = _equipe.Nom,
-                    Joueurs = _equipe.Joueurs.Select(j => new JoueurEntity
-                    {
-                        Id = j.Id,
-                        Pseudo = j.Pseudo
-                    }).ToList()
+                    
                 };
+
+                for(int i = 0; i<_equipe.Joueurs.Count; i++)
+                {
+                    JoueurEntity joueur = new JoueurEntity
+                    {
+                        Id = _equipe.Joueurs[i].Id,
+                        Pseudo = _equipe.Joueurs[i].Pseudo,
+                        Equipe = entity                       
+
+                    };
+
+                    entity.Joueurs.Add(joueur);
+                }
+
                 context.Equipes.Add(entity);
                 result = await context.SaveChangesAsync() == 1;
             }
