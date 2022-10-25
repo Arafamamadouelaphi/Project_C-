@@ -79,7 +79,7 @@ Update-Database
 
 ## Contributeurs
 
-* [Victor Perez NGOUNOU](https://codefirst.iut.uca.fr/victor_perez.ngounou)
+* [Victor Perez NGOUNOU](https://codefirst.iut.uca.fr/git/victor_perez.ngounou)
 * [Mamadou Elaphi ARAFA](https://codefirst.iut.uca.fr/git/mamadou_elaphi.arafa)
 * [Augustin AFFOGNON](https://codefirst.iut.uca.fr/git/augustin.affognon)
 
@@ -88,7 +88,7 @@ Update-Database
 
 Contactez-moi à l'un des endroits suivants !
 
-* Website at <a href="https://codefirst.iut.uca.fr/victor_perez.ngounou" target="_blank">`https://codefirst.iut.uca.fr/victor_perez.ngounou`</a>
+* Website at <a href="https://codefirst.iut.uca.fr/git/victor_perez.ngounou" target="_blank">`https://codefirst.iut.uca.fr/victor_perez.ngounou`</a>
 * Email at <a href="mailto:victor_perez.ngounou@etu.uca.fr" target="_blank">`victor_perez.ngounou@etu.uca.fr`</a>
 
 ## License
