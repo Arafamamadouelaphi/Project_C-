@@ -51,7 +51,7 @@ namespace BowlingApp
                     Partie partie = new Partie(joueur);
                     Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
                     manager.AddJoueur(joueur);
-                    Lancer(partie, saissiseur);
+                    LancerBoulle(partie, saissiseur);
                     manager.AddPartie(partie);
                 }
             }
@@ -88,7 +88,7 @@ namespace BowlingApp
             {
                 Partie partie = new Partie(joueurs[i]);
                 manager.AddJoueur(joueurs[i]);
-                Lancer(partie, saissiseur);
+                LancerBoulle(partie, saissiseur);
                 manager.AddPartie(partie);
             }
 
@@ -122,7 +122,7 @@ namespace BowlingApp
             Joueur joueur = new Joueur(Nom);
             Partie partie = new Partie(joueur);
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            Lancer(partie, saissiseur);
+            LancerBoulle(partie, saissiseur);
             joueur.AddPartie(partie);
             //manager.AddPartie(partie);
             manager.AddJoueur(joueur);
@@ -147,7 +147,7 @@ namespace BowlingApp
         /// </summary>
         /// <param name="partie"></param>
         /// <param name="saissiseur"></param"""
-        private static void Lancer(Partie partie,Saissiseur saissiseur)
+        private static void LancerBoulle(Partie partie,Saissiseur saissiseur)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -156,16 +156,23 @@ namespace BowlingApp
                 Afficheur.InviteQuilleTombe(1);
                 frame.Lancer(saissiseur.CollectQuilleTomber());
                 
-                if (!frame.IsStrike)
+                if (!frame.IsStrike && i!=9)
                 {
                     Afficheur.InviteQuilleTombe(2);
                     frame.Lancer(saissiseur.CollectQuilleTomber());
                 }
                 if (i==9)
                 {
-                    Frame frame1 = new Frame(i + 2);
-                    Afficheur.InviteQuilleTombe(3);
-                    frame.Lancer(saissiseur.CollectQuilleTomber());
+                    if(!frame.IsStrike)
+                    {
+                        Afficheur.InviteQuilleTombe(2);
+                        frame.Lancer(saissiseur.CollectQuilleTomber());
+                    }
+                    if (frame.IsStrike||frame.IsSpare)
+                    {
+                        Afficheur.InviteQuilleTombe(3);
+                        frame.Lancer(saissiseur.CollectQuilleTomber());
+                    }
                 }
                 partie.AddFrame(frame);
                 Console.WriteLine(partie.GetScore());
