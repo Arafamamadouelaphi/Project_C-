@@ -22,6 +22,7 @@ namespace BowlingApp
         /// <param name="saissiseur"></param>
         public static void JeuxEnEquipe(Saissiseur saissiseur)
         {
+            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
             Afficheur.InviteNrb("Equipe");
             int nbrE = saissiseur.CollecteNbr();
             Afficheur.InviteNrb("Joueur par Equipe");
@@ -41,6 +42,7 @@ namespace BowlingApp
                     equipe.AjouterJoueur(joueur);
                 }
                 equipes.Add(equipe);
+                manager.AddEquipe(equipe);
             }
 
             for (int i = 0; i < equipes.Count; i++)
@@ -49,7 +51,6 @@ namespace BowlingApp
                 {
                     Joueur joueur = equipes[i].Joueurs[j];
                     Partie partie = new Partie(joueur);
-                    Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
                     manager.AddJoueur(joueur);
                     LancerBoulle(partie, saissiseur);
                     manager.AddPartie(partie);
@@ -91,24 +92,6 @@ namespace BowlingApp
                 LancerBoulle(partie, saissiseur);
                 manager.AddPartie(partie);
             }
-
-
-            // Lancement pour chaque partie avce  des frame
-            //for(int j = 0; j<10; j++) // pour chaque frame
-            //{
-            //    Frame frame = new Frame(j);
-
-            //    for (int i = 0; i < manager.GetAllPartie().Result.Count(); i++) // on lance les parties à tour de rôle
-            //    {
-            //        LancerFrame(manager.GetAllPartie().Result.ElementAt(i), saissiseur, frame);
-            //        manager.AddPartie(manager.GetAllPartie().Result.ElementAt(i));
-            //    }
-
-            //}
-            
-
-
-
         }
 
         /// <summary>
@@ -124,24 +107,9 @@ namespace BowlingApp
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
             LancerBoulle(partie, saissiseur);
             joueur.AddPartie(partie);
-            //manager.AddPartie(partie);
             manager.AddJoueur(joueur);
         }
-
-
-        private static void CreerPatier()
-        {
-           /* Afficheur.InviteNom("Joueur");
-            string Nom = saissiseur.CollecteNom();
-            Joueur joueur = new Joueur(Nom);
-            Partie partie = new Partie(joueur);
-            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            Lancer(partie, saissiseur);
-            joueur.AddPartie(partie);
-            //manager.AddPartie(partie);
-            manager.AddJoueur(joueur);*/
-        }
-
+        
         /// <summary>
         /// Faire des lancers
         /// </summary>
@@ -149,42 +117,31 @@ namespace BowlingApp
         /// <param name="saissiseur"></param"""
         private static void LancerBoulle(Partie partie,Saissiseur saissiseur)
         {
+            //Création des Frames pour la Partie
             for (int i = 0; i < 10; i++)
             {
                 Afficheur.AfficheNumFrame(i + 1);
                 Frame frame = new Frame(i + 1);
                 Afficheur.InviteQuilleTombe(1);
-                frame.Lancer(saissiseur.CollectQuilleTomber());
-                
+                frame.Lancer(saissiseur.CollectQuilleTomber());//Premier lancer du Frame
+
+                //Faire le deuxième lancer si le premier n'est pas un strike
                 if (!frame.IsStrike)
                 {
                     Afficheur.InviteQuilleTombe(2);
                     frame.Lancer(saissiseur.CollectQuilleTomber());
                 }
+
+                //Faire le troisième du dernier frame lancer si le premier est un strike ou le deuxième est un spare
                 if (i == 9 && (frame.IsStrike || frame.IsSpare))
                 {
                     Afficheur.InviteQuilleTombe(3);
                     frame.Lancer(saissiseur.CollectQuilleTomber());
                 }
-                partie.AddFrame(frame);
-                Console.WriteLine(partie.GetScore());
+                partie.AddFrame(frame);//ajout du frame à la partie
+                Console.WriteLine(partie.GetScore());//affichage du score à la fin de chaque frame
             }
         }
         #endregion
-
-        /// <summary>
-        /// Faire des lancers avec des frames spécifiques
-        /// </summary>
-        /// <param name="partie"></param>
-        /// <param name="saissiseur"></param>
-        /// <param name="frame"></param>
-        private static void LancerFrame(Partie partie, Saissiseur saissiseur,Frame frame)
-        { 
-                frame.Lancer1 = new Lancer(saissiseur.CollectQuilleTomber());
-                Afficheur.InviteQuilleTombe(2);
-                frame.Lancer2 = new Lancer(saissiseur.CollectQuilleTomber());
-                partie.AddFrame(frame);
-          
-        }
     }
 }
