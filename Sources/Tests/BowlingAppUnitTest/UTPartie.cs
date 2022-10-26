@@ -32,6 +32,7 @@ namespace BowlingAppUnitTest
 
             for (int i = 0; i < partie.Frames.Count; i++)
             {
+                i = 9;
                 partie.Frames[i].Lancer(10);
                 if (i==9)
                 {
