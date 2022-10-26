@@ -58,7 +58,7 @@ namespace BowlingMaping
                             {
                                 Id = _joueur.Parties[i].Frames[j].Id,
                                 Lancer1 = _joueur.Parties[i].Frames[j].Lancer1.QuillesTombees,
-                                Lancer2 = _joueur.Parties[i].Frames[j].Lancer2.QuillesTombees,
+                                Lancer2 = (_joueur.Parties[i].Frames[j].Lancer2 == null) ? 0 : _joueur.Parties[i].Frames[j].Lancer2.QuillesTombees,
                                 Lancer3 = (_joueur.Parties[i].Frames[j].Lancer3 == null) ? 0 : _joueur.Parties[i].Frames[j].Lancer3.QuillesTombees,//si Lancer3 est null il prend la valeur Zero
                                 Partie = partieEntity
                             };

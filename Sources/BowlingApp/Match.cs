@@ -156,23 +156,15 @@ namespace BowlingApp
                 Afficheur.InviteQuilleTombe(1);
                 frame.Lancer(saissiseur.CollectQuilleTomber());
                 
-                if (!frame.IsStrike && i!=9)
+                if (!frame.IsStrike)
                 {
                     Afficheur.InviteQuilleTombe(2);
                     frame.Lancer(saissiseur.CollectQuilleTomber());
                 }
-                if (i==9)
+                if (i == 9 && (frame.IsStrike || frame.IsSpare))
                 {
-                    if(!frame.IsStrike)
-                    {
-                        Afficheur.InviteQuilleTombe(2);
-                        frame.Lancer(saissiseur.CollectQuilleTomber());
-                    }
-                    if (frame.IsStrike||frame.IsSpare)
-                    {
-                        Afficheur.InviteQuilleTombe(3);
-                        frame.Lancer(saissiseur.CollectQuilleTomber());
-                    }
+                    Afficheur.InviteQuilleTombe(3);
+                    frame.Lancer(saissiseur.CollectQuilleTomber());
                 }
                 partie.AddFrame(frame);
                 Console.WriteLine(partie.GetScore());

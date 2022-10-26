@@ -29,11 +29,14 @@ namespace BowlingAppUnitTest
             partie.AddFrame(new Frame(8));
             partie.AddFrame(new Frame(9));
             partie.AddFrame(new Frame(10));
-            partie.AddFrame(new Frame(11));
 
             for (int i = 0; i < partie.Frames.Count; i++)
             {
                 partie.Frames[i].Lancer(10);
+                if (i==9)
+                {
+                    partie.Frames[i].Lancer(10);
+                }
             }
 
             //Act

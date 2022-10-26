@@ -198,7 +198,7 @@ namespace BowlingLib.Model
                         {
                             //lorsque le lancer actuel est un strike
                             this.IsStrike = true;
-                            QuillesRestantes = MAX_QUILLE;//Remetre le nombre de quilles restantes à 10 pour le lancer 2
+                            QuillesRestantes = MAX_QUILLE;//Remetre le nombre de quilles restantes à 10 pour le lancer 3
                         }
                         else
                         {
