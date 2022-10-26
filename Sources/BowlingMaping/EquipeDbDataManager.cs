@@ -33,7 +33,7 @@ namespace BowlingMaping
                     {
                         Id = _equipe.Joueurs[i].Id,
                         Pseudo = _equipe.Joueurs[i].Pseudo,
-                        Equipe = entity                       
+                        //Equipe = entity                       
 
                     };
 
