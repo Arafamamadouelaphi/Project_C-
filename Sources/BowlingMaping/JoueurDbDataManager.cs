@@ -67,7 +67,7 @@ namespace BowlingMaping
                         entity.PartieEntities.Add(partieEntity);
                     }
                     context.Joueurs.Add(entity);
-                    result = await context.SaveChangesAsync() == 1;
+                    result = await context.SaveChangesAsync() > 0;
                 }
                 catch (Exception ex)
                 {
@@ -93,12 +93,9 @@ namespace BowlingMaping
                 {
                     JoueurEntity entity = context.Joueurs.Find(_joueur.Id);
                     context.Joueurs.Remove(entity);
-                    result = await context.SaveChangesAsync() == 1;
+                result = await context.SaveChangesAsync() > 0;
                 }
                 return result;
- 
-           
-            
         }
 
         /// <summary>
@@ -142,7 +139,7 @@ namespace BowlingMaping
                 if (entity!=null)
                 {
                     entity.Pseudo = _joueur.Pseudo;
-                    result = await context.SaveChangesAsync() == 1;
+                    result = await context.SaveChangesAsync() > 0;
                 }
             }
             return result;
