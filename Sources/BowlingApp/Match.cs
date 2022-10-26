@@ -62,37 +62,63 @@ namespace BowlingApp
         /// Match en Individuel
         /// </summary>
         /// <param name="saissiseur"></param>
-        public static void JeuIndividuel(Saissiseur saissiseur)
+        public static async void JeuIndividuel(Saissiseur saissiseur)
         {
 
             // Création des parties pour chaque joueur
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-          
+
+
             Afficheur.InviteNrb("Joueur");
             int nbrj = saissiseur.CollecteNbr();
             List<Joueur> joueurs = new List<Joueur>();
-
-
-            // Création des joueurs
+            List<Partie> partiees = new List<Partie>();
+            bool verit = false;
+            int nbPartie = 1; // Nombre de partie pour chaque joueur
+            // Création des joueurs et leur partie
             for (int j = 0; j < nbrj; j++)
             {
-                Afficheur.InviteNom($"Joueur {j + 1}"); 
+                Afficheur.InviteNom($"Joueur {j + 1}");
                 string nomJoueur = saissiseur.CollecteNom();
                 Joueur joueur = new Joueur(nomJoueur);
+                Partie partie = new Partie(joueur);
+
+
                 joueurs.Add(joueur);
+                partiees.Add(partie);
+                // verit =   await manager.AddJoueur(joueur);
             }
 
-         
+            Console.WriteLine(verit);
 
+            for (int p = 0; p < nbPartie; p++)
+            {
+                // Lancement pour chaque partie avce  10 frames
+                for (int j = 0; j < 10; j++) // 
+                {
+
+                    for (int i = 0; i < partiees.Count; i++) // on lance les parties à tour de rôle
+                    {
+                        Frame frame = new Frame(j + 1);
+                        Afficheur.InviteNomJoueur(joueurs[i].Pseudo);
+                        LancerFrame(partiees.ElementAt(i), saissiseur, frame);
+                        //  await  manager.UpdatePartie(joueurs.ElementAt(i).Parties.ElementAt(p));
+
+                    }
+
+                }
+            }
 
             for (int i = 0; i < joueurs.Count; i++)
             {
-                Partie partie = new Partie(joueurs[i]);
-                manager.AddJoueur(joueurs[i]);
-                LancerBoulle(partie, saissiseur);
-                manager.AddPartie(partie);
+                joueurs[i].AddPartie(partiees[i]);
+                verit = await manager.AddJoueur(joueurs[i]);
             }
+
+
+
         }
+
 
         /// <summary>
         /// Match en Solo
@@ -141,6 +167,39 @@ namespace BowlingApp
                 partie.AddFrame(frame);//ajout du frame à la partie
                 Console.WriteLine(partie.GetScore());//affichage du score à la fin de chaque frame
             }
+        }
+
+
+
+        /// <summary>
+        /// Faire des lancers avec des frames spécifiques
+        /// </summary>
+        /// <param name="partie"></param>
+        /// <param name="saissiseur"></param>
+        /// <param name="frame"></param>
+        private static void LancerFrame(Partie partie, Saissiseur saissiseur, Frame frame)
+        {
+            Afficheur.AfficheNumFrame(frame.Numero);
+
+            Afficheur.InviteQuilleTombe(1);
+            frame.Lancer(saissiseur.CollectQuilleTomber());
+
+            if (!frame.IsStrike)
+            {
+                Afficheur.InviteQuilleTombe(2);
+                frame.Lancer(saissiseur.CollectQuilleTomber());
+            }
+            //Faire le troisième du dernier frame lancer si le premier est un strike ou le deuxième est un spare
+            if (frame.Numero == 10 && (frame.IsStrike || frame.IsSpare))
+            {
+                Afficheur.InviteQuilleTombe(3);
+                frame.Lancer(saissiseur.CollectQuilleTomber());
+            }
+            partie.AddFrame(frame);//ajout du frame à la partie
+            Console.WriteLine(partie.GetScore());//affichage du score à la fin de chaque frame
+            partie.AddFrame(frame);
+
+
         }
         #endregion
     }
