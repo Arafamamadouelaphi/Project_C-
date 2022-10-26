@@ -67,7 +67,7 @@ namespace BowlingMaping
                         entity.PartieEntities.Add(partieEntity);
                     }
                     context.Joueurs.Add(entity);
-                    result = await context.SaveChangesAsync() == 1;
+                    result = await context.SaveChangesAsync()  > 0;
                 }
                 catch (Exception ex)
                 {
