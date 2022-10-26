@@ -66,7 +66,7 @@ $ dotnet tool install --global dotnet-ef
 * Dans la console, tapez la commande suivante:
 
 ```shell
-Update-Database
+$ dotnet ef database update 
 ```
 
 * L'application est prête à être utilisée.

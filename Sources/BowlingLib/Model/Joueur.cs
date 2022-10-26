@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+
 namespace BowlingLib.Model
 {
     /// <summary>
@@ -14,12 +16,16 @@ namespace BowlingLib.Model
         #region Propriétés
         private string pseudo;
         private readonly long id;
+
+        private readonly List<Partie> parties=new();
+        public ReadOnlyCollection<Partie> Parties { get; }
         #endregion
 
         #region Constructeurs
         public Joueur(string pseudo)
         {
             this.Pseudo = pseudo;
+            Parties = new ReadOnlyCollection<Partie>(parties);
         }
 
         public Joueur(long id, string pseudo) : this(pseudo)
@@ -74,6 +80,11 @@ namespace BowlingLib.Model
         public override int GetHashCode()
         {
             return Pseudo.GetHashCode();
+        }
+
+        public void AddPartie(Partie p)
+        {
+            parties.Add(p);
         }
 
         #endregion

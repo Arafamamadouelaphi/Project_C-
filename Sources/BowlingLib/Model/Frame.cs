@@ -149,7 +149,7 @@ namespace BowlingLib.Model
         /// <param name="lancer1"></param>
         /// <param name="lancer2"></param>
         /// <param name="lancer3"></param>
-        public Frame(long id, int numero, int lancer1, int lancer2, [AllowNull] int lancer3) : this(numero)
+        public Frame(long id, int numero, int lancer1, int lancer2, int lancer3) : this(numero)
         {
             this.id = id;
             Lancer1 = new Lancer(lancer1);

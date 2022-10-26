@@ -64,9 +64,13 @@ namespace BowlingApp
         public static void JeuIndividuel(Saissiseur saissiseur)
         {
 
+            // Création des parties pour chaque joueur
+            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
+          
             Afficheur.InviteNrb("Joueur");
             int nbrj = saissiseur.CollecteNbr();
             List<Joueur> joueurs = new List<Joueur>();
+
 
             // Création des joueurs
             for (int j = 0; j < nbrj; j++)
@@ -77,9 +81,8 @@ namespace BowlingApp
                 joueurs.Add(joueur);
             }
 
+         
 
-            // Création des parties pour chaque joueur
-            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
 
             for (int i = 0; i < joueurs.Count; i++)
             {
@@ -119,16 +122,31 @@ namespace BowlingApp
             Joueur joueur = new Joueur(Nom);
             Partie partie = new Partie(joueur);
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            manager.AddJoueur(joueur);
             Lancer(partie, saissiseur);
-            manager.AddPartie(partie);
+            joueur.AddPartie(partie);
+            //manager.AddPartie(partie);
+            manager.AddJoueur(joueur);
+        }
+
+
+        private static void CreerPatier()
+        {
+           /* Afficheur.InviteNom("Joueur");
+            string Nom = saissiseur.CollecteNom();
+            Joueur joueur = new Joueur(Nom);
+            Partie partie = new Partie(joueur);
+            Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
+            Lancer(partie, saissiseur);
+            joueur.AddPartie(partie);
+            //manager.AddPartie(partie);
+            manager.AddJoueur(joueur);*/
         }
 
         /// <summary>
         /// Faire des lancers
         /// </summary>
         /// <param name="partie"></param>
-        /// <param name="saissiseur"></param>
+        /// <param name="saissiseur"></param"""
         private static void Lancer(Partie partie,Saissiseur saissiseur)
         {
             for (int i = 0; i < 10; i++)
@@ -136,10 +154,21 @@ namespace BowlingApp
                 Afficheur.AfficheNumFrame(i + 1);
                 Frame frame = new Frame(i + 1);
                 Afficheur.InviteQuilleTombe(1);
-                frame.Lancer1 = new Lancer(saissiseur.CollectQuilleTomber());
-                Afficheur.InviteQuilleTombe(2);
-                frame.Lancer2 = new Lancer(saissiseur.CollectQuilleTomber());
+                frame.Lancer(saissiseur.CollectQuilleTomber());
+                
+                if (!frame.IsStrike)
+                {
+                    Afficheur.InviteQuilleTombe(2);
+                    frame.Lancer(saissiseur.CollectQuilleTomber());
+                }
+                if (i==9)
+                {
+                    Frame frame1 = new Frame(i + 2);
+                    Afficheur.InviteQuilleTombe(3);
+                    frame.Lancer(saissiseur.CollectQuilleTomber());
+                }
                 partie.AddFrame(frame);
+                Console.WriteLine(partie.GetScore());
             }
         }
         #endregion

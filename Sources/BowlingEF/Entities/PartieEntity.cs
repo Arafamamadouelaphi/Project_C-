@@ -17,11 +17,9 @@ namespace BowlingEF.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public JoueurEntity Joueur { get; set; }
 
-        [ForeignKey("JoueurId")]
-        [Required]
-        public long JoueurId { get; set; }
+        [ForeignKey("JoueurForeignKey")]
+        public JoueurEntity Joueur { get; set; }
         [Required]
         public DateTime Date { get; set; }
         public ICollection<FrameEntity> Frames { get; set; }
