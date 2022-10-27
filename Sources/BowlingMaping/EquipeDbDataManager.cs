@@ -27,21 +27,50 @@ namespace BowlingMaping
                     
                 };
 
-                for(int i = 0; i<_equipe.Joueurs.Count; i++)
+                for (int i = 0; i < _equipe.Joueurs.Count; i++)
                 {
-                    JoueurEntity joueur = new JoueurEntity
+                    //Mapping entre la classe joueur et la classe joueurEntity
+                    JoueurEntity joueurEntity = new JoueurEntity
                     {
                         Id = _equipe.Joueurs[i].Id,
                         Pseudo = _equipe.Joueurs[i].Pseudo,
-                        //Equipe = entity                       
-
                     };
 
-                    entity.Joueurs.Add(joueur);
-                }
+                    //Parcourt de la liste des parties d'un joueur
+                    for (int j = 0; j < _equipe.Joueurs[i].Parties.Count; j++)
+                    {
+                        //Mapping entre les parties d'un joueur et les partieEntity d'une partieEntity
+                        PartieEntity partieEntity = new PartieEntity
+                        {
+                            Joueur = joueurEntity,
+                            Date = _equipe.Joueurs[i].Parties[j].Date,
+                            Score = _equipe.Joueurs[i].Parties[j].Score
 
+                        };
+
+                        //Parcourt de la liste des frames d'une partie
+                        for (int k = 0; k < _equipe.Joueurs[i].Parties[j].Frames.Count; k++)
+                        {
+                            //Mapping entre les frames d'une partie et les frameEntity d'une partieEntity
+                            FrameEntity frameEntity = new FrameEntity
+                            {
+                                Id = _equipe.Joueurs[i].Parties[j].Frames[k].Id,
+                                Lancer1 = _equipe.Joueurs[i].Parties[j].Frames[k].Lancer1.QuillesTombees,
+                                Lancer2 = _equipe.Joueurs[i].Parties[j].Frames[k].Lancer2.QuillesTombees,
+                                Lancer3 = _equipe.Joueurs[i].Parties[j].Frames[k].Lancer3.QuillesTombees,
+                                Partie = partieEntity
+                            };
+                            partieEntity.Frames.Add(frameEntity);
+                        }
+                        joueurEntity.PartieEntities.Add(partieEntity);
+                    }
+                    entity.Joueurs.Add(joueurEntity);
+
+
+                }
                 context.Equipes.Add(entity);
-                result = await context.SaveChangesAsync() == 1;
+                await context.SaveChangesAsync();
+                result = true;
             }
             return result;
         }
@@ -53,7 +82,7 @@ namespace BowlingMaping
             {
                 EquipeEntity entity = context.Equipes.Find(_equipe.Id);
                 context.Equipes.Remove(entity);
-                result =await context.SaveChangesAsync() == 1;
+                result = await context.SaveChangesAsync() > 0;
             }
             return result;
         }
@@ -96,7 +125,7 @@ namespace BowlingMaping
                     Id = j.Id,
                     Pseudo = j.Pseudo
                 }).ToList();
-                result = await context.SaveChangesAsync() == 1;
+                result = await context.SaveChangesAsync() > 0;
             }
             return result;
         }

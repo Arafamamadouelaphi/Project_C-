@@ -58,7 +58,7 @@ namespace BowlingMaping
                             {
                                 Id = _joueur.Parties[i].Frames[j].Id,
                                 Lancer1 = _joueur.Parties[i].Frames[j].Lancer1.QuillesTombees,
-                                Lancer2 = _joueur.Parties[i].Frames[j].Lancer2.QuillesTombees,
+                                Lancer2 = (_joueur.Parties[i].Frames[j].Lancer2 == null) ? 0 : _joueur.Parties[i].Frames[j].Lancer2.QuillesTombees,
                                 Lancer3 = (_joueur.Parties[i].Frames[j].Lancer3 == null) ? 0 : _joueur.Parties[i].Frames[j].Lancer3.QuillesTombees,//si Lancer3 est null il prend la valeur Zero
                                 Partie = partieEntity
                             };
@@ -67,7 +67,7 @@ namespace BowlingMaping
                         entity.PartieEntities.Add(partieEntity);
                     }
                     context.Joueurs.Add(entity);
-                    result = await context.SaveChangesAsync() == 1;
+                    result = await context.SaveChangesAsync()  > 0;
                 }
                 catch (Exception ex)
                 {
@@ -93,12 +93,9 @@ namespace BowlingMaping
                 {
                     JoueurEntity entity = context.Joueurs.Find(_joueur.Id);
                     context.Joueurs.Remove(entity);
-                    result = await context.SaveChangesAsync() == 1;
+                result = await context.SaveChangesAsync() > 0;
                 }
                 return result;
- 
-           
-            
         }
 
         /// <summary>
@@ -142,7 +139,7 @@ namespace BowlingMaping
                 if (entity!=null)
                 {
                     entity.Pseudo = _joueur.Pseudo;
-                    result = await context.SaveChangesAsync() == 1;
+                    result = await context.SaveChangesAsync() > 0;
                 }
             }
             return result;
