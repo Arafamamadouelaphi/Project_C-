@@ -67,6 +67,8 @@ namespace BowlingLib.Model
         /// <param name="frame"></param>
         public void AddFrame(Frame frame)
         {
+            if (Frames.Contains(frame))
+                throw new ArgumentException("Le frame existe déjà");
             frames.Add(frame);
         }
 

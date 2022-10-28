@@ -85,6 +85,8 @@ namespace BowlingLib.Model
 
         public void AddPartie(Partie p)
         {
+            if(Parties.Contains(p))
+                throw new ArgumentException("la partie existe deja");
             parties.Add(p);
         }
 
