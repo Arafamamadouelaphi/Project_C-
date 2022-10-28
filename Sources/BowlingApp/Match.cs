@@ -15,48 +15,23 @@ namespace BowlingApp
     public static class Match
     {
         #region Méthodes
-
+        
         /// <summary>
-        /// Match en Equipe
+        /// Match en Solo
         /// </summary>
         /// <param name="saissiseur"></param>
-        public static void JeuxEnEquipe(Saissiseur saissiseur)
+        public static void JeuSolo(Saissiseur saissiseur)
         {
+            Afficheur.InviteNom("Joueur");
+            string Nom = saissiseur.CollecteNom();
+            Joueur joueur = new Joueur(Nom);
+            Partie partie = new Partie(joueur);
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            Afficheur.InviteNrb("Equipe");
-            int nbrE = saissiseur.CollecteNbr();
-            Afficheur.InviteNrb("Joueur par Equipe");
-            int nbrJ = saissiseur.CollecteNbr();
-            List<Equipe> equipes = new List<Equipe>();
-            for (int i = 0; i < nbrE; i++)
-            {
-                Afficheur.InviteNom($"Equipe {i + 1}");//Recuperer le nom de l'equipe
-                string Nom = saissiseur.CollecteNom();
-                Equipe equipe = new Equipe(Nom);
-                for (int j = 0; j < nbrJ; j++)
-                {
-                    Console.WriteLine($"Equipe {i + 1}");
-                    Afficheur.InviteNom($"Joueur {j + 1}"); //Recuperer le nom des joueur de chaque Equipe
-                    string nomJoueur = saissiseur.CollecteNom();
-                    Joueur joueur = new Joueur(nomJoueur);
-                    equipe.AjouterJoueur(joueur);
-                }
-                equipes.Add(equipe);
-                manager.AddEquipe(equipe);
-            }
-
-            for (int i = 0; i < equipes.Count; i++)
-            {
-                for (int j = 0; j < equipes[i].Joueurs.Count; j++)
-                {
-                    Joueur joueur = equipes[i].Joueurs[j];
-                    Partie partie = new Partie(joueur);
-                    manager.AddJoueur(joueur);
-                    LancerBoulle(partie, saissiseur);
-                    manager.AddPartie(partie);
-                }
-            }
+            LancerBoulle(partie, saissiseur);
+            joueur.AddPartie(partie);
+            manager.AddJoueur(joueur);
         }
+
 
         /// <summary>
         /// Match en Individuel
@@ -73,7 +48,6 @@ namespace BowlingApp
             int nbrj = saissiseur.CollecteNbr();
             List<Joueur> joueurs = new List<Joueur>();
             List<Partie> partiees = new List<Partie>();
-            int nbPartie = 1; // Nombre de partie pour chaque joueur
 
             // Création des joueurs et leur partie
             for (int j = 0; j < nbrj; j++)
@@ -106,23 +80,57 @@ namespace BowlingApp
             }
         }
 
-
         /// <summary>
-        /// Match en Solo
+        /// Match en Equipe
         /// </summary>
         /// <param name="saissiseur"></param>
-        public static void JeuSolo(Saissiseur saissiseur)
+        public static void JeuxEnEquipe(Saissiseur saissiseur)
         {
-            Afficheur.InviteNom("Joueur");
-            string Nom = saissiseur.CollecteNom();
-            Joueur joueur = new Joueur(Nom);
-            Partie partie = new Partie(joueur);
             Manager manager = new Manager(new EquipeDbDataManager(), new PartieDbDataManager(), new JoueurDbDataManager());
-            LancerBoulle(partie, saissiseur);
-            joueur.AddPartie(partie);
-            manager.AddJoueur(joueur);
+            Afficheur.InviteNrb("Equipe");
+            int nbrE = saissiseur.CollecteNbr();
+            Afficheur.InviteNrb("Joueur par Equipe");
+            int nbrJ = saissiseur.CollecteNbr();
+            List<Equipe> equipes = new List<Equipe>();
+            for (int i = 0; i < nbrE; i++)
+            {
+                Afficheur.InviteNom($"Equipe {i + 1}");//Recuperer le nom de l'equipe
+                string Nom = saissiseur.CollecteNom();
+                Equipe equipe = new Equipe(Nom);
+                for (int j = 0; j < nbrJ; j++)
+                {
+                    Console.WriteLine($"Equipe {i + 1}");
+                    Afficheur.InviteNom($"Joueur {j + 1}"); //Recuperer le nom des joueur de chaque Equipe
+                    string nomJoueur = saissiseur.CollecteNom();
+                    Joueur joueur = new Joueur(nomJoueur);
+                    equipe.AjouterJoueur(joueur);
+                }
+                equipes.Add(equipe);
+            }
+            // Lancement pour chaque partie avce  10 frames
+            for (int j = 0; j < 10; j++) // 
+            {
+                for (int i = 0; i <equipes.Count; i++) // on lance les parties à tour de rôle
+                {
+                    for (int k = 0; k < equipes[i].Joueurs.Count; k++)
+                    {
+                        Frame frame = new Frame(j + 1);
+                        Afficheur.InviteNomJoueur(equipes[i].Joueurs[k].Pseudo);
+                        LancerFrame(equipes[i].Joueurs[k].Parties.Last(), saissiseur, frame);
+                    }
+                }
+            }
+
+            //for (int i = 0; i < joueurs.Count; i++)
+            //{
+            //    joueurs[i].AddPartie(partiees[i]);
+            //    manager.AddJoueur(joueurs[i]);
+            //}
+
         }
 
+        
+        
         /// <summary>
         /// Faire des lancers
         /// </summary>
@@ -184,10 +192,28 @@ namespace BowlingApp
             }
             partie.AddFrame(frame);
             Console.WriteLine(partie.GetScore());//affichage du score à la fin de chaque frame
-            
-
-
         }
         #endregion
+
+        /// <summary>
+        /// Match en Equipe
+        /// </summary>
+        /// <param name="saissiseur"></param>
+        //public static void JeuxEnEquipe(Saissiseur saissiseur)
+        //{
+            
+
+        //    for (int i = 0; i < equipes.Count; i++)
+        //    {
+        //        for (int j = 0; j < equipes[i].Joueurs.Count; j++)
+        //        {
+        //            Joueur joueur = equipes[i].Joueurs[j];
+        //            Partie partie = new Partie(joueur);
+        //            manager.AddJoueur(joueur);
+        //            LancerBoulle(partie, saissiseur);
+        //            manager.AddPartie(partie);
+        //        }
+        //    }
+        //}
     }
 }

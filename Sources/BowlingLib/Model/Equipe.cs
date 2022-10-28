@@ -27,6 +27,7 @@ namespace BowlingLib.Model
         public Equipe(string nom)
         {
             Nom = nom;
+            Joueurs = new ReadOnlyCollection<Joueur>(this.joueurs);
         }
 
         public Equipe(long id, string nom, params Joueur[] joueurs)

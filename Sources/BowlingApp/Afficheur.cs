@@ -58,9 +58,9 @@ namespace BowlingApp
             Console.WriteLine($"Entrez le nombre de quilles tombés du lancer {i}");
         }
 
-        public static void InviteNomJoueur(string pseudo)
+        public static void InviteNomJoueur(string pseudoJoueur,string speudoEquipe="")
         {
-            Console.WriteLine($"Tour  {pseudo}");
+            Console.WriteLine((string.IsNullOrEmpty(speudoEquipe)) ? $"c'est le tour du joueur {pseudoJoueur}" : $"c'est le tour du joueur {pseudoJoueur} de l'équipe {speudoEquipe}");
         }
         #endregion
     }
