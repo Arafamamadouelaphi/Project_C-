@@ -11,7 +11,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Frame
     /// </summary>
-    public class Frame:IEquatable<Equipe>
+    public class Frame:IEquatable<Frame>
     {
         const int MAX_QUILLE = 10;
         public int Numero
