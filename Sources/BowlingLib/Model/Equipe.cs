@@ -11,7 +11,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Equipe
     /// </summary>
-    public class Equipe:IEquatable<Equipe>
+    public class Equipe
     {
         #region Propiéters
         public string Nom { get; private set; }
@@ -52,7 +52,13 @@ namespace BowlingLib.Model
         public IEnumerable<Joueur> AjouterJoueurs(params Joueur[] joueurs)
         {
             List<Joueur> result = new();
-            result.AddRange(joueurs.Where(a => AjouterJoueur(a)));
+            foreach (var a in joueurs)
+            {
+                if (AjouterJoueur(a))
+                {
+                    result.Add(a);
+                }
+            }
             return result;
 
 
@@ -86,7 +92,12 @@ namespace BowlingLib.Model
         {
             joueurs.Remove(joueur);
         }
-        
+
+        /// <summary>
+        /// retourner la liste non modifiable des joueurs de l'équipe
+        /// </summary>
+        /// <returns></returns>
+
 
         /// <summary>
         /// Fonction permettant de vérifier si un joueur existe déjà dans la liste (l'équipe)
@@ -98,23 +109,6 @@ namespace BowlingLib.Model
             if (joueurs.Contains(nouvJoueur))
                 return true;
             return false;
-        }
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(obj, null)) return false;
-            if (ReferenceEquals(obj, this)) return true;
-            if (GetType() != obj.GetType()) return false;
-            return Equals(obj as Equipe);
-        }
-
-        public override int GetHashCode()
-        {
-            return joueurs.GetHashCode();
-        }
-
-        public bool Equals(Equipe other)
-        {
-            return joueurs.Equals(other.joueurs);
         }
         #endregion
 

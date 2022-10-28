@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace BowlingLib.Model
 {
@@ -86,11 +85,6 @@ namespace BowlingLib.Model
         public void AddPartie(Partie p)
         {
             parties.Add(p);
-        }
-
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
         }
 
         #endregion

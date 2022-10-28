@@ -11,7 +11,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Frame
     /// </summary>
-    public class Frame:IEquatable<Equipe>
+    public class Frame
     {
         const int MAX_QUILLE = 10;
         public int Numero
@@ -284,24 +284,6 @@ namespace BowlingLib.Model
             {
                 this.IsFinished = true;
             }
-        }
-
-        public bool Equals(Frame other)
-        {
-            return Numero.Equals(other.Numero);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(obj, null)) return false;
-            if (ReferenceEquals(obj, this)) return true;
-            if (GetType() != obj.GetType()) return false;
-            return Equals(obj as Frame);
-        }
-
-        public override int GetHashCode()
-        {
-            return Numero.GetHashCode();
         }
     }
 }

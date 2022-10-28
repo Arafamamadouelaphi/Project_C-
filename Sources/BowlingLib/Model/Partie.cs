@@ -10,7 +10,7 @@ namespace BowlingLib.Model
     /// <summary>
     /// Classe Model Partie
     /// </summary>
-    public class Partie:IEquatable<Partie>
+    public class Partie
     {
         #region Propriétés
         public ReadOnlyCollection<Frame> Frames { get; }
@@ -95,23 +95,6 @@ namespace BowlingLib.Model
                 }
             }
             return score;
-        }
-
-        public bool Equals(Partie other)
-        {
-            return Joueur.Equals(Joueur) && Date.Equals(other.Date);
-        }
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(obj, null)) return false;
-            if (ReferenceEquals(obj, this)) return true;
-            if (GetType() != obj.GetType()) return false;
-            return Equals(obj as Partie);
-        }
-
-        public override int GetHashCode()
-        {
-            return Joueur.GetHashCode();
         }
         #endregion
     }
