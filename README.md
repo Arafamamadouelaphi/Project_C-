@@ -68,7 +68,9 @@ $ dotnet tool install --global dotnet-ef
 ```shell
 $ dotnet ef database update 
 ```
-
+Contributeurs
+Victor Perez NGOUNOU
+Mamadou Elaphi ARAFA
 * L'application est prête à être utilisée.
 
 ## Usage
