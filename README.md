@@ -77,20 +77,6 @@ $ dotnet ef database update
 * Build the solution
 * Run the application
 
-## Contributeurs
-
-* [Victor Perez NGOUNOU](https://codefirst.iut.uca.fr/git/victor_perez.ngounou)
-* [Mamadou Elaphi ARAFA](https://codefirst.iut.uca.fr/git/mamadou_elaphi.arafa)
-* [Augustin AFFOGNON](https://codefirst.iut.uca.fr/git/augustin.affognon)
-
-
-## Support
-
-Contactez-moi à l'un des endroits suivants !
-
-* Website at <a href="https://codefirst.iut.uca.fr/git/victor_perez.ngounou" target="_blank">`https://codefirst.iut.uca.fr/git/victor_perez.ngounou`</a>
-* Email at <a href="mailto:victor_perez.ngounou@etu.uca.fr" target="_blank">`victor_perez.ngounou@etu.uca.fr`</a>
-
 ## License
 
 [![License](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=BowlingScoreApp&metric=license&token=d89d41f6a247037395d41fe6f40f53a402943bd9)](https://codefirst.iut.uca.fr/sonar/dashboard?id=BowlingScoreApp)
